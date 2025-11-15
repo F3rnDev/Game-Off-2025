@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="District" load_steps=3 format=3 uid="uid://dgev4manaoggo"]
+
+[ext_resource type="Texture2D" uid="uid://tyl22hdhop1n" path="res://Assets/Images/District/Distrito02.png" id="1_apm5p"]
+[ext_resource type="Script" uid="uid://djeoeokh2oftq" path="res://Components/Global/Districts/district.gd" id="2_mx6yv"]
+
+[resource]
+script = ExtResource("2_mx6yv")
+name = "Hela"
+image = ExtResource("1_apm5p")
+metadata/_custom_type_script = "uid://djeoeokh2oftq"

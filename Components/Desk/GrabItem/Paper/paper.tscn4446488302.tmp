@@ -1,0 +1,129 @@
+[gd_scene load_steps=8 format=3 uid="uid://cmnwkjoa4kipx"]
+
+[ext_resource type="Script" uid="uid://c8jtw7116kwaa" path="res://Components/Desk/GrabItem/Global/item.gd" id="1_e7x4m"]
+[ext_resource type="Texture2D" uid="uid://4b0o0qdvd1ra" path="res://Assets/Images/paper PLACEHOLDER.png" id="2_2p3gn"]
+[ext_resource type="FontFile" uid="uid://hvvy671c1x5e" path="res://Assets/Fonts/Silkscreen-Bold.ttf" id="3_dbds1"]
+[ext_resource type="Script" uid="uid://bqj0cqgtj55d3" path="res://Components/Desk/GrabItem/Paper/paper.gd" id="3_he6ul"]
+[ext_resource type="PackedScene" uid="uid://b062bbp746e1f" path="res://Components/Desk/GrabItem/Global/Grab.tscn" id="5_gug40"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8w355"]
+size = Vector2(272, 95.375)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dpbu"]
+size = Vector2(272, 186.25)
+
+[node name="Paper" type="CharacterBody2D" node_paths=PackedStringArray("grabable")]
+collision_layer = 2
+script = ExtResource("1_e7x4m")
+grabable = NodePath("Sprite2D/GrabbableItem")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(8, 8)
+texture = ExtResource("2_2p3gn")
+script = ExtResource("3_he6ul")
+
+[node name="Texts" type="Control" parent="Sprite2D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -23.0
+offset_right = -17.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.145, 0.145)
+
+[node name="Label" type="Label" parent="Sprite2D/Texts"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.12900001
+offset_right = 200.48279
+offset_bottom = 42.34187
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0.7529412, 0.5568628, 0.4392157, 1)
+theme_override_fonts/font = ExtResource("3_dbds1")
+theme_override_font_sizes/font_size = 22
+text = "Police dept."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Sprite2D/Texts"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = 35.845
+offset_right = 139.0
+offset_bottom = 59.845
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.7529412, 0.5568628, 0.4392157, 1)
+theme_override_fonts/font = ExtResource("3_dbds1")
+theme_override_font_sizes/font_size = 18
+text = "Destiny"
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Sprite2D/Texts"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = 190.615
+offset_right = 139.0
+offset_bottom = 211.61505
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.7529412, 0.5568628, 0.4392157, 1)
+theme_override_fonts/font = ExtResource("3_dbds1")
+theme_override_font_sizes/font_size = 18
+text = "Message"
+vertical_alignment = 1
+
+[node name="VBox" type="VBoxContainer" parent="Sprite2D/Texts"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 8.0
+offset_top = 69.0
+offset_right = 196.00198
+offset_bottom = 189.00003
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GrabbableItem" parent="Sprite2D" node_paths=PackedStringArray("parentObj") instance=ExtResource("5_gug40")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -17.0
+offset_top = -23.0
+offset_right = -17.0
+offset_bottom = -23.0
+grow_horizontal = 2
+grow_vertical = 2
+parentObj = NodePath("../..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 50.3125)
+shape = SubResource("RectangleShape2D_8w355")
+debug_color = Color(0.6668886, 0.5083992, 0.15268034, 0.41960785)
+
+[node name="TableIdentify" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TableIdentify"]
+position = Vector2(0, -90.875)
+shape = SubResource("RectangleShape2D_5dpbu")
+
+[connection signal="area_entered" from="TableIdentify" to="." method="_on_table_identify_area_entered"]
+[connection signal="area_exited" from="TableIdentify" to="." method="_on_table_identify_area_exited"]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="District" load_steps=3 format=3 uid="uid://bmi2vxdkivcad"]
+
+[ext_resource type="Texture2D" uid="uid://dipc12vp7jefy" path="res://Assets/Images/District/Distrito03.png" id="1_0auq6"]
+[ext_resource type="Script" uid="uid://djeoeokh2oftq" path="res://Components/Global/Districts/district.gd" id="1_v21t3"]
+
+[resource]
+script = ExtResource("1_v21t3")
+name = "Tabernae"
+image = ExtResource("1_0auq6")
+metadata/_custom_type_script = "uid://djeoeokh2oftq"

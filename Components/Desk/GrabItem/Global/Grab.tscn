@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b062bbp746e1f"]
+
+[ext_resource type="Script" uid="uid://b68htxwgwxtbl" path="res://Components/Desk/GrabItem/Global/grab.gd" id="1_87wj6"]
+
+[node name="GrabbableItem" type="Button"]
+modulate = Color(1, 1, 1, 0)
+self_modulate = Color(1, 1, 1, 0)
+script = ExtResource("1_87wj6")
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]

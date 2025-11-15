@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://jf6f57hjxjqu"]
+
+[ext_resource type="Texture2D" uid="uid://dpkqp7suud3hg" path="res://Assets/Images/District/Distrito01.png" id="1_7c5hm"]
+[ext_resource type="Script" uid="uid://dc0cxhh8hhvs2" path="res://Components/Desk/GrabItem/Paper/paper_receiver.gd" id="1_h30q3"]
+[ext_resource type="FontFile" uid="uid://bbm31s7m1pijg" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="3_h30q3"]
+
+[node name="PaperReceiver" type="HBoxContainer"]
+script = ExtResource("1_h30q3")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+texture = ExtResource("1_7c5hm")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.7529412, 0.5568628, 0.4392157, 1)
+theme_override_fonts/font = ExtResource("3_h30q3")
+theme_override_font_sizes/font_size = 18
+text = "59bg672"
+vertical_alignment = 1

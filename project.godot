@@ -11,5 +11,22 @@ config_version=5
 [application]
 
 config/name="Game Off 2025"
+run/main_scene="uid://dcte1jsti2gdf"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="viewport"
+window/canvas_textures/default_texture_filter=1
+
+[global_group]
+
+Table=""
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+2d/snap/snap_2d_transforms_to_pixel=true

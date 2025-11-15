@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="District" load_steps=3 format=3 uid="uid://c8gh2xycho54d"]
+
+[ext_resource type="Script" uid="uid://djeoeokh2oftq" path="res://Components/Global/Districts/district.gd" id="1_e0rm7"]
+[ext_resource type="Texture2D" uid="uid://dpkqp7suud3hg" path="res://Assets/Images/District/Distrito01.png" id="1_qypo7"]
+
+[resource]
+script = ExtResource("1_e0rm7")
+name = "Mendacium"
+image = ExtResource("1_qypo7")
+metadata/_custom_type_script = "uid://djeoeokh2oftq"
