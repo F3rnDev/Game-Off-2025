@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://7wiau4mm48at"]
 
-[ext_resource type="Texture2D" uid="uid://da27lh8c1ni2o" path="res://Assets/Images/Fax PLACEHOLDER.png" id="1_t100r"]
+[ext_resource type="Texture2D" uid="uid://b2aqgxobd0bd7" path="res://Assets/Images/Fax.png" id="1_hqy0a"]
 [ext_resource type="Script" uid="uid://da36lqyb33cep" path="res://Components/Desk/Fax/fax_machine.gd" id="2_hqy0a"]
-[ext_resource type="Texture2D" uid="uid://bd6r8q4dyrv6i" path="res://Assets/Images/fax paper shit PLACEHOLDER.png" id="2_t8yqa"]
+[ext_resource type="Texture2D" uid="uid://wajxc2m4ule5" path="res://Assets/Images/Fax Support.png" id="3_a6mie"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_t8yqa"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_t100r")
+"texture": ExtResource("1_hqy0a")
 }],
 "loop": true,
 "name": &"default",
@@ -22,8 +22,7 @@ script = ExtResource("2_hqy0a")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(1.56, -20.865)
-texture = ExtResource("2_t8yqa")
+texture = ExtResource("3_a6mie")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(2, -13.86)
+position = Vector2(1, -8.000002)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://da27lh8c1ni2o"
-path="res://.godot/imported/Fax PLACEHOLDER.png-26e5bc8d0971ddcc2f2d9e6133bcf17d.ctex"
+uid="uid://wajxc2m4ule5"
+path="res://.godot/imported/Fax Support.png-a719eca60f64c23337d4ac751556db9c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/Fax PLACEHOLDER.png"
-dest_files=["res://.godot/imported/Fax PLACEHOLDER.png-26e5bc8d0971ddcc2f2d9e6133bcf17d.ctex"]
+source_file="res://Assets/Images/Fax Support.png"
+dest_files=["res://.godot/imported/Fax Support.png-a719eca60f64c23337d4ac751556db9c.ctex"]
 
 [params]
 

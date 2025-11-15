@@ -17,8 +17,8 @@ func _process(_delta: float) -> void:
 		
 		var spriteSize = grabSprite.get_rect().size
 		
-		new_pos.x = clamp(new_pos.x, spriteSize.x/2, viewport_size.x - spriteSize.x/2)
-		new_pos.y = clamp(new_pos.y, spriteSize.y/2, viewport_size.y - spriteSize.y/2)
+		new_pos.x = clamp(new_pos.x, spriteSize.x*2, viewport_size.x - spriteSize.x*2)
+		new_pos.y = clamp(new_pos.y, spriteSize.y*2, viewport_size.y - spriteSize.y*2)
 		
 		parentObj.global_position = new_pos
 

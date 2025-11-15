@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bd6r8q4dyrv6i"
-path="res://.godot/imported/fax paper shit PLACEHOLDER.png-5782cbbc9917c130f061d22a0af0e401.ctex"
+path="res://.godot/imported/fax paper shit PLACEHOLDER.png-c715ffb2f8dd3d8f4dad38c6fb7e6081.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/fax paper shit PLACEHOLDER.png"
-dest_files=["res://.godot/imported/fax paper shit PLACEHOLDER.png-5782cbbc9917c130f061d22a0af0e401.ctex"]
+source_file="res://Assets/Images/Placeholder/fax paper shit PLACEHOLDER.png"
+dest_files=["res://.godot/imported/fax paper shit PLACEHOLDER.png-c715ffb2f8dd3d8f4dad38c6fb7e6081.ctex"]
 
 [params]
 
