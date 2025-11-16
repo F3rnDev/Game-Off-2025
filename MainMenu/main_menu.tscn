@@ -1,0 +1,421 @@
+[gd_scene load_steps=10 format=3 uid="uid://i3f6c6v27f1j"]
+
+[ext_resource type="Theme" uid="uid://cn5heyqgh7ypt" path="res://MainMenu/Theme.tres" id="1_evks7"]
+[ext_resource type="Script" uid="uid://c42sufb6jwxyh" path="res://MainMenu/menu.gd" id="2_54mvo"]
+[ext_resource type="Texture2D" uid="uid://bnhmjfcjlhe1j" path="res://MainMenu/Image/TableMenu.png" id="3_m824u"]
+[ext_resource type="Texture2D" uid="uid://tmpj4r04f74d" path="res://MainMenu/Image/Archive.png" id="4_lk74s"]
+[ext_resource type="Texture2D" uid="uid://bhcmjbeewjn0x" path="res://MainMenu/Image/Name.png" id="5_xowvx"]
+[ext_resource type="Texture2D" uid="uid://cnjwl71pkeecb" path="res://MainMenu/Image/ArchiveOpen.png" id="6_legl7"]
+[ext_resource type="AudioStream" uid="uid://ccwtqj8v4lorl" path="res://MainMenu/Audio/Menu.mp3" id="7_hqdk0"]
+[ext_resource type="AudioStream" uid="uid://cpodsn0ncc4w6" path="res://MainMenu/Audio/UIAccept.mp3" id="8_oal8c"]
+[ext_resource type="AudioStream" uid="uid://b5tw72y4f8y7d" path="res://MainMenu/Audio/UIMove.mp3" id="9_djx8i"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_evks7")
+script = ExtResource("2_54mvo")
+
+[node name="Table" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_m824u")
+
+[node name="Archive" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_lk74s")
+
+[node name="Name" type="TextureRect" parent="Archive"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -157.5
+offset_top = -125.00015
+offset_right = 157.5
+offset_bottom = 125.00015
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_xowvx")
+
+[node name="ArchiveOpenSettings" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_legl7")
+
+[node name="Panel" type="PanelContainer" parent="ArchiveOpenSettings"]
+custom_minimum_size = Vector2(350, 600)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36328125
+anchor_top = 0.08194444
+anchor_right = 0.6375
+anchor_bottom = 0.9152778
+theme = ExtResource("1_evks7")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ArchiveOpenSettings/Panel"]
+layout_mode = 2
+theme_type_variation = &"MarginPaper"
+
+[node name="Content" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content"]
+layout_mode = 2
+theme = ExtResource("1_evks7")
+theme_type_variation = &"TitleScreen"
+text = "Settings"
+
+[node name="TitleScreenSeparator" type="HSeparator" parent="ArchiveOpenSettings/Panel/MarginContainer/Content"]
+layout_mode = 2
+theme_type_variation = &"TitleScreenSeparator"
+
+[node name="ScreenSection" type="Panel" parent="ArchiveOpenSettings/Panel/MarginContainer/Content"]
+custom_minimum_size = Vector2(200, 120)
+layout_mode = 2
+theme_type_variation = &"Paper"
+
+[node name="Margin" type="MarginContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MarginSection"
+
+[node name="ContentScreen" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TitleSection" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_type_variation = &"TitleSection"
+text = "Screen"
+horizontal_alignment = 1
+
+[node name="TitleSectionSeparator" type="HSeparator" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen"]
+layout_mode = 2
+theme_type_variation = &"TitleSectionSeparator"
+
+[node name="ScreenOptions" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen"]
+layout_mode = 2
+
+[node name="FullscreenOption" type="HBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions"]
+layout_mode = 2
+
+[node name="Fullscreen" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions/FullscreenOption"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="CheckButton" type="CheckButton" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions/FullscreenOption"]
+layout_mode = 2
+size_flags_horizontal = 2
+mouse_default_cursor_shape = 2
+theme_type_variation = &"Toggle"
+
+[node name="SectionSeparator" type="HSeparator" parent="ArchiveOpenSettings/Panel/MarginContainer/Content"]
+layout_mode = 2
+theme_type_variation = &"SectionSeparator"
+
+[node name="AudioSection" type="Panel" parent="ArchiveOpenSettings/Panel/MarginContainer/Content"]
+custom_minimum_size = Vector2(200, 210)
+layout_mode = 2
+theme_type_variation = &"Paper"
+
+[node name="Margin" type="MarginContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MarginSection"
+
+[node name="ContentAudio" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TitleSection" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_type_variation = &"TitleSection"
+text = "Audio"
+horizontal_alignment = 1
+
+[node name="TitleSectionSeparator" type="HSeparator" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio"]
+layout_mode = 2
+theme_type_variation = &"TitleSectionSeparator"
+
+[node name="AudioOptions" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio"]
+layout_mode = 2
+
+[node name="Master" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions"]
+layout_mode = 2
+
+[node name="TitleOption" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master"]
+layout_mode = 2
+text = "Master"
+
+[node name="SliderMaster" type="HBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master"]
+layout_mode = 2
+
+[node name="SliderMaster" type="HSlider" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master/SliderMaster"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="PercentMaster" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master/SliderMaster"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0%"
+
+[node name="Music" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions"]
+layout_mode = 2
+
+[node name="TitleOption" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music"]
+layout_mode = 2
+text = "Music"
+
+[node name="SliderMusic" type="HBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music"]
+layout_mode = 2
+
+[node name="SliderMusic" type="HSlider" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music/SliderMusic"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="PercentMusic" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music/SliderMusic"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0%"
+
+[node name="SFX" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions"]
+layout_mode = 2
+
+[node name="TitleOption" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX"]
+layout_mode = 2
+text = "SFX"
+
+[node name="SliderMaster" type="HBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX"]
+layout_mode = 2
+
+[node name="SliderSFX" type="HSlider" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX/SliderMaster"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="PercentSFX" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX/SliderMaster"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0%"
+
+[node name="SectionSeparator2" type="HSeparator" parent="ArchiveOpenSettings/Panel/MarginContainer/Content"]
+layout_mode = 2
+theme_type_variation = &"SectionSeparator"
+
+[node name="Apply" type="Button" parent="ArchiveOpenSettings/Panel/MarginContainer/Content"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_type_variation = &"ButtonAply"
+text = "Apply"
+
+[node name="ArchiveOpenQuit" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_legl7")
+
+[node name="Panel2" type="PanelContainer" parent="ArchiveOpenQuit"]
+custom_minimum_size = Vector2(350, 600)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36328125
+anchor_top = 0.08194444
+anchor_right = 0.6375
+anchor_bottom = 0.9152778
+theme = ExtResource("1_evks7")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ArchiveOpenQuit/Panel2"]
+layout_mode = 2
+theme_type_variation = &"MarginPaper"
+
+[node name="Content" type="VBoxContainer" parent="ArchiveOpenQuit/Panel2/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="ArchiveOpenQuit/Panel2/MarginContainer/Content"]
+layout_mode = 2
+theme = ExtResource("1_evks7")
+theme_type_variation = &"TitleScreenQuit"
+text = "Confirmation 
+form"
+horizontal_alignment = 1
+
+[node name="TitleScreenSeparator" type="HSeparator" parent="ArchiveOpenQuit/Panel2/MarginContainer/Content"]
+layout_mode = 2
+theme_type_variation = &"TitleScreenSeparator"
+
+[node name="Panel" type="Panel" parent="ArchiveOpenQuit/Panel2/MarginContainer/Content"]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+theme_type_variation = &"Paper"
+
+[node name="MarginContainer" type="MarginContainer" parent="ArchiveOpenQuit/Panel2/MarginContainer/Content/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MarginSection"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ArchiveOpenQuit/Panel2/MarginContainer/Content/Panel/MarginContainer"]
+layout_mode = 2
+text = "This term is used to find out if the player wants to leave the game.
+If they want to leave, they just need to click “CONFIRM,” but if they want to continue playing, they just need to click “DENY.”"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="ArchiveOpenQuit/Panel2/MarginContainer/Content"]
+layout_mode = 2
+theme_type_variation = &"SectionSeparator"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ArchiveOpenQuit/Panel2/MarginContainer/Content"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 70
+
+[node name="Deny" type="Button" parent="ArchiveOpenQuit/Panel2/MarginContainer/Content/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_type_variation = &"ButtonQuitScreen"
+text = "Deny"
+
+[node name="Confirm" type="Button" parent="ArchiveOpenQuit/Panel2/MarginContainer/Content/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_type_variation = &"ButtonQuitScreen"
+text = "Confirm"
+
+[node name="VBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.65546876
+anchor_top = 0.08055556
+anchor_right = 0.65546876
+anchor_bottom = 0.3666682
+offset_left = 25.0
+offset_right = 231.0011
+offset_bottom = -181.0011
+rotation = 1.5707964
+theme_override_constants/separation = 10
+alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_type_variation = &"ButtonFile"
+text = "Play"
+
+[node name="Settings" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_type_variation = &"ButtonFile"
+text = "Settings"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme_type_variation = &"ButtonFile"
+text = "Quit"
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("7_hqdk0")
+autoplay = true
+bus = &"Music"
+
+[node name="SFX_UI_accept" type="AudioStreamPlayer" parent="Audio"]
+unique_name_in_owner = true
+stream = ExtResource("8_oal8c")
+bus = &"SFX"
+
+[node name="SFX_UI_move" type="AudioStreamPlayer" parent="Audio"]
+unique_name_in_owner = true
+stream = ExtResource("9_djx8i")
+bus = &"SFX"
+
+[connection signal="toggled" from="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions/FullscreenOption/CheckButton" to="." method="_on_fullscreen_toggled"]
+[connection signal="value_changed" from="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master/SliderMaster/SliderMaster" to="." method="_on_slider_master_value_changed"]
+[connection signal="value_changed" from="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music/SliderMusic/SliderMusic" to="." method="_on_slider_music_value_changed"]
+[connection signal="value_changed" from="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX/SliderMaster/SliderSFX" to="." method="_on_slider_sfx_value_changed"]
+[connection signal="mouse_entered" from="ArchiveOpenSettings/Panel/MarginContainer/Content/Apply" to="Audio/SFX_UI_move" method="play" binds= [0.0]]
+[connection signal="pressed" from="ArchiveOpenSettings/Panel/MarginContainer/Content/Apply" to="ArchiveOpenSettings" method="hide"]
+[connection signal="pressed" from="ArchiveOpenSettings/Panel/MarginContainer/Content/Apply" to="Audio/SFX_UI_accept" method="play" binds= [0.0]]
+[connection signal="mouse_entered" from="ArchiveOpenQuit/Panel2/MarginContainer/Content/HBoxContainer/Deny" to="Audio/SFX_UI_move" method="play" binds= [0.0]]
+[connection signal="pressed" from="ArchiveOpenQuit/Panel2/MarginContainer/Content/HBoxContainer/Deny" to="ArchiveOpenQuit" method="hide"]
+[connection signal="pressed" from="ArchiveOpenQuit/Panel2/MarginContainer/Content/HBoxContainer/Deny" to="Audio/SFX_UI_accept" method="play" binds= [0.0]]
+[connection signal="mouse_entered" from="ArchiveOpenQuit/Panel2/MarginContainer/Content/HBoxContainer/Confirm" to="Audio/SFX_UI_move" method="play" binds= [0.0]]
+[connection signal="pressed" from="ArchiveOpenQuit/Panel2/MarginContainer/Content/HBoxContainer/Confirm" to="Audio/SFX_UI_accept" method="play" binds= [0.0]]
+[connection signal="mouse_entered" from="VBoxContainer/Play" to="Audio/SFX_UI_move" method="play" binds= [0.0]]
+[connection signal="pressed" from="VBoxContainer/Play" to="Audio/SFX_UI_accept" method="play" binds= [0.0]]
+[connection signal="mouse_entered" from="VBoxContainer/Settings" to="Audio/SFX_UI_move" method="play" binds= [0.0]]
+[connection signal="pressed" from="VBoxContainer/Settings" to="ArchiveOpenSettings" method="show"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="ArchiveOpenQuit" method="hide"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="ArchiveOpenSettings" method="set_mouse_filter" binds= [0]]
+[connection signal="pressed" from="VBoxContainer/Settings" to="Audio/SFX_UI_accept" method="play" binds= [0.0]]
+[connection signal="mouse_entered" from="VBoxContainer/Quit" to="Audio/SFX_UI_move" method="play" binds= [0.0]]
+[connection signal="pressed" from="VBoxContainer/Quit" to="ArchiveOpenSettings" method="hide"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="ArchiveOpenQuit" method="show"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="ArchiveOpenQuit" method="set_mouse_filter" binds= [0]]
+[connection signal="pressed" from="VBoxContainer/Quit" to="Audio/SFX_UI_accept" method="play" binds= [0.0]]
