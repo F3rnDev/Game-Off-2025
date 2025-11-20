@@ -1,0 +1,79 @@
+extends Control
+
+@onready var backMenuBtn = %Confirm
+@onready var playBtn = %Resume
+@onready var fullscreenBtn: CheckButton = $ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions/FullscreenOption/CheckButton
+
+# Volume #
+@onready var masterPercent = %PercentMaster
+@onready var musicPercent = %PercentMusic
+@onready var sfxPercent = %PercentSFX
+
+@onready var sliderMaster = %SliderMaster
+@onready var sliderMusic = %SliderMusic
+@onready var sliderSFX = %SliderSFX
+
+func _ready() -> void:
+	visible = false
+	
+	# Buttons
+	playBtn.pressed.connect(unpaused)
+	
+	masterPercent.text = str(roundi(Audio.volumeMaster*100)) + "%"
+	musicPercent.text = str(roundi(Audio.volumeMusic*100)) + "%"
+	sfxPercent.text = str(roundi(Audio.volumeSFX*100)) + "%"
+	
+	sliderMaster.value = Audio.volumeMaster
+	sliderMusic.value = Audio.volumeMusic
+	sliderSFX.value = Audio.volumeSFX
+	
+	if Audio.isFullscreen == true:
+		fullscreenBtn.set_pressed_no_signal(true)
+
+func _process(_delta: float) -> void:
+	if Input.is_action_pressed("Pause"):
+		visible = true
+		get_tree().paused = true
+
+func _on_fullscreen_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		Audio.isFullscreen = true
+	else:
+		Audio.isFullscreen = false
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+	#== Sliders ==#
+func _on_slider_master_value_changed(value: float) -> void:
+	Audio.AudioMaster(value)
+	masterPercent.text = str(roundi(Audio.volumeMaster*100)) + "%"
+	
+
+func _on_slider_music_value_changed(value: float) -> void:
+	Audio.AudioMusic(value)
+	musicPercent.text = str(roundi(Audio.volumeMusic*100)) + "%"
+	
+
+func _on_slider_sfx_value_changed(value: float) -> void:
+	Audio.playUIMove()
+	Audio.AudioSfx(value)
+	sfxPercent.text = str(roundi(Audio.volumeSFX*100)) + "%"
+
+	#== Buttons ==#
+func _on_confirm_pressed() -> void:
+	Audio.playUIAccept()
+	get_tree().paused = false
+	#get_tree().change_scene_to_file("res://Screens/MenuScreen/menu_screen.tscn")
+	print("Mudar cena para menu pricipal - Script do pause")
+
+func _on_deny_pressed() -> void:
+	Audio.playUICancel()
+
+func pressBtnSfx():
+	Audio.playUIAccept()
+
+func mouseInBtnSfx():
+	Audio.playUIMove()
+
+func unpaused():
+	get_tree().paused = false
