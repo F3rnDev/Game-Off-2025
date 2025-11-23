@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://1fgajss2c3v3"]
+
+[ext_resource type="Texture2D" uid="uid://dpkqp7suud3hg" path="res://Assets/Images/District/Distrito01.png" id="1_nlboc"]
+[ext_resource type="Script" uid="uid://w12a6uinxkvh" path="res://Components/Desk/Radio/receiver_point.gd" id="2_j81uq"]
+
+[node name="TextureRect" type="TextureRect"]
+offset_right = 30.0
+offset_bottom = 30.0
+texture = ExtResource("1_nlboc")
+script = ExtResource("2_j81uq")

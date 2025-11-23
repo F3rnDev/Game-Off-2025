@@ -3,10 +3,10 @@
 [ext_resource type="Texture2D" uid="uid://d00ybltyfr1rk" path="res://Assets/Images/Desk.png" id="1_yxq2f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_by6vg"]
-size = Vector2(1280, 41)
+size = Vector2(1280, 61)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yxq2f"]
-size = Vector2(1281, 225)
+size = Vector2(1281, 179)
 
 [node name="Desk" type="Node2D"]
 z_index = -2
@@ -18,13 +18,13 @@ texture = ExtResource("1_yxq2f")
 [node name="TableColiision" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TableColiision"]
-position = Vector2(0, 139.5)
+position = Vector2(0, 129.5)
 shape = SubResource("RectangleShape2D_by6vg")
 debug_color = Color(0.9858075, 0.06142345, 0.26414186, 0.41960785)
 
 [node name="TableArea" type="Area2D" parent="." groups=["Table"]]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TableArea"]
-position = Vector2(-1.5, 46.5)
+position = Vector2(-1.5, 69.5)
 shape = SubResource("RectangleShape2D_yxq2f")
 debug_color = Color(3.657937e-06, 0.65144676, 0.030623864, 0.41960785)

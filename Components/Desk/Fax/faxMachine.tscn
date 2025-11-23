@@ -25,4 +25,4 @@ z_index = -1
 texture = ExtResource("3_a6mie")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(1, -8.000002)
+position = Vector2(2, -8)

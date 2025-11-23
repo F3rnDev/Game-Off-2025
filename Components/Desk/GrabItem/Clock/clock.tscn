@@ -1,0 +1,64 @@
+[gd_scene load_steps=7 format=3 uid="uid://c7uwetgvv5avf"]
+
+[ext_resource type="Script" uid="uid://c8jtw7116kwaa" path="res://Components/Desk/GrabItem/Global/item.gd" id="1_0r1iu"]
+[ext_resource type="Texture2D" uid="uid://bepih42ikem3y" path="res://Assets/Images/clock.png" id="2_62awn"]
+[ext_resource type="Script" uid="uid://uqf7035hmm55" path="res://Components/Desk/GrabItem/Clock/clock_visor.gd" id="4_8s1b3"]
+[ext_resource type="PackedScene" uid="uid://b062bbp746e1f" path="res://Components/Desk/GrabItem/Global/Grab.tscn" id="5_gj54c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8w355"]
+size = Vector2(125, 115)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5dpbu"]
+size = Vector2(125, 57)
+
+[node name="Clock" type="CharacterBody2D" node_paths=PackedStringArray("grabable")]
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_0r1iu")
+grabable = NodePath("Sprite2D/GrabbableItem")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3, 9)
+scale = Vector2(6, 6)
+texture = ExtResource("2_62awn")
+
+[node name="GrabbableItem" parent="Sprite2D" node_paths=PackedStringArray("parentObj") instance=ExtResource("5_gj54c")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -12.0
+offset_top = -11.0
+offset_right = -12.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+parentObj = NodePath("../..")
+
+[node name="ClockVisor" type="Node2D" parent="."]
+script = ExtResource("4_8s1b3")
+
+[node name="Hours" type="Line2D" parent="ClockVisor"]
+points = PackedVector2Array(0, 2, 0, -26)
+width = 6.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="Minutes" type="Line2D" parent="ClockVisor"]
+scale = Vector2(1, 0.96666664)
+points = PackedVector2Array(0, 0, 0, -23)
+width = 3.0
+default_color = Color(0, 0, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(1.5, 2.5)
+shape = SubResource("RectangleShape2D_8w355")
+debug_color = Color(0.6668886, 0.5083992, 0.15268034, 0.41960785)
+
+[node name="TableIdentify" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TableIdentify"]
+position = Vector2(1.5, -26.5)
+shape = SubResource("RectangleShape2D_5dpbu")
+
+[connection signal="area_entered" from="TableIdentify" to="." method="_on_table_identify_area_entered"]
+[connection signal="area_exited" from="TableIdentify" to="." method="_on_table_identify_area_exited"]

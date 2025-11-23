@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://dht2ck2was1bs"]
+
+[ext_resource type="Script" uid="uid://dgob5uq16l24k" path="res://Components/Desk/Radio/radio_station.gd" id="1_8w5xq"]
+[ext_resource type="Texture2D" uid="uid://b51o3bqrfmtek" path="res://Assets/Images/Radio.png" id="1_ti8p0"]
+[ext_resource type="Texture2D" uid="uid://4nnanjg5lw3p" path="res://Assets/Images/RadioReader.png" id="3_5a2nq"]
+[ext_resource type="Shader" uid="uid://bsgguut1i74mf" path="res://Assets/Shader/pixelOutline.gdshader" id="4_cdsh0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cdsh0"]
+shader = ExtResource("4_cdsh0")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_unycd"]
+shader = ExtResource("4_cdsh0")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5a2nq"]
+size = Vector2(131, 65)
+
+[node name="RadioStation" type="Node2D"]
+script = ExtResource("1_8w5xq")
+
+[node name="Radio" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_cdsh0")
+scale = Vector2(5, 5)
+texture = ExtResource("1_ti8p0")
+
+[node name="Control" type="Control" parent="Radio"]
+layout_mode = 3
+anchor_left = 0.055555556
+anchor_top = 0.3043478
+anchor_right = 0.7916666
+anchor_bottom = 0.5652174
+offset_left = -36.0
+offset_top = -11.0
+offset_right = -36.0
+offset_bottom = -11.0
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Radio/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Button" type="Button" parent="Radio"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -11.0
+offset_right = -36.0
+offset_bottom = -11.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Reader" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_unycd")
+position = Vector2(309, -100.00001)
+scale = Vector2(5, 5)
+texture = ExtResource("3_5a2nq")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Reader"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(308.5, -217.5)
+shape = SubResource("RectangleShape2D_5a2nq")
+
+[node name="Paper InPos" type="Marker2D" parent="."]
+position = Vector2(310, -277)
+
+[connection signal="button_down" from="Radio/Button" to="." method="_on_button_button_down"]
+[connection signal="mouse_entered" from="Radio/Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Radio/Button" to="." method="_on_button_mouse_exited"]

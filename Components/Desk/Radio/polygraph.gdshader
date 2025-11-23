@@ -7,12 +7,19 @@ uniform float speed : hint_range(0.0, 200.0) = 60.0;
 uniform float THICKness: hint_range(0.001, 1.0) = 0.005;
 uniform vec3 waveColor : source_color;
 
+uniform float pixel_steps : hint_range(1.0, 200.0) = 40.0;
+
 void fragment() {
-	float x = UV.x * 10.0; // controla quantas ondas cabem na tela
+	float x = UV.x * 10.0;
 	float wave = sin(x * frequency + time * speed * 0.05) * amplitude / 100.0;
+
+	// Pixelização
+	wave = floor(wave * pixel_steps) / pixel_steps;
+
 	float y = UV.y - 0.5 + wave;
-	
-	float alpha = smoothstep(THICKness, 0.0, abs(y));
-	
+
+	// ---- LINHA DURA (sem suavização) ----
+	float alpha = (abs(y) < THICKness) ? 1.0 : 0.0;
+
 	COLOR = vec4(waveColor, alpha);
 }

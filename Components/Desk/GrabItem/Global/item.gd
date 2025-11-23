@@ -10,7 +10,7 @@ var stop = true
 func _process(_delta: float) -> void:
 	if grabable.drag and stop:
 		stop = false
-		z_index = 0
+		z_index = 2
 	
 	if stop:
 		return
