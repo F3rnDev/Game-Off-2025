@@ -28,6 +28,3 @@ func btnPress() -> void:
 
 func denyBtnPressed() -> void:
 	Audio.playUICancel()
-
-func mouseEnter() -> void:
-	Audio.playUIMove()

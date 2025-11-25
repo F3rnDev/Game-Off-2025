@@ -1,3 +1,3 @@
-[gd_scene format=3 uid="uid://dqv1ga5xcx7qw"]
+[gd_scene load_steps=0 format=3 uid="uid://dqv1ga5xcx7qw"]
 
 [node name="GameCamera" type="Camera2D"]

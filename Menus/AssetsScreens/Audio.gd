@@ -3,12 +3,10 @@ extends Node
 var isFullscreen = false
 
 @onready var uiAccept := AudioStreamPlayer.new()
-@onready var uiMove := AudioStreamPlayer.new()
 @onready var uiCancel := AudioStreamPlayer.new()
 
-@onready var soundAccept = load("res://Menus/AssetsScreens/Audio/UIAccept.mp3")
+@onready var soundAccept = load("res://Menus/AssetsScreens/Audio/leaf_trought.wav")
 @onready var soundCancel = load("res://Menus/AssetsScreens/Audio/UICancel.mp3")
-@onready var soundMove = load("res://Menus/AssetsScreens/Audio/UIMove.mp3")
 
 var volumeMaster = 1.0
 var volumeMusic = 1.0
@@ -31,11 +29,9 @@ func _ready() -> void:
 	
 	add_child(uiAccept)
 	add_child(uiCancel)
-	add_child(uiMove)
 	
 	uiAccept.bus = SFX_AUDIO_NAME
 	uiCancel.bus = SFX_AUDIO_NAME
-	uiMove.bus = SFX_AUDIO_NAME
 
 func AudioMaster(value:float):
 	volumeMaster = value
@@ -56,10 +52,6 @@ func AudioSfx(value:float):
 func playUIAccept():
 	uiAccept.stream = soundAccept
 	uiAccept.play()
-
-func playUIMove():
-	uiMove.stream = soundMove
-	uiMove.play()
 
 func playUICancel():
 	uiCancel.stream = soundCancel

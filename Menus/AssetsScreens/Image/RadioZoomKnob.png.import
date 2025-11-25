@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bnhmjfcjlhe1j"
-path="res://.godot/imported/TableMenu.png-6164608a008e8398bcd27d41954e360d.ctex"
+uid="uid://1i8jrc3mfcxb"
+path="res://.godot/imported/RadioZoomKnob.png-c325ca08f39e7bc4cba8f5e85cef2ed9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MainMenu/Image/TableMenu.png"
-dest_files=["res://.godot/imported/TableMenu.png-6164608a008e8398bcd27d41954e360d.ctex"]
+source_file="res://Menus/AssetsScreens/Image/RadioZoomKnob.png"
+dest_files=["res://.godot/imported/RadioZoomKnob.png-c325ca08f39e7bc4cba8f5e85cef2ed9.ctex"]
 
 [params]
 

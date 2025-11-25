@@ -32,8 +32,7 @@ func _ready() -> void:
 		fullscreenBtn.set_pressed_no_signal(true)
 
 func play():
-	#get_tree().change_scene_to_file("res://node_2d.tscn")
-	print("Mudar cena para cena de jogo - Script menu")
+	get_tree().change_scene_to_file("res://Scenes/main.tscn")
 
 func quit_game():
 	get_tree().quit()
@@ -56,14 +55,10 @@ func _on_slider_music_value_changed(value: float) -> void:
 	musicPercent.text = str(roundi(value*100)) + "%"
 
 func _on_slider_sfx_value_changed(value: float) -> void:
-	Audio.playUIMove()
 	Audio.AudioSfx(value)
 	sfxPercent.text = str(roundi(value*100)) + "%"
 
 	#== Buttons ==#
-func mouseInBtnSfx():
-	Audio.playUIMove()
-
 func pressBtnSfx():
 	Audio.playUIAccept()
 
