@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cmnwkjoa4kipx"]
+[gd_scene load_steps=16 format=3 uid="uid://cmnwkjoa4kipx"]
 
 [ext_resource type="Script" uid="uid://c8jtw7116kwaa" path="res://Components/Desk/GrabItem/Global/item.gd" id="1_e7x4m"]
 [ext_resource type="Texture2D" uid="uid://4b0o0qdvd1ra" path="res://Assets/Images/paper.png" id="2_2p3gn"]
 [ext_resource type="FontFile" uid="uid://hvvy671c1x5e" path="res://Assets/Fonts/Silkscreen-Bold.ttf" id="3_dbds1"]
 [ext_resource type="Script" uid="uid://bqj0cqgtj55d3" path="res://Components/Desk/GrabItem/Paper/paper.gd" id="3_he6ul"]
 [ext_resource type="PackedScene" uid="uid://b062bbp746e1f" path="res://Components/Desk/GrabItem/Global/Grab.tscn" id="5_gug40"]
+[ext_resource type="Texture2D" uid="uid://blkbncnvant4v" path="res://Assets/Images/PaperCheck.png" id="6_he6ul"]
 
 [sub_resource type="Animation" id="Animation_he6ul"]
 length = 0.001
@@ -52,10 +53,26 @@ tracks/0/keys = {
 "values": [Vector2(17, 69), Vector2(17, 39), Vector2(17, 39), Vector2(17, 29), Vector2(17, 29), Vector2(17, 23)]
 }
 
+[sub_resource type="Animation" id="Animation_5od7h"]
+resource_name = "paper reader up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(17, -23), Vector2(17, 23)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_he6ul"]
 _data = {
 &"RESET": SubResource("Animation_he6ul"),
 &"paper reader down": SubResource("Animation_yju4b"),
+&"paper reader up": SubResource("Animation_5od7h"),
 &"paper up": SubResource("Animation_gox4t")
 }
 
@@ -67,6 +84,9 @@ size = Vector2(272, 186.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gox4t"]
 size = Vector2(272, 369)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_he6ul"]
+size = Vector2(136, 184)
 
 [node name="Paper" type="CharacterBody2D" node_paths=PackedStringArray("grabable")]
 collision_layer = 2
@@ -87,7 +107,7 @@ offset_right = 17.0
 offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(8, 8)
+scale = Vector2(4, 4)
 pivot_offset = Vector2(17, 23)
 
 [node name="Sprite2D" type="Sprite2D" parent="PaperMask"]
@@ -192,25 +212,40 @@ libraries = {
 &"": SubResource("AnimationLibrary_he6ul")
 }
 
+[node name="Sprite2D" type="Sprite2D" parent="PaperMask/Sprite2D"]
+visible = false
+texture = ExtResource("6_he6ul")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 50.3125)
 shape = SubResource("RectangleShape2D_8w355")
 debug_color = Color(0.6668886, 0.5083992, 0.15268034, 0.41960785)
 
 [node name="TableIdentify" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TableIdentify"]
 position = Vector2(0, -90.875)
 shape = SubResource("RectangleShape2D_5dpbu")
 
 [node name="ReaderIdentify" type="Area2D" parent="." groups=["Paper"]]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReaderIdentify"]
 position = Vector2(0, -5.5)
 shape = SubResource("RectangleShape2D_gox4t")
 debug_color = Color(0.8159869, 0.0019602692, 0.97589475, 0.41960785)
 
+[node name="folderIdentify" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="folderIdentify"]
+shape = SubResource("RectangleShape2D_he6ul")
+debug_color = Color(0.7063136, 0.4888361, 0, 0.41960785)
+
 [connection signal="area_entered" from="TableIdentify" to="." method="_on_table_identify_area_entered"]
 [connection signal="area_exited" from="TableIdentify" to="." method="_on_table_identify_area_exited"]
 [connection signal="area_entered" from="ReaderIdentify" to="PaperMask/Sprite2D" method="_on_reader_identify_area_entered"]
 [connection signal="area_exited" from="ReaderIdentify" to="PaperMask/Sprite2D" method="_on_reader_identify_area_exited"]
+[connection signal="area_entered" from="folderIdentify" to="PaperMask/Sprite2D" method="_on_folder_identify_area_entered"]
+[connection signal="area_exited" from="folderIdentify" to="PaperMask/Sprite2D" method="_on_folder_identify_area_exited"]

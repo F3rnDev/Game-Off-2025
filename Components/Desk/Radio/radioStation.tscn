@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dht2ck2was1bs"]
+[gd_scene load_steps=10 format=3 uid="uid://dht2ck2was1bs"]
 
 [ext_resource type="Script" uid="uid://dgob5uq16l24k" path="res://Components/Desk/Radio/radio_station.gd" id="1_8w5xq"]
 [ext_resource type="Texture2D" uid="uid://b51o3bqrfmtek" path="res://Assets/Images/Radio.png" id="1_ti8p0"]
-[ext_resource type="Texture2D" uid="uid://4nnanjg5lw3p" path="res://Assets/Images/RadioReader.png" id="3_5a2nq"]
 [ext_resource type="Shader" uid="uid://bsgguut1i74mf" path="res://Assets/Shader/pixelOutline.gdshader" id="4_cdsh0"]
+[ext_resource type="Texture2D" uid="uid://bnqqhpgibwkc0" path="res://Assets/Images/RadioReader1.png" id="4_unycd"]
+[ext_resource type="Texture2D" uid="uid://us228oy54vo" path="res://Assets/Images/RadioReader2.png" id="5_6v8c8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cdsh0"]
 shader = ExtResource("4_cdsh0")
@@ -14,6 +15,25 @@ shader_parameter/width = 0.0
 shader = ExtResource("4_cdsh0")
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/width = 0.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_unycd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_unycd")
+}],
+"loop": true,
+"name": &"noPaper",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_6v8c8")
+}],
+"loop": true,
+"name": &"withPaper",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5a2nq"]
 size = Vector2(131, 65)
@@ -62,11 +82,12 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_default_cursor_shape = 2
 
-[node name="Reader" type="Sprite2D" parent="."]
+[node name="Reader" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_unycd")
 position = Vector2(309, -100.00001)
 scale = Vector2(5, 5)
-texture = ExtResource("3_5a2nq")
+sprite_frames = SubResource("SpriteFrames_unycd")
+animation = &"noPaper"
 
 [node name="Area2D" type="Area2D" parent="." groups=["Reader"]]
 
@@ -76,6 +97,9 @@ shape = SubResource("RectangleShape2D_5a2nq")
 
 [node name="Paper InPos" type="Marker2D" parent="."]
 position = Vector2(310, -277)
+
+[node name="Paper OutPos" type="Marker2D" parent="."]
+position = Vector2(308, 55)
 
 [connection signal="button_down" from="Radio/Button" to="." method="_on_button_button_down"]
 [connection signal="mouse_entered" from="Radio/Button" to="." method="_on_button_mouse_entered"]

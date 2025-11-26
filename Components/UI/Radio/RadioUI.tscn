@@ -1,8 +1,17 @@
-[gd_scene load_steps=9 format=3 uid="uid://c8hghr02d0sr8"]
+[gd_scene load_steps=24 format=3 uid="uid://c8hghr02d0sr8"]
 
 [ext_resource type="Script" uid="uid://dxu5ms7fqniad" path="res://Components/UI/Radio/radio_ui.gd" id="1_j10og"]
 [ext_resource type="Texture2D" uid="uid://cpxrypdwvaoq6" path="res://Assets/Images/RadioZoom.png" id="1_tbdp1"]
 [ext_resource type="PackedScene" uid="uid://dbexpufwkcjfs" path="res://Components/Desk/Radio/polygraph.tscn" id="2_2rb5e"]
+[ext_resource type="Script" uid="uid://d32tj0kfe4jv6" path="res://Components/UI/Radio/district_slider.gd" id="4_61ghv"]
+[ext_resource type="Texture2D" uid="uid://cr1nq8hj2tjop" path="res://Assets/Images/RadioZoomKnob.png" id="4_p85wy"]
+[ext_resource type="Script" uid="uid://bmsy3t77g1dwj" path="res://Components/UI/Radio/knob.gd" id="5_kllb8"]
+[ext_resource type="Texture2D" uid="uid://b3vg8purnkld3" path="res://Assets/Images/RadioZoomButton1.png" id="6_4nrk6"]
+[ext_resource type="Texture2D" uid="uid://bgvdxgufgeydj" path="res://Assets/Images/RadioZoomButton2.png" id="7_kunth"]
+[ext_resource type="FontFile" uid="uid://hvvy671c1x5e" path="res://Assets/Fonts/Silkscreen-Bold.ttf" id="8_kunth"]
+[ext_resource type="Script" uid="uid://bvl3e54jaempk" path="res://Components/UI/Radio/signal_status.gd" id="10_h3ian"]
+[ext_resource type="Script" uid="uid://ckg4t86o5120c" path="res://Components/UI/Radio/player_feedback.gd" id="11_75pb5"]
+[ext_resource type="Texture2D" uid="uid://chmbese6olpf0" path="res://Assets/Images/RadioZoomFeedback.png" id="11_hkd3y"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ynf5e"]
 bg_color = Color(0.2627451, 0.40784314, 0.32156864, 1)
@@ -12,59 +21,74 @@ border_width_right = 5
 border_width_bottom = 5
 border_color = Color(1, 1, 1, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kunth"]
+bg_color = Color(0.19215687, 0.13333334, 0.20392157, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61ghv"]
+size = Vector2(30, 88)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75pb5"]
+atlas = ExtResource("11_hkd3y")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1tyx3"]
+atlas = ExtResource("11_hkd3y")
+region = Rect2(26, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx0a8"]
+atlas = ExtResource("11_hkd3y")
+region = Rect2(13, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jbxun"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75pb5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1tyx3")
+}],
+"loop": true,
+"name": &"no",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vx0a8")
+}],
+"loop": true,
+"name": &"yes",
+"speed": 5.0
+}]
+
 [sub_resource type="Animation" id="Animation_j10og"]
 resource_name = "Appear"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(242, 464)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(0.2871746, 1),
 "update": 0,
 "values": [Vector2(1, 0), Vector2(1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_p85wy"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(242, 800)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_kllb8"]
@@ -73,26 +97,29 @@ length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(3.1383355, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_p85wy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(242, 464)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(3.1383355, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1, 0)]
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kllb8"]
@@ -109,11 +136,12 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -398.0
-offset_top = 80.0
+offset_top = -256.0
 offset_right = 398.0
-offset_bottom = 336.0016
+offset_bottom = 0.0015869141
 grow_horizontal = 2
 grow_vertical = 0
+scale = Vector2(1e-05, 1e-05)
 theme_override_styles/panel = SubResource("StyleBoxFlat_ynf5e")
 script = ExtResource("1_j10og")
 
@@ -167,7 +195,184 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
+[node name="DistrictSlider" type="ColorRect" parent="TextureRect/SubViewportContainer/SubViewport" node_paths=PackedStringArray("polygraph", "signalStatus")]
+anchors_preset = -1
+anchor_right = 0.057142857
+anchor_bottom = 0.99999243
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.54509807, 0.7529412, 0.7921569, 0.6862745)
+script = ExtResource("4_61ghv")
+polygraph = NodePath("../Polygraph")
+signalStatus = NodePath("../../../SignalStatus")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="TextureRect/SubViewportContainer/SubViewport/DistrictSlider"]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 0.16189843
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_kunth")
+theme_override_styles/normal_mirrored = SubResource("StyleBoxFlat_kunth")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_kunth")
+theme_override_styles/pressed_mirrored = SubResource("StyleBoxFlat_kunth")
+theme_override_styles/hover = SubResource("StyleBoxFlat_kunth")
+theme_override_styles/hover_mirrored = SubResource("StyleBoxFlat_kunth")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_kunth")
+theme_override_styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_kunth")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_kunth")
+theme_override_styles/disabled_mirrored = SubResource("StyleBoxFlat_kunth")
+theme_override_styles/focus = SubResource("StyleBoxFlat_kunth")
+metadata/_edit_use_anchors_ = true
+
+[node name="Area2D" type="Area2D" parent="TextureRect/SubViewportContainer/SubViewport/DistrictSlider"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureRect/SubViewportContainer/SubViewport/DistrictSlider/Area2D"]
+position = Vector2(15, 61.999207)
+shape = SubResource("RectangleShape2D_61ghv")
+debug_color = Color(0.95074373, 2.7915835e-06, 0.56950784, 0.41960785)
+
+[node name="Knob" type="Sprite2D" parent="TextureRect" node_paths=PackedStringArray("status", "slider")]
+position = Vector2(513.00006, 179.99919)
+scale = Vector2(3, 3)
+texture = ExtResource("4_p85wy")
+script = ExtResource("5_kllb8")
+status = NodePath("../SignalStatus")
+slider = NodePath("../SubViewportContainer/SubViewport/DistrictSlider")
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="TextureRect/Knob"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -8.0
+offset_top = -8.0
+offset_right = -8.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(24, 24)
+mouse_default_cursor_shape = 2
+
+[node name="Send" type="TextureButton" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.02991453
+anchor_top = 0.6880308
+anchor_right = 0.18803419
+anchor_bottom = 0.8461506
+offset_right = -74.0
+offset_bottom = -24.666687
+scale = Vector2(3, 3)
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("6_4nrk6")
+texture_pressed = ExtResource("7_kunth")
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="TextureRect/Send"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.4862745, 0.5176471, 0.5921569, 1)
+theme_override_fonts/font = ExtResource("8_kunth")
+theme_override_font_sizes/font_size = 8
+text = "SEND"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SignalStatus" type="Control" parent="TextureRect"]
+layout_mode = 1
+anchor_left = 0.7692308
+anchor_top = 0.6794838
+anchor_right = 0.7905983
+anchor_bottom = 0.84615046
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("10_h3ian")
+metadata/_edit_use_anchors_ = true
+
+[node name="Yes" type="ColorRect" parent="TextureRect/SignalStatus"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.07692308
+anchor_right = 0.8
+anchor_bottom = 0.30769232
+grow_horizontal = 2
+color = Color(0.36862746, 0.54901963, 0.31764707, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="No" type="ColorRect" parent="TextureRect/SignalStatus"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.6923077
+anchor_right = 0.8
+anchor_bottom = 0.9230769
+grow_horizontal = 2
+color = Color(0.63529414, 0.23529412, 0.23529412, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayerFeedback" type="HBoxContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -219.0
+offset_top = -72.00079
+offset_right = 138.0
+offset_bottom = -36.000793
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+script = ExtResource("11_75pb5")
+
+[node name="1" type="Control" parent="TextureRect/PlayerFeedback"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+
+[node name="TextureRect" type="AnimatedSprite2D" parent="TextureRect/PlayerFeedback/1"]
+position = Vector2(18, 18)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_jbxun")
+animation = &"no"
+
+[node name="2" type="Control" parent="TextureRect/PlayerFeedback"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+
+[node name="TextureRect" type="AnimatedSprite2D" parent="TextureRect/PlayerFeedback/2"]
+position = Vector2(18, 18)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_jbxun")
+
+[node name="3" type="Control" parent="TextureRect/PlayerFeedback"]
+custom_minimum_size = Vector2(36, 36)
+layout_mode = 2
+
+[node name="TextureRect" type="AnimatedSprite2D" parent="TextureRect/PlayerFeedback/3"]
+position = Vector2(18, 18)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_jbxun")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_kllb8")
 }
+
+[connection signal="button_down" from="TextureRect/SubViewportContainer/SubViewport/DistrictSlider/Button" to="TextureRect/SubViewportContainer/SubViewport/DistrictSlider" method="_on_button_button_down"]
+[connection signal="button_up" from="TextureRect/SubViewportContainer/SubViewport/DistrictSlider/Button" to="TextureRect/SubViewportContainer/SubViewport/DistrictSlider" method="_on_button_button_up"]
+[connection signal="area_entered" from="TextureRect/SubViewportContainer/SubViewport/DistrictSlider/Area2D" to="TextureRect/SubViewportContainer/SubViewport/DistrictSlider" method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="TextureRect/SubViewportContainer/SubViewport/DistrictSlider/Area2D" to="TextureRect/SubViewportContainer/SubViewport/DistrictSlider" method="_on_area_2d_area_exited"]
+[connection signal="button_down" from="TextureRect/Knob/Button" to="TextureRect/Knob" method="_on_button_button_down"]
+[connection signal="button_up" from="TextureRect/Knob/Button" to="TextureRect/Knob" method="_on_button_button_up"]
+[connection signal="button_down" from="TextureRect/Send" to="." method="_on_send_button_down"]

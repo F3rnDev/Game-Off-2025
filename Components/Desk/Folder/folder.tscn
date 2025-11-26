@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmda7urn28hxi"]
+
+[ext_resource type="Shader" uid="uid://bsgguut1i74mf" path="res://Assets/Shader/pixelOutline.gdshader" id="1_ichek"]
+[ext_resource type="Texture2D" uid="uid://dy4k3john72vn" path="res://Assets/Images/folder.png" id="1_pjcup"]
+[ext_resource type="Script" uid="uid://b8qlamytdxdqd" path="res://Components/Desk/Folder/folder.gd" id="3_wmc4d"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ti3xi"]
+shader = ExtResource("1_ichek")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/width = 0.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ichek"]
+size = Vector2(28.7, 30.700005)
+
+[node name="Folder" type="Sprite2D"]
+material = SubResource("ShaderMaterial_ti3xi")
+scale = Vector2(5, 5)
+texture = ExtResource("1_pjcup")
+script = ExtResource("3_wmc4d")
+
+[node name="Button" type="Button" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -14.0
+offset_top = -15.0
+offset_right = -14.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+
+[node name="Area2D" type="Area2D" parent="." groups=["Folder"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.4500008, 0.5499999)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_ichek")
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var hourLine = $Hours
-@onready var minuteLine = $Minutes
+@onready var hourLine = $HourMarker
+@onready var minuteLine = $MinuteMarker
 
 @export var hourLength = 30.0
 @export var minuteLength = 26.0

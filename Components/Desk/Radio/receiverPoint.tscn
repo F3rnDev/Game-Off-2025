@@ -1,10 +1,68 @@
-[gd_scene load_steps=3 format=3 uid="uid://1fgajss2c3v3"]
+[gd_scene load_steps=7 format=3 uid="uid://1fgajss2c3v3"]
 
 [ext_resource type="Texture2D" uid="uid://dpkqp7suud3hg" path="res://Assets/Images/District/Distrito01.png" id="1_nlboc"]
 [ext_resource type="Script" uid="uid://w12a6uinxkvh" path="res://Components/Desk/Radio/receiver_point.gd" id="2_j81uq"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j81uq"]
+size = Vector2(24, 30)
+
+[sub_resource type="Animation" id="Animation_j81uq"]
+resource_name = "kill"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.16493872, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_tb6fr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xool4"]
+_data = {
+&"RESET": SubResource("Animation_tb6fr"),
+&"kill": SubResource("Animation_j81uq")
+}
+
 [node name="TextureRect" type="TextureRect"]
 offset_right = 30.0
 offset_bottom = 30.0
+pivot_offset = Vector2(15, 15)
 texture = ExtResource("1_nlboc")
 script = ExtResource("2_j81uq")
+
+[node name="PlateMarker" type="Marker2D" parent="."]
+position = Vector2(-30, -28)
+
+[node name="Area2D" type="Area2D" parent="." groups=["ReceiverPoint"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(15, 15)
+shape = SubResource("RectangleShape2D_j81uq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_xool4")
+}
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

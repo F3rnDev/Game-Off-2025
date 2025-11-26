@@ -7,13 +7,19 @@ extends Node2D
 @export var radioUi:RadioUI
 @export var radioViewport:Viewport
 
-var curRecvr:Array[Receiver] = []
+var curPaper = null
 
-var min_dist = 5.0
-var max_points = 5
+func setCurPaper(paperObj):
+	curPaper = paperObj
+
+func removePaper():
+	curPaper.removeFromReader($"Paper OutPos".global_position)
+	setReaderStatus(false)
+	curPaper = null
 
 func _ready() -> void:
 	setRadioVisor()
+	setReaderStatus(false)
 
 func setRadioVisor():
 	polygraph.texture = radioViewport.get_texture()
@@ -24,15 +30,21 @@ func getPaperInPos():
 func getInfo(recvr):
 	radioUi.updateRadio(recvr)
 
+func setReaderStatus(hasPaper:bool):
+	if hasPaper:
+		reader.play("withPaper")
+	else:
+		reader.play("noPaper")
+
 func setItem(active):
 	var width = 1.0 if active else 0.0
-	reader.material.set("shader_parameter/width",width);
+	reader.material.set("shader_parameter/width",width)
 
 func _on_button_mouse_entered() -> void:
-	radio.material.set("shader_parameter/width",1.0);
+	radio.material.set("shader_parameter/width",1.0)
 
 func _on_button_mouse_exited() -> void:
-	radio.material.set("shader_parameter/width",0.0);
+	radio.material.set("shader_parameter/width",0.0)
 
 func _on_button_button_down() -> void:
 	get_parent().showRadio()

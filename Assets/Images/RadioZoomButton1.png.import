@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4nnanjg5lw3p"
-path="res://.godot/imported/RadioReader.png-31c4d1534cfd70632e5e30a838eada7c.ctex"
+uid="uid://b3vg8purnkld3"
+path="res://.godot/imported/RadioZoomButton1.png-6ae437ccfc062d0a4d21636e53453eb6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Images/RadioReader.png"
-dest_files=["res://.godot/imported/RadioReader.png-31c4d1534cfd70632e5e30a838eada7c.ctex"]
+source_file="res://Assets/Images/RadioZoomButton1.png"
+dest_files=["res://.godot/imported/RadioZoomButton1.png-6ae437ccfc062d0a4d21636e53453eb6.ctex"]
 
 [params]
 

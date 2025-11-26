@@ -5,6 +5,7 @@ extends Sprite2D
 @onready var paperReceiver = preload("res://Components/Desk/GrabItem/Paper/paperReceiver.tscn")
 @onready var receiverContainer = $Texts/VBox
 @onready var animation = $AnimationPlayer
+@onready var checkMark = $Sprite2D
 
 @export var unzoomScale = Vector2(4.0, 4.0)
 @export var zoomScale = Vector2(8.0, 8.0)
@@ -17,8 +18,11 @@ var readerObj = null
 var insideReader = false
 var messageSent = false
 
+var inFolder = false
+
 func _ready() -> void:
 	generatePaper(3)#Change to global amnt
+	checkMark.visible = false
 
 func generatePaper(receiverAmount):
 	for receiverID in range(receiverAmount):
@@ -46,20 +50,27 @@ func _process(_delta: float) -> void:
 	else:
 		grab.disabled = false
 	
-	if grab.drag and !parent.onDesk and !inReader:
+	if grab.drag and !parent.onDesk and !inReader and !messageSent:
 		get_parent().scale = zoomScale
 	else:
 		get_parent().scale = unzoomScale
 	
 	if !grab.drag and inReader and !messageSent:
 		dropPaperInReader()
+	elif !grab.drag and inFolder and messageSent:
+		parent.queue_free()
+	
+	if grab.drag and GameManager.curDayStatus == GameManager.DayStatus.STOPPED:
+		GameManager.setDayStatus(GameManager.DayStatus.RUNNING)
 
 func dropPaperInReader():
 	if !insideReader:
 		parent.stop = true
 		readerObj.setItem(false)
+		readerObj.setReaderStatus(true)
 		parent.global_position = readerObj.getPaperInPos()
 		animation.play("paper reader down")
+		readerObj.setCurPaper(self)
 		
 		insideReader = true
 	
@@ -67,14 +78,32 @@ func dropPaperInReader():
 		readerObj.getInfo(receivers)
 		messageSent = true
 
+func removeFromReader(readerPos):
+	parent.global_position = readerPos
+	animation.play("paper reader up")
+	checkMark.visible = true
+	
+	insideReader = false
+
 func _on_reader_identify_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Reader"):
+	if area.is_in_group("Reader") and !messageSent:
 		inReader = true
 		readerObj = area.get_parent()
 		readerObj.setItem(true)
 
 func _on_reader_identify_area_exited(area: Area2D) -> void:
-	if area.is_in_group("Reader"):
+	if area.is_in_group("Reader") and !messageSent:
 		inReader = false
 		readerObj.setItem(false)
 		readerObj = null
+
+
+func _on_folder_identify_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Folder")  and messageSent and grab.drag:
+		area.get_parent().setItem(true)
+		inFolder = true
+
+func _on_folder_identify_area_exited(area: Area2D) -> void:
+	if area.is_in_group("Folder") and messageSent and grab.drag:
+		area.get_parent().setItem(false)
+		inFolder = false

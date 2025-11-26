@@ -2,15 +2,26 @@ extends Panel
 
 class_name RadioUI
 
+@export var radioStation:Node2D
+
 @onready var receiverPoint = preload("res://Components/Desk/Radio/receiverPoint.tscn")
 @onready var control = $TextureRect/SubViewportContainer/SubViewport/Polygraph/PointAdd
 @onready var visorViewport = $TextureRect/SubViewportContainer/SubViewport
 @onready var anim = $AnimationPlayer
 
+@onready var feedback = $TextureRect/PlayerFeedback
+@onready var districtSlider = $TextureRect/SubViewportContainer/SubViewport/DistrictSlider
+@onready var knob = $TextureRect/Knob
+
 var min_dist = 50.0
 var max_points = 5
 
 var appeared = false
+
+var activeRecvrs:Array[Receiver] = []
+
+var pointAmount = 0
+var pointsSent = 0
 
 func getViewport():
 	return visorViewport
@@ -24,6 +35,10 @@ func hideUI():
 	anim.play("Disappear")
 
 func updateRadio(curRecvr:Array[Receiver]):
+	activeRecvrs = curRecvr
+	pointAmount = curRecvr.size()
+	feedback.resetFeedback()
+	
 	var addedPoints = 0
 	
 	for recvr in curRecvr:
@@ -74,3 +89,43 @@ func _is_x_valid(xPos: float) -> bool:
 				return false
 			
 	return true
+
+
+func _on_send_button_down() -> void:
+	await get_tree().process_frame
+	if districtSlider.selectedPoint.size() <= 0:
+		return
+	
+	pointsSent += 1
+	
+	var curRecvr = activeRecvrs.find(districtSlider.selectedPoint[0].receiver)
+	
+	if curRecvr == -1 or !knob.is_in_target():
+		wrongSignal()
+	else:
+		rightSignal()
+	
+	#Remove receiver (object and info)
+	var object = districtSlider.selectedPoint[0]
+	object.killReceiver()
+	
+	if curRecvr != -1:
+		activeRecvrs.remove_at(curRecvr)
+	
+	#Compare
+	if pointsSent == pointAmount:
+		allSignalsSent()
+
+func allSignalsSent():
+	for child in control.get_children():
+		child.killReceiver()
+	
+	radioStation.removePaper()
+
+func wrongSignal():
+	GameManager.dayDemerits += 1
+	feedback.setPoint(pointsSent, "no")
+
+func rightSignal():
+	GameManager.dayMerits += 1
+	feedback.setPoint(pointsSent, "yes")
