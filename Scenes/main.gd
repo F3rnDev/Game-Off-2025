@@ -9,6 +9,8 @@ var totalSeconds = 0.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$FaxMachine.spawnPaper()
+	
 	totalSeconds = dayTime*60.0
 	dayTimer.wait_time = totalSeconds
 	GameManager.setDayStatus(GameManager.DayStatus.STOPPED)

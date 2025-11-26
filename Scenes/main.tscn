@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://dcte1jsti2gdf"]
 
-[ext_resource type="Script" path="res://Scenes/main.gd" id="1_6bp64"]
+[ext_resource type="Script" uid="uid://c2m0mxfnkqqxf" path="res://Scenes/main.gd" id="1_6bp64"]
 [ext_resource type="Texture2D" uid="uid://kuxrn1rldhle" path="res://Assets/Images/Background.png" id="1_8gbba"]
 [ext_resource type="PackedScene" uid="uid://wiqkutx2urlm" path="res://Components/Desk/desk.tscn" id="1_jjgbg"]
 [ext_resource type="PackedScene" uid="uid://7wiau4mm48at" path="res://Components/Desk/Fax/faxMachine.tscn" id="3_8gbba"]
