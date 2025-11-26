@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d2mpx6nuqvicx"]
+[gd_scene load_steps=8 format=3 uid="uid://d2mpx6nuqvicx"]
 
 [ext_resource type="Texture2D" uid="uid://bnhmjfcjlhe1j" path="res://Menus/AssetsScreens/Image/Table.png" id="1_nmrms"]
 [ext_resource type="Texture2D" uid="uid://tmpj4r04f74d" path="res://Menus/AssetsScreens/Image/Archive.png" id="2_8lwni"]
@@ -6,8 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bhcmjbeewjn0x" path="res://Menus/AssetsScreens/Image/Name.png" id="3_a5bs5"]
 [ext_resource type="Texture2D" uid="uid://cnjwl71pkeecb" path="res://Menus/AssetsScreens/Image/ArchiveOpen.png" id="4_ynw3s"]
 [ext_resource type="Theme" uid="uid://cn5heyqgh7ypt" path="res://Menus/AssetsScreens/Theme.tres" id="5_4nmer"]
+[ext_resource type="Texture2D" uid="uid://bhyldy2vg35yy" path="res://Menus/AssetsScreens/Image/Cenário Signal Out.png" id="7_2fdjq"]
 
-[node name="PauseMenu" type="Control"]
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("fullscreenBtn")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -17,6 +18,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("5_4nmer")
 script = ExtResource("2_a5bs5")
+fullscreenBtn = NodePath("ArchiveOpen/SettingsPaper/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions/FullscreenOption/CheckButton")
 
 [node name="Table" type="TextureRect" parent="."]
 layout_mode = 1
@@ -51,206 +53,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_a5bs5")
 
-[node name="ArchiveOpenSettings" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("4_ynw3s")
-
-[node name="Panel" type="PanelContainer" parent="ArchiveOpenSettings"]
-custom_minimum_size = Vector2(350, 600)
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.36328125
-anchor_top = 0.08194444
-anchor_right = 0.6375
-anchor_bottom = 0.9152778
-theme = ExtResource("5_4nmer")
-metadata/_edit_use_anchors_ = true
-
-[node name="MarginContainer" type="MarginContainer" parent="ArchiveOpenSettings/Panel"]
-layout_mode = 2
-theme_type_variation = &"MarginPaper"
-
-[node name="Content" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer"]
-layout_mode = 2
-
-[node name="Title" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content"]
-layout_mode = 2
-theme = ExtResource("5_4nmer")
-theme_type_variation = &"TitleScreen"
-text = "Settings"
-
-[node name="TitleScreenSeparator" type="HSeparator" parent="ArchiveOpenSettings/Panel/MarginContainer/Content"]
-layout_mode = 2
-theme_type_variation = &"TitleScreenSeparator"
-
-[node name="ScreenSection" type="Panel" parent="ArchiveOpenSettings/Panel/MarginContainer/Content"]
-custom_minimum_size = Vector2(200, 120)
-layout_mode = 2
-theme_type_variation = &"Paper"
-
-[node name="Margin" type="MarginContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_type_variation = &"MarginSection"
-
-[node name="ContentScreen" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin"]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="TitleSection" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen"]
-layout_mode = 2
-size_flags_vertical = 6
-theme_type_variation = &"TitleSection"
-text = "Screen"
-horizontal_alignment = 1
-
-[node name="TitleSectionSeparator" type="HSeparator" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen"]
-layout_mode = 2
-theme_type_variation = &"TitleSectionSeparator"
-
-[node name="ScreenOptions" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen"]
-layout_mode = 2
-
-[node name="FullscreenOption" type="HBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions"]
-layout_mode = 2
-
-[node name="Fullscreen" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions/FullscreenOption"]
-layout_mode = 2
-text = "Fullscreen"
-
-[node name="CheckButton" type="CheckButton" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions/FullscreenOption"]
-layout_mode = 2
-size_flags_horizontal = 2
-mouse_default_cursor_shape = 2
-theme_type_variation = &"Toggle"
-
-[node name="SectionSeparator" type="HSeparator" parent="ArchiveOpenSettings/Panel/MarginContainer/Content"]
-layout_mode = 2
-theme_type_variation = &"SectionSeparator"
-
-[node name="AudioSection" type="Panel" parent="ArchiveOpenSettings/Panel/MarginContainer/Content"]
-custom_minimum_size = Vector2(200, 210)
-layout_mode = 2
-theme_type_variation = &"Paper"
-
-[node name="Margin" type="MarginContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_type_variation = &"MarginSection"
-
-[node name="ContentAudio" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin"]
-layout_mode = 2
-size_flags_vertical = 0
-
-[node name="TitleSection" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio"]
-layout_mode = 2
-size_flags_vertical = 6
-theme_type_variation = &"TitleSection"
-text = "Audio"
-horizontal_alignment = 1
-
-[node name="TitleSectionSeparator" type="HSeparator" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio"]
-layout_mode = 2
-theme_type_variation = &"TitleSectionSeparator"
-
-[node name="AudioOptions" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio"]
-layout_mode = 2
-
-[node name="Master" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions"]
-layout_mode = 2
-
-[node name="TitleOption" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master"]
-layout_mode = 2
-text = "Master"
-
-[node name="SliderMaster" type="HBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master"]
-layout_mode = 2
-
-[node name="SliderMaster" type="HSlider" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master/SliderMaster"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-max_value = 1.0
-step = 0.1
-value = 1.0
-
-[node name="PercentMaster" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master/SliderMaster"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="Music" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions"]
-layout_mode = 2
-
-[node name="TitleOption" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music"]
-layout_mode = 2
-text = "Music"
-
-[node name="SliderMusic" type="HBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music"]
-layout_mode = 2
-
-[node name="SliderMusic" type="HSlider" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music/SliderMusic"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-max_value = 1.0
-step = 0.1
-value = 1.0
-
-[node name="PercentMusic" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music/SliderMusic"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="SFX" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions"]
-layout_mode = 2
-
-[node name="TitleOption" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX"]
-layout_mode = 2
-text = "SFX"
-
-[node name="SliderMaster" type="HBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX"]
-layout_mode = 2
-
-[node name="SliderSFX" type="HSlider" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX/SliderMaster"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-mouse_default_cursor_shape = 2
-max_value = 1.0
-step = 0.1
-value = 1.0
-
-[node name="PercentSFX" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX/SliderMaster"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="SectionSeparator2" type="HSeparator" parent="ArchiveOpenSettings/Panel/MarginContainer/Content"]
-layout_mode = 2
-theme_type_variation = &"SectionSeparator"
-
-[node name="Apply" type="Button" parent="ArchiveOpenSettings/Panel/MarginContainer/Content"]
-layout_mode = 2
-size_flags_vertical = 4
-mouse_default_cursor_shape = 2
-theme_type_variation = &"ButtonAply"
-text = "Apply"
-
-[node name="ArchiveOpenBackMainMenu" type="TextureRect" parent="."]
+[node name="ArchiveOpen" type="TextureRect" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -261,7 +64,8 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("4_ynw3s")
 
-[node name="Panel2" type="PanelContainer" parent="ArchiveOpenBackMainMenu"]
+[node name="SettingsPaper" type="PanelContainer" parent="ArchiveOpen"]
+visible = false
 custom_minimum_size = Vector2(350, 600)
 layout_mode = 1
 anchors_preset = -1
@@ -272,31 +76,29 @@ anchor_bottom = 0.9152778
 theme = ExtResource("5_4nmer")
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="ArchiveOpenBackMainMenu/Panel2"]
+[node name="MarginContainer" type="MarginContainer" parent="ArchiveOpen/SettingsPaper"]
 layout_mode = 2
 theme_type_variation = &"MarginPaper"
 
-[node name="Content" type="VBoxContainer" parent="ArchiveOpenBackMainMenu/Panel2/MarginContainer"]
+[node name="Content" type="VBoxContainer" parent="ArchiveOpen/SettingsPaper/MarginContainer"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="ArchiveOpenBackMainMenu/Panel2/MarginContainer/Content"]
+[node name="Title" type="Label" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content"]
 layout_mode = 2
 theme = ExtResource("5_4nmer")
-theme_type_variation = &"TitleScreenQuit"
-text = "Confirmation 
-form"
-horizontal_alignment = 1
+theme_type_variation = &"TitleScreen"
+text = "Settings"
 
-[node name="TitleScreenSeparator" type="HSeparator" parent="ArchiveOpenBackMainMenu/Panel2/MarginContainer/Content"]
+[node name="TitleScreenSeparator" type="HSeparator" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content"]
 layout_mode = 2
 theme_type_variation = &"TitleScreenSeparator"
 
-[node name="Panel" type="Panel" parent="ArchiveOpenBackMainMenu/Panel2/MarginContainer/Content"]
-custom_minimum_size = Vector2(0, 350)
+[node name="ScreenSection" type="Panel" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content"]
+custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
 theme_type_variation = &"Paper"
 
-[node name="MarginContainer" type="MarginContainer" parent="ArchiveOpenBackMainMenu/Panel2/MarginContainer/Content/Panel"]
+[node name="Margin" type="MarginContainer" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/ScreenSection"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -305,7 +107,199 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"MarginSection"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ArchiveOpenBackMainMenu/Panel2/MarginContainer/Content/Panel/MarginContainer"]
+[node name="ContentScreen" type="VBoxContainer" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/ScreenSection/Margin"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TitleSection" type="Label" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/ScreenSection/Margin/ContentScreen"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_type_variation = &"TitleSection"
+text = "Screen"
+horizontal_alignment = 1
+
+[node name="TitleSectionSeparator" type="HSeparator" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/ScreenSection/Margin/ContentScreen"]
+layout_mode = 2
+theme_type_variation = &"TitleSectionSeparator"
+
+[node name="ScreenOptions" type="VBoxContainer" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/ScreenSection/Margin/ContentScreen"]
+layout_mode = 2
+
+[node name="FullscreenOption" type="HBoxContainer" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions"]
+layout_mode = 2
+
+[node name="Fullscreen" type="Label" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions/FullscreenOption"]
+layout_mode = 2
+text = "Fullscreen"
+
+[node name="CheckButton" type="CheckButton" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions/FullscreenOption"]
+layout_mode = 2
+size_flags_horizontal = 2
+mouse_default_cursor_shape = 2
+theme_type_variation = &"Toggle"
+
+[node name="SectionSeparator" type="HSeparator" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content"]
+layout_mode = 2
+theme_type_variation = &"SectionSeparator"
+
+[node name="AudioSection" type="Panel" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content"]
+custom_minimum_size = Vector2(200, 210)
+layout_mode = 2
+theme_type_variation = &"Paper"
+
+[node name="Margin" type="MarginContainer" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MarginSection"
+
+[node name="ContentAudio" type="VBoxContainer" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection/Margin"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TitleSection" type="Label" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection/Margin/ContentAudio"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_type_variation = &"TitleSection"
+text = "Audio"
+horizontal_alignment = 1
+
+[node name="TitleSectionSeparator" type="HSeparator" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection/Margin/ContentAudio"]
+layout_mode = 2
+theme_type_variation = &"TitleSectionSeparator"
+
+[node name="AudioOptions" type="VBoxContainer" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection/Margin/ContentAudio"]
+layout_mode = 2
+
+[node name="Master" type="VBoxContainer" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions"]
+layout_mode = 2
+
+[node name="TitleOption" type="Label" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master"]
+layout_mode = 2
+text = "Master"
+
+[node name="SliderMaster" type="HBoxContainer" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master"]
+layout_mode = 2
+
+[node name="SliderMaster" type="HSlider" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master/SliderMaster"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="PercentMaster" type="Label" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master/SliderMaster"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Music" type="VBoxContainer" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions"]
+layout_mode = 2
+
+[node name="TitleOption" type="Label" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music"]
+layout_mode = 2
+text = "Music"
+
+[node name="SliderMusic" type="HBoxContainer" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music"]
+layout_mode = 2
+
+[node name="SliderMusic" type="HSlider" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music/SliderMusic"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="PercentMusic" type="Label" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music/SliderMusic"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SFX" type="VBoxContainer" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions"]
+layout_mode = 2
+
+[node name="TitleOption" type="Label" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX"]
+layout_mode = 2
+text = "SFX"
+
+[node name="SliderMaster" type="HBoxContainer" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX"]
+layout_mode = 2
+
+[node name="SliderSFX" type="HSlider" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX/SliderMaster"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+
+[node name="PercentSFX" type="Label" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX/SliderMaster"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="SectionSeparator2" type="HSeparator" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content"]
+layout_mode = 2
+theme_type_variation = &"SectionSeparator"
+
+[node name="Apply" type="Button" parent="ArchiveOpen/SettingsPaper/MarginContainer/Content"]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_type_variation = &"ButtonAply"
+text = "Apply"
+
+[node name="FormMenuPaper" type="PanelContainer" parent="ArchiveOpen"]
+visible = false
+custom_minimum_size = Vector2(350, 600)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36328125
+anchor_top = 0.08194444
+anchor_right = 0.6375
+anchor_bottom = 0.9152778
+theme = ExtResource("5_4nmer")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ArchiveOpen/FormMenuPaper"]
+layout_mode = 2
+theme_type_variation = &"MarginPaper"
+
+[node name="Content" type="VBoxContainer" parent="ArchiveOpen/FormMenuPaper/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="ArchiveOpen/FormMenuPaper/MarginContainer/Content"]
+layout_mode = 2
+theme = ExtResource("5_4nmer")
+theme_type_variation = &"TitleScreenQuit"
+text = "Confirmation 
+form"
+horizontal_alignment = 1
+
+[node name="TitleScreenSeparator" type="HSeparator" parent="ArchiveOpen/FormMenuPaper/MarginContainer/Content"]
+layout_mode = 2
+theme_type_variation = &"TitleScreenSeparator"
+
+[node name="Panel" type="Panel" parent="ArchiveOpen/FormMenuPaper/MarginContainer/Content"]
+custom_minimum_size = Vector2(0, 350)
+layout_mode = 2
+theme_type_variation = &"Paper"
+
+[node name="MarginContainer" type="MarginContainer" parent="ArchiveOpen/FormMenuPaper/MarginContainer/Content/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MarginSection"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ArchiveOpen/FormMenuPaper/MarginContainer/Content/Panel/MarginContainer"]
 layout_mode = 2
 theme_type_variation = &"ConfirmationForm"
 text = "This term is used to find out if the player wants to return to the main menu.
@@ -315,16 +309,16 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="ArchiveOpenBackMainMenu/Panel2/MarginContainer/Content"]
+[node name="HSeparator" type="HSeparator" parent="ArchiveOpen/FormMenuPaper/MarginContainer/Content"]
 layout_mode = 2
 theme_type_variation = &"SectionSeparator"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ArchiveOpenBackMainMenu/Panel2/MarginContainer/Content"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ArchiveOpen/FormMenuPaper/MarginContainer/Content"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 70
 
-[node name="Deny" type="Button" parent="ArchiveOpenBackMainMenu/Panel2/MarginContainer/Content/HBoxContainer"]
+[node name="Deny" type="Button" parent="ArchiveOpen/FormMenuPaper/MarginContainer/Content/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -332,7 +326,7 @@ mouse_default_cursor_shape = 2
 theme_type_variation = &"ButtonQuitScreen"
 text = "Deny"
 
-[node name="Confirm" type="Button" parent="ArchiveOpenBackMainMenu/Panel2/MarginContainer/Content/HBoxContainer"]
+[node name="Confirm" type="Button" parent="ArchiveOpen/FormMenuPaper/MarginContainer/Content/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -340,6 +334,378 @@ size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 theme_type_variation = &"ButtonQuitScreen"
 text = "Confirm"
+
+[node name="Tutorial" type="PanelContainer" parent="ArchiveOpen"]
+visible = false
+custom_minimum_size = Vector2(350, 600)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36328125
+anchor_top = 0.08194444
+anchor_right = 0.6375
+anchor_bottom = 0.9152778
+theme = ExtResource("5_4nmer")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ArchiveOpen/Tutorial"]
+layout_mode = 2
+theme_type_variation = &"MarginPaper"
+
+[node name="Sheet1" type="VBoxContainer" parent="ArchiveOpen/Tutorial/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Title" type="Label" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet1"]
+layout_mode = 2
+theme = ExtResource("5_4nmer")
+theme_type_variation = &"TitleScreenQuit"
+text = "How to play"
+horizontal_alignment = 1
+
+[node name="TitleScreenSeparator" type="HSeparator" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet1"]
+layout_mode = 2
+theme_type_variation = &"TitleScreenSeparator"
+
+[node name="Title2" type="Label" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet1"]
+layout_mode = 2
+theme_type_variation = &"TitleSection"
+text = "1.Take the paper"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet1"]
+layout_mode = 2
+theme_type_variation = &"SectionSeparator"
+
+[node name="Panel" type="Panel" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet1"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+size_flags_vertical = 6
+theme_type_variation = &"Paper"
+
+[node name="MarginContainer" type="MarginContainer" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet1/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MarginSection"
+
+[node name="TextureRect" type="TextureRect" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet1/Panel/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("7_2fdjq")
+
+[node name="HSeparator" type="HSeparator" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet1"]
+layout_mode = 2
+theme_type_variation = &"SectionSeparator"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet1"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 70
+
+[node name="Next" type="Button" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet1/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_type_variation = &"ButtonQuitScreen"
+text = "Next"
+
+[node name="Sheet2" type="VBoxContainer" parent="ArchiveOpen/Tutorial/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Title" type="Label" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet2"]
+layout_mode = 2
+theme = ExtResource("5_4nmer")
+theme_type_variation = &"TitleScreenQuit"
+text = "How to play"
+horizontal_alignment = 1
+
+[node name="TitleScreenSeparator" type="HSeparator" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet2"]
+layout_mode = 2
+theme_type_variation = &"TitleScreenSeparator"
+
+[node name="Title2" type="Label" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet2"]
+layout_mode = 2
+theme_type_variation = &"TitleSection"
+text = "2.Memorize the 
+signs"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet2"]
+layout_mode = 2
+theme_type_variation = &"SectionSeparator"
+
+[node name="Panel" type="Panel" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet2"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_type_variation = &"Paper"
+
+[node name="MarginContainer" type="MarginContainer" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet2/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MarginSection"
+
+[node name="TextureRect" type="TextureRect" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet2/Panel/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("7_2fdjq")
+
+[node name="HSeparator" type="HSeparator" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet2"]
+layout_mode = 2
+theme_type_variation = &"SectionSeparator"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet2"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 70
+
+[node name="Previous" type="Button" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_type_variation = &"ButtonQuitScreen"
+text = "Previous"
+
+[node name="Next" type="Button" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet2/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_type_variation = &"ButtonQuitScreen"
+text = "Next"
+
+[node name="Sheet3" type="VBoxContainer" parent="ArchiveOpen/Tutorial/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Title" type="Label" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet3"]
+layout_mode = 2
+theme = ExtResource("5_4nmer")
+theme_type_variation = &"TitleScreenQuit"
+text = "How to play"
+horizontal_alignment = 1
+
+[node name="TitleScreenSeparator" type="HSeparator" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet3"]
+layout_mode = 2
+theme_type_variation = &"TitleScreenSeparator"
+
+[node name="Title2" type="Label" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet3"]
+layout_mode = 2
+theme = ExtResource("5_4nmer")
+theme_type_variation = &"TitleSection"
+text = "3.Place in 
+the reader"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet3"]
+layout_mode = 2
+theme_type_variation = &"SectionSeparator"
+
+[node name="Panel" type="Panel" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet3"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_type_variation = &"Paper"
+
+[node name="MarginContainer" type="MarginContainer" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet3/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MarginSection"
+
+[node name="TextureRect" type="TextureRect" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet3/Panel/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("7_2fdjq")
+
+[node name="HSeparator" type="HSeparator" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet3"]
+layout_mode = 2
+theme_type_variation = &"SectionSeparator"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet3"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 70
+
+[node name="Previous" type="Button" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_type_variation = &"ButtonQuitScreen"
+text = "Previous"
+
+[node name="Next" type="Button" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_type_variation = &"ButtonQuitScreen"
+text = "Next"
+
+[node name="Sheet4" type="VBoxContainer" parent="ArchiveOpen/Tutorial/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Title" type="Label" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet4"]
+layout_mode = 2
+theme = ExtResource("5_4nmer")
+theme_type_variation = &"TitleScreenQuit"
+text = "How to play"
+horizontal_alignment = 1
+
+[node name="TitleScreenSeparator" type="HSeparator" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet4"]
+layout_mode = 2
+theme_type_variation = &"TitleScreenSeparator"
+
+[node name="Title2" type="Label" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet4"]
+layout_mode = 2
+theme = ExtResource("5_4nmer")
+theme_type_variation = &"TitleSection"
+text = "4.Tune in to 
+the waves"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet4"]
+layout_mode = 2
+theme_type_variation = &"SectionSeparator"
+
+[node name="Panel" type="Panel" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet4"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_type_variation = &"Paper"
+
+[node name="MarginContainer" type="MarginContainer" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet4/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MarginSection"
+
+[node name="TextureRect" type="TextureRect" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet4/Panel/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("7_2fdjq")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet4"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"CitySituation"
+text = "a - Find the memorized plate.
+b - Drag the district selector.
+c - Turn the knob.
+d - Send the message."
+scroll_active = false
+
+[node name="HSeparator" type="HSeparator" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet4"]
+layout_mode = 2
+theme_type_variation = &"SectionSeparator"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet4"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 70
+
+[node name="Previous" type="Button" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet4/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_type_variation = &"ButtonQuitScreen"
+text = "Previous"
+
+[node name="Next" type="Button" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet4/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_type_variation = &"ButtonQuitScreen"
+text = "Next"
+
+[node name="Sheet5" type="VBoxContainer" parent="ArchiveOpen/Tutorial/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Title" type="Label" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet5"]
+layout_mode = 2
+theme = ExtResource("5_4nmer")
+theme_type_variation = &"TitleScreenQuit"
+text = "How to play"
+horizontal_alignment = 1
+
+[node name="TitleScreenSeparator" type="HSeparator" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet5"]
+layout_mode = 2
+theme_type_variation = &"TitleScreenSeparator"
+
+[node name="Title2" type="Label" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet5"]
+layout_mode = 2
+theme_type_variation = &"TitleSection"
+text = "5.Repeat until 
+the city is 
+free of crime"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet5"]
+layout_mode = 2
+theme_type_variation = &"SectionSeparator"
+
+[node name="Panel" type="Panel" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet5"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_type_variation = &"Paper"
+
+[node name="MarginContainer" type="MarginContainer" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet5/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MarginSection"
+
+[node name="TextureRect" type="TextureRect" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet5/Panel/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("7_2fdjq")
+
+[node name="HSeparator" type="HSeparator" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet5"]
+layout_mode = 2
+theme_type_variation = &"SectionSeparator"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet5"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 70
+
+[node name="Previous" type="Button" parent="ArchiveOpen/Tutorial/MarginContainer/Sheet5/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_type_variation = &"ButtonQuitScreen"
+text = "Previous"
+
+[node name="Paper" type="PanelContainer" parent="ArchiveOpen"]
+visible = false
+custom_minimum_size = Vector2(350, 600)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.36328125
+anchor_top = 0.08194444
+anchor_right = 0.6375
+anchor_bottom = 0.9152778
+offset_left = -410.0
+offset_right = -410.00018
+theme = ExtResource("5_4nmer")
+metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -378,28 +744,74 @@ theme = ExtResource("5_4nmer")
 theme_type_variation = &"ButtonFile"
 text = "Main menu"
 
-[connection signal="toggled" from="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions/FullscreenOption/CheckButton" to="." method="_on_fullscreen_toggled"]
-[connection signal="value_changed" from="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master/SliderMaster/SliderMaster" to="." method="_on_slider_master_value_changed"]
-[connection signal="value_changed" from="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music/SliderMusic/SliderMusic" to="." method="_on_slider_music_value_changed"]
-[connection signal="value_changed" from="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX/SliderMaster/SliderSFX" to="." method="_on_slider_sfx_value_changed"]
-[connection signal="mouse_entered" from="ArchiveOpenSettings/Panel/MarginContainer/Content/Apply" to="." method="mouseInBtnSfx"]
-[connection signal="pressed" from="ArchiveOpenSettings/Panel/MarginContainer/Content/Apply" to="." method="pressBtnSfx"]
-[connection signal="pressed" from="ArchiveOpenSettings/Panel/MarginContainer/Content/Apply" to="ArchiveOpenSettings" method="hide"]
-[connection signal="mouse_entered" from="ArchiveOpenBackMainMenu/Panel2/MarginContainer/Content/HBoxContainer/Deny" to="." method="mouseInBtnSfx"]
-[connection signal="pressed" from="ArchiveOpenBackMainMenu/Panel2/MarginContainer/Content/HBoxContainer/Deny" to="." method="_on_deny_pressed"]
-[connection signal="pressed" from="ArchiveOpenBackMainMenu/Panel2/MarginContainer/Content/HBoxContainer/Deny" to="ArchiveOpenBackMainMenu" method="hide"]
-[connection signal="mouse_entered" from="ArchiveOpenBackMainMenu/Panel2/MarginContainer/Content/HBoxContainer/Confirm" to="." method="mouseInBtnSfx"]
-[connection signal="pressed" from="ArchiveOpenBackMainMenu/Panel2/MarginContainer/Content/HBoxContainer/Confirm" to="." method="hide"]
-[connection signal="pressed" from="ArchiveOpenBackMainMenu/Panel2/MarginContainer/Content/HBoxContainer/Confirm" to="." method="_on_confirm_pressed"]
-[connection signal="pressed" from="ArchiveOpenBackMainMenu/Panel2/MarginContainer/Content/HBoxContainer/Confirm" to="ArchiveOpenBackMainMenu" method="hide"]
-[connection signal="mouse_entered" from="VBoxContainer/Resume" to="." method="mouseInBtnSfx"]
+[node name="Tutorial" type="Button" parent="VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_default_cursor_shape = 2
+theme = ExtResource("5_4nmer")
+theme_type_variation = &"ButtonFile"
+text = "Tutorial"
+
+[connection signal="toggled" from="ArchiveOpen/SettingsPaper/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions/FullscreenOption/CheckButton" to="." method="_on_fullscreen_toggled"]
+[connection signal="value_changed" from="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master/SliderMaster/SliderMaster" to="." method="_on_slider_master_value_changed"]
+[connection signal="value_changed" from="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music/SliderMusic/SliderMusic" to="." method="_on_slider_music_value_changed"]
+[connection signal="value_changed" from="ArchiveOpen/SettingsPaper/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX/SliderMaster/SliderSFX" to="." method="_on_slider_sfx_value_changed"]
+[connection signal="pressed" from="ArchiveOpen/SettingsPaper/MarginContainer/Content/Apply" to="." method="pressBtnSfx"]
+[connection signal="pressed" from="ArchiveOpen/SettingsPaper/MarginContainer/Content/Apply" to="ArchiveOpen" method="hide"]
+[connection signal="pressed" from="ArchiveOpen/FormMenuPaper/MarginContainer/Content/HBoxContainer/Deny" to="." method="_on_deny_pressed"]
+[connection signal="pressed" from="ArchiveOpen/FormMenuPaper/MarginContainer/Content/HBoxContainer/Deny" to="ArchiveOpen" method="hide"]
+[connection signal="pressed" from="ArchiveOpen/FormMenuPaper/MarginContainer/Content/HBoxContainer/Deny" to="ArchiveOpen/FormMenuPaper" method="hide"]
+[connection signal="pressed" from="ArchiveOpen/FormMenuPaper/MarginContainer/Content/HBoxContainer/Confirm" to="." method="hide"]
+[connection signal="pressed" from="ArchiveOpen/FormMenuPaper/MarginContainer/Content/HBoxContainer/Confirm" to="." method="_on_confirm_pressed"]
+[connection signal="pressed" from="ArchiveOpen/FormMenuPaper/MarginContainer/Content/HBoxContainer/Confirm" to="ArchiveOpen" method="hide"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet1/HBoxContainer/Next" to="." method="pressBtnSfx"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet1/HBoxContainer/Next" to="ArchiveOpen/Tutorial/MarginContainer/Sheet1" method="hide"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet1/HBoxContainer/Next" to="ArchiveOpen/Tutorial/MarginContainer/Sheet2" method="show"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet1/HBoxContainer/Next" to="ArchiveOpen/Paper" method="show"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet2/HBoxContainer/Previous" to="." method="pressBtnSfx"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet2/HBoxContainer/Previous" to="ArchiveOpen/Tutorial/MarginContainer/Sheet1" method="show"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet2/HBoxContainer/Previous" to="ArchiveOpen/Tutorial/MarginContainer/Sheet2" method="hide"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet2/HBoxContainer/Previous" to="ArchiveOpen/Paper" method="hide"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet2/HBoxContainer/Next" to="." method="pressBtnSfx"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet2/HBoxContainer/Next" to="ArchiveOpen/Tutorial/MarginContainer/Sheet2" method="hide"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet2/HBoxContainer/Next" to="ArchiveOpen/Tutorial/MarginContainer/Sheet3" method="show"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet3/HBoxContainer/Previous" to="." method="pressBtnSfx"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet3/HBoxContainer/Previous" to="ArchiveOpen/Tutorial/MarginContainer/Sheet2" method="show"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet3/HBoxContainer/Previous" to="ArchiveOpen/Tutorial/MarginContainer/Sheet3" method="hide"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet3/HBoxContainer/Next" to="." method="pressBtnSfx"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet3/HBoxContainer/Next" to="ArchiveOpen/Tutorial/MarginContainer/Sheet3" method="hide"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet3/HBoxContainer/Next" to="ArchiveOpen/Tutorial/MarginContainer/Sheet4" method="show"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet4/HBoxContainer/Previous" to="." method="pressBtnSfx"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet4/HBoxContainer/Previous" to="ArchiveOpen/Tutorial/MarginContainer/Sheet3" method="show"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet4/HBoxContainer/Previous" to="ArchiveOpen/Tutorial/MarginContainer/Sheet4" method="hide"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet4/HBoxContainer/Next" to="." method="pressBtnSfx"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet4/HBoxContainer/Next" to="ArchiveOpen/Tutorial/MarginContainer/Sheet4" method="hide"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet4/HBoxContainer/Next" to="ArchiveOpen/Tutorial/MarginContainer/Sheet5" method="show"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet5/HBoxContainer/Previous" to="." method="pressBtnSfx"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet5/HBoxContainer/Previous" to="ArchiveOpen/Tutorial/MarginContainer/Sheet1" method="show"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet5/HBoxContainer/Previous" to="ArchiveOpen/Tutorial/MarginContainer/Sheet5" method="hide"]
+[connection signal="pressed" from="ArchiveOpen/Tutorial/MarginContainer/Sheet5/HBoxContainer/Previous" to="ArchiveOpen/Paper" method="hide"]
 [connection signal="pressed" from="VBoxContainer/Resume" to="." method="hide"]
 [connection signal="pressed" from="VBoxContainer/Resume" to="." method="pressBtnSfx"]
-[connection signal="mouse_entered" from="VBoxContainer/Settings" to="." method="mouseInBtnSfx"]
 [connection signal="pressed" from="VBoxContainer/Settings" to="." method="pressBtnSfx"]
-[connection signal="pressed" from="VBoxContainer/Settings" to="ArchiveOpenSettings" method="show"]
-[connection signal="pressed" from="VBoxContainer/Settings" to="ArchiveOpenBackMainMenu" method="hide"]
-[connection signal="mouse_entered" from="VBoxContainer/MainMenu" to="." method="mouseInBtnSfx"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="ArchiveOpen" method="show"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="ArchiveOpen/SettingsPaper" method="show"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="ArchiveOpen/FormMenuPaper" method="hide"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="ArchiveOpen/Tutorial" method="hide"]
+[connection signal="pressed" from="VBoxContainer/Settings" to="ArchiveOpen/Paper" method="hide"]
 [connection signal="pressed" from="VBoxContainer/MainMenu" to="." method="pressBtnSfx"]
-[connection signal="pressed" from="VBoxContainer/MainMenu" to="ArchiveOpenSettings" method="hide"]
-[connection signal="pressed" from="VBoxContainer/MainMenu" to="ArchiveOpenBackMainMenu" method="show"]
+[connection signal="pressed" from="VBoxContainer/MainMenu" to="ArchiveOpen" method="show"]
+[connection signal="pressed" from="VBoxContainer/MainMenu" to="ArchiveOpen/SettingsPaper" method="hide"]
+[connection signal="pressed" from="VBoxContainer/MainMenu" to="ArchiveOpen/FormMenuPaper" method="show"]
+[connection signal="pressed" from="VBoxContainer/MainMenu" to="ArchiveOpen/Tutorial" method="hide"]
+[connection signal="pressed" from="VBoxContainer/MainMenu" to="ArchiveOpen/Paper" method="hide"]
+[connection signal="pressed" from="VBoxContainer/Tutorial" to="." method="pressBtnSfx"]
+[connection signal="pressed" from="VBoxContainer/Tutorial" to="ArchiveOpen" method="show"]
+[connection signal="pressed" from="VBoxContainer/Tutorial" to="ArchiveOpen/SettingsPaper" method="hide"]
+[connection signal="pressed" from="VBoxContainer/Tutorial" to="ArchiveOpen/FormMenuPaper" method="hide"]
+[connection signal="pressed" from="VBoxContainer/Tutorial" to="ArchiveOpen/Tutorial" method="show"]
+[connection signal="pressed" from="VBoxContainer/Tutorial" to="ArchiveOpen/Tutorial/MarginContainer/Sheet1" method="show"]
+[connection signal="pressed" from="VBoxContainer/Tutorial" to="ArchiveOpen/Tutorial/MarginContainer/Sheet2" method="hide"]
+[connection signal="pressed" from="VBoxContainer/Tutorial" to="ArchiveOpen/Tutorial/MarginContainer/Sheet3" method="hide"]
+[connection signal="pressed" from="VBoxContainer/Tutorial" to="ArchiveOpen/Tutorial/MarginContainer/Sheet4" method="hide"]
+[connection signal="pressed" from="VBoxContainer/Tutorial" to="ArchiveOpen/Tutorial/MarginContainer/Sheet5" method="hide"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Signal Out"
-run/main_scene="uid://dcte1jsti2gdf"
+run/main_scene="uid://i3f6c6v27f1j"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="uid://bgsqsrj631q3o"
 

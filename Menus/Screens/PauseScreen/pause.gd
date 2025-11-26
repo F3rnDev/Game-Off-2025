@@ -2,7 +2,7 @@ extends Control
 
 @onready var backMenuBtn = %Confirm
 @onready var playBtn = %Resume
-@onready var fullscreenBtn: CheckButton = $ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions/FullscreenOption/CheckButton
+@export var fullscreenBtn: CheckButton
 
 # Volume #
 @onready var masterPercent = %PercentMaster
@@ -63,17 +63,13 @@ func _on_slider_sfx_value_changed(value: float) -> void:
 func _on_confirm_pressed() -> void:
 	Audio.playUIAccept()
 	get_tree().paused = false
-	#get_tree().change_scene_to_file("res://Screens/MenuScreen/menu_screen.tscn")
-	print("Mudar cena para menu pricipal - Script do pause")
+	get_tree().change_scene_to_file("res://Menus/Screens/MenuScreen/menu_screen.tscn")
 
 func _on_deny_pressed() -> void:
 	Audio.playUICancel()
 
 func pressBtnSfx():
 	Audio.playUIAccept()
-
-func mouseInBtnSfx():
-	Audio.playUIMove()
 
 func unpaused():
 	get_tree().paused = false

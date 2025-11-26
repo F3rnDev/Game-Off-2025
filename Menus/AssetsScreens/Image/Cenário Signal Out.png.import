@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct6cvfg656mxk"
-path="res://.godot/imported/check.png-21272771788fab2e987c3d10155a7233.ctex"
+uid="uid://bhyldy2vg35yy"
+path="res://.godot/imported/Cenário Signal Out.png-2cda22877f28881195ed73040b8298ea.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MainMenu/Image/check.png"
-dest_files=["res://.godot/imported/check.png-21272771788fab2e987c3d10155a7233.ctex"]
+source_file="res://Menus/AssetsScreens/Image/Cenário Signal Out.png"
+dest_files=["res://.godot/imported/Cenário Signal Out.png-2cda22877f28881195ed73040b8298ea.ctex"]
 
 [params]
 
