@@ -17,7 +17,6 @@ func _ready() -> void:
 	visible = false
 	
 	# Buttons
-	playBtn.pressed.connect(unpaused)
 	
 	masterPercent.text = str(roundi(Audio.volumeMaster*100)) + "%"
 	musicPercent.text = str(roundi(Audio.volumeMusic*100)) + "%"
@@ -31,9 +30,15 @@ func _ready() -> void:
 		fullscreenBtn.set_pressed_no_signal(true)
 
 func _process(_delta: float) -> void:
-	if Input.is_action_pressed("Pause"):
-		visible = true
-		get_tree().paused = true
+	if Input.is_action_just_pressed("Pause"):
+		togglePause(!visible)
+
+func togglePause(pause=true):
+	visible = pause
+	get_tree().paused = pause
+	
+	if pause:
+		$AnimationPlayer.play("Appear")
 
 func _on_fullscreen_toggled(toggled_on: bool) -> void:
 	if toggled_on:
@@ -70,6 +75,3 @@ func _on_deny_pressed() -> void:
 
 func pressBtnSfx():
 	Audio.playUIAccept()
-
-func unpaused():
-	get_tree().paused = false

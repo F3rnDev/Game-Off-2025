@@ -2,14 +2,33 @@ extends Sprite2D
 
 @export var status:Control
 @export var slider:ColorRect
+@export var polygraph:ColorRect
+
+@export var min_amp := 2.0
+@export var max_amp := 30.0
+var target_amp := 10.0
+var current_amp := 0.0
+var smoothing := 6.0 
 
 var drag = false
 var target_angle = null
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if drag:
 		var ang = get_global_mouse_position().angle_to_point(global_position) - PI/2
 		rotation = ang
+		
+		var norm = fmod(rotation, TAU)
+		if norm < 0.0:
+			norm += TAU
+
+		# 0..1
+		var knob01 = norm / TAU
+		
+		target_amp = lerp(min_amp, max_amp, knob01)
+	
+	current_amp = lerp(current_amp, target_amp, delta * smoothing)
+	polygraph.material.set_shader_parameter("amplitude", current_amp)
 	
 	if slider.selectedPoint.size() > 0:
 		status.activateNo()

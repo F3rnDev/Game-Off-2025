@@ -38,6 +38,7 @@ position = Vector2(0.4500008, 0.5499999)
 scale = Vector2(0.99999976, 0.99999976)
 shape = SubResource("RectangleShape2D_ichek")
 
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
 [connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
 [connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

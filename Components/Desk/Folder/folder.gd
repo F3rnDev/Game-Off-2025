@@ -1,14 +1,6 @@
 extends Sprite2D
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+@export var pause:Control
 
 func setItem(active):
 	var width = 1.0 if active else 0.0
@@ -19,3 +11,6 @@ func _on_button_mouse_entered() -> void:
 
 func _on_button_mouse_exited() -> void:
 	setItem(false)
+
+func _on_button_button_down() -> void:
+	pause.togglePause()

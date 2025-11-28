@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dcte1jsti2gdf"]
+[gd_scene load_steps=11 format=3 uid="uid://dcte1jsti2gdf"]
 
 [ext_resource type="Script" uid="uid://c2m0mxfnkqqxf" path="res://Scenes/main.gd" id="1_6bp64"]
 [ext_resource type="Texture2D" uid="uid://kuxrn1rldhle" path="res://Assets/Images/Background.png" id="1_8gbba"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dqv1ga5xcx7qw" path="res://Components/GameCamera.tscn" id="5_kry3j"]
 [ext_resource type="PackedScene" uid="uid://c7uwetgvv5avf" path="res://Components/Desk/GrabItem/Clock/clock.tscn" id="6_21xkr"]
 [ext_resource type="PackedScene" uid="uid://c8hghr02d0sr8" path="res://Components/UI/Radio/RadioUI.tscn" id="8_344ge"]
+[ext_resource type="PackedScene" uid="uid://d2mpx6nuqvicx" path="res://Menus/Screens/PauseScreen/pause_screen.tscn" id="9_hptm8"]
 [ext_resource type="PackedScene" uid="uid://dmda7urn28hxi" path="res://Components/Desk/Folder/folder.tscn" id="9_ynf5e"]
 
 [node name="Main" type="Node2D"]
@@ -35,14 +36,22 @@ radioViewport = NodePath("../CanvasLayer/RadioUI/TextureRect/SubViewportContaine
 position = Vector2(640, 360)
 
 [node name="Clock" parent="." instance=ExtResource("6_21xkr")]
-position = Vector2(174, 560)
+position = Vector2(1117, 558)
 
 [node name="DayTimer" type="Timer" parent="."]
+one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="RadioUI" parent="CanvasLayer" node_paths=PackedStringArray("radioStation") instance=ExtResource("8_344ge")]
 radioStation = NodePath("../../RadioStation")
 
-[node name="Folder" parent="." instance=ExtResource("9_ynf5e")]
-position = Vector2(1084.0001, 568.00006)
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("9_hptm8")]
+visible = false
+
+[node name="Folder" parent="." node_paths=PackedStringArray("pause") instance=ExtResource("9_ynf5e")]
+position = Vector2(187.00002, 565.00006)
+flip_h = true
+pause = NodePath("../CanvasLayer/PauseMenu")
+
+[connection signal="timeout" from="DayTimer" to="." method="_on_day_timer_timeout"]

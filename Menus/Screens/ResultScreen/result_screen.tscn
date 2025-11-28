@@ -1,9 +1,70 @@
-[gd_scene load_steps=5 format=3 uid="uid://gebj10hcnogc"]
+[gd_scene load_steps=8 format=3 uid="uid://gebj10hcnogc"]
 
 [ext_resource type="Theme" uid="uid://cn5heyqgh7ypt" path="res://Menus/AssetsScreens/Theme.tres" id="1_oiqpt"]
 [ext_resource type="Script" uid="uid://bnablnjca70q3" path="res://Menus/Screens/ResultScreen/result.gd" id="2_ib1v6"]
 [ext_resource type="Texture2D" uid="uid://bnhmjfcjlhe1j" path="res://Menus/AssetsScreens/Image/Table.png" id="2_xt65b"]
 [ext_resource type="Texture2D" uid="uid://cnjwl71pkeecb" path="res://Menus/AssetsScreens/Image/ArchiveOpen.png" id="3_ib1v6"]
+
+[sub_resource type="Animation" id="Animation_6amxb"]
+resource_name = "Appear"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(0.21763788, 1),
+"update": 0,
+"values": [Vector2(363.34, 700), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 2),
+"transitions": PackedFloat32Array(0.2332583, 1),
+"update": 0,
+"values": [0.5585053606381855, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_pvuwc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.21763788),
+"update": 0,
+"values": [Vector2(0, 700)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.2332583),
+"update": 0,
+"values": [0.5585053606381855]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pvuwc"]
+_data = {
+&"Appear": SubResource("Animation_6amxb"),
+&"RESET": SubResource("Animation_pvuwc")
+}
 
 [node name="ResultScreen" type="Control"]
 layout_mode = 3
@@ -24,17 +85,30 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_xt65b")
 
-[node name="ArchiveOpen" type="TextureRect" parent="."]
+[node name="Control" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 700.0
+offset_bottom = 700.0006
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.55850536
+
+[node name="ArchiveOpen" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.35
+offset_right = 1.3499756
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("3_ib1v6")
 
-[node name="Report" type="PanelContainer" parent="ArchiveOpen"]
+[node name="Report" type="PanelContainer" parent="Control/ArchiveOpen"]
 custom_minimum_size = Vector2(350, 600)
 layout_mode = 1
 anchors_preset = -1
@@ -45,30 +119,30 @@ anchor_bottom = 0.9152778
 theme = ExtResource("1_oiqpt")
 metadata/_edit_use_anchors_ = true
 
-[node name="Margin" type="MarginContainer" parent="ArchiveOpen/Report"]
+[node name="Margin" type="MarginContainer" parent="Control/ArchiveOpen/Report"]
 layout_mode = 2
 theme_type_variation = &"MarginPaper"
 
-[node name="Content" type="VBoxContainer" parent="ArchiveOpen/Report/Margin"]
+[node name="Content" type="VBoxContainer" parent="Control/ArchiveOpen/Report/Margin"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="ArchiveOpen/Report/Margin/Content"]
+[node name="Title" type="Label" parent="Control/ArchiveOpen/Report/Margin/Content"]
 layout_mode = 2
 theme = ExtResource("1_oiqpt")
 theme_type_variation = &"TitleScreen"
 text = "Report"
 horizontal_alignment = 1
 
-[node name="TitleScreenSeparator" type="HSeparator" parent="ArchiveOpen/Report/Margin/Content"]
+[node name="TitleScreenSeparator" type="HSeparator" parent="Control/ArchiveOpen/Report/Margin/Content"]
 layout_mode = 2
 theme_type_variation = &"TitleScreenSeparator"
 
-[node name="DayInfo" type="Panel" parent="ArchiveOpen/Report/Margin/Content"]
+[node name="DayInfo" type="Panel" parent="Control/ArchiveOpen/Report/Margin/Content"]
 custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
 theme_type_variation = &"Paper"
 
-[node name="Margin" type="MarginContainer" parent="ArchiveOpen/Report/Margin/Content/DayInfo"]
+[node name="Margin" type="MarginContainer" parent="Control/ArchiveOpen/Report/Margin/Content/DayInfo"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,39 +151,39 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"MarginSection"
 
-[node name="Content" type="VBoxContainer" parent="ArchiveOpen/Report/Margin/Content/DayInfo/Margin"]
+[node name="Content" type="VBoxContainer" parent="Control/ArchiveOpen/Report/Margin/Content/DayInfo/Margin"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="TitleSection" type="Label" parent="ArchiveOpen/Report/Margin/Content/DayInfo/Margin/Content"]
+[node name="TitleSection" type="Label" parent="Control/ArchiveOpen/Report/Margin/Content/DayInfo/Margin/Content"]
 layout_mode = 2
 size_flags_vertical = 6
 theme_type_variation = &"TitleSection"
 text = "Day 0"
 horizontal_alignment = 1
 
-[node name="TitleSectionSeparator" type="HSeparator" parent="ArchiveOpen/Report/Margin/Content/DayInfo/Margin/Content"]
+[node name="TitleSectionSeparator" type="HSeparator" parent="Control/ArchiveOpen/Report/Margin/Content/DayInfo/Margin/Content"]
 layout_mode = 2
 theme_type_variation = &"TitleSectionSeparator"
 
-[node name="Merits" type="Label" parent="ArchiveOpen/Report/Margin/Content/DayInfo/Margin/Content"]
+[node name="Merits" type="Label" parent="Control/ArchiveOpen/Report/Margin/Content/DayInfo/Margin/Content"]
 layout_mode = 2
 text = "Quantity of merits: 00"
 
-[node name="Demerits" type="Label" parent="ArchiveOpen/Report/Margin/Content/DayInfo/Margin/Content"]
+[node name="Demerits" type="Label" parent="Control/ArchiveOpen/Report/Margin/Content/DayInfo/Margin/Content"]
 layout_mode = 2
 text = "Quantity of demerits: 00"
 
-[node name="SectionSeparator" type="HSeparator" parent="ArchiveOpen/Report/Margin/Content"]
+[node name="SectionSeparator" type="HSeparator" parent="Control/ArchiveOpen/Report/Margin/Content"]
 layout_mode = 2
 theme_type_variation = &"SectionSeparator"
 
-[node name="CitySituation" type="Panel" parent="ArchiveOpen/Report/Margin/Content"]
+[node name="CitySituation" type="Panel" parent="Control/ArchiveOpen/Report/Margin/Content"]
 custom_minimum_size = Vector2(200, 210)
 layout_mode = 2
 theme_type_variation = &"Paper"
 
-[node name="Margin" type="MarginContainer" parent="ArchiveOpen/Report/Margin/Content/CitySituation"]
+[node name="Margin" type="MarginContainer" parent="Control/ArchiveOpen/Report/Margin/Content/CitySituation"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -118,23 +192,24 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"MarginSection"
 
-[node name="Content" type="VBoxContainer" parent="ArchiveOpen/Report/Margin/Content/CitySituation/Margin"]
+[node name="Content" type="VBoxContainer" parent="Control/ArchiveOpen/Report/Margin/Content/CitySituation/Margin"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="TitleSection" type="Label" parent="ArchiveOpen/Report/Margin/Content/CitySituation/Margin/Content"]
+[node name="TitleSection" type="Label" parent="Control/ArchiveOpen/Report/Margin/Content/CitySituation/Margin/Content"]
 layout_mode = 2
 size_flags_vertical = 6
 theme_type_variation = &"TitleSection"
 text = "City situation"
 horizontal_alignment = 1
 
-[node name="TitleSectionSeparator" type="HSeparator" parent="ArchiveOpen/Report/Margin/Content/CitySituation/Margin/Content"]
+[node name="TitleSectionSeparator" type="HSeparator" parent="Control/ArchiveOpen/Report/Margin/Content/CitySituation/Margin/Content"]
 layout_mode = 2
 theme_type_variation = &"TitleSectionSeparator"
 
-[node name="Good" type="RichTextLabel" parent="ArchiveOpen/Report/Margin/Content/CitySituation/Margin/Content"]
+[node name="Good" type="RichTextLabel" parent="Control/ArchiveOpen/Report/Margin/Content/CitySituation/Margin/Content"]
+visible = false
 custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
 size_flags_vertical = 3
@@ -143,7 +218,7 @@ text = "Thanks to the coordination of personnel, the city regained its stability
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Bad" type="RichTextLabel" parent="ArchiveOpen/Report/Margin/Content/CitySituation/Margin/Content"]
+[node name="Bad" type="RichTextLabel" parent="Control/ArchiveOpen/Report/Margin/Content/CitySituation/Margin/Content"]
 visible = false
 custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
@@ -153,8 +228,7 @@ text = "Despite the coordination of personnel, the city plunged back into chaos.
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Neutral" type="RichTextLabel" parent="ArchiveOpen/Report/Margin/Content/CitySituation/Margin/Content"]
-visible = false
+[node name="Neutral" type="RichTextLabel" parent="Control/ArchiveOpen/Report/Margin/Content/CitySituation/Margin/Content"]
 custom_minimum_size = Vector2(0, 140)
 layout_mode = 2
 size_flags_vertical = 3
@@ -163,18 +237,18 @@ text = "With personnel coordination, the city remained at a standstill, with no 
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SectionSeparator2" type="HSeparator" parent="ArchiveOpen/Report/Margin/Content"]
+[node name="SectionSeparator2" type="HSeparator" parent="Control/ArchiveOpen/Report/Margin/Content"]
 layout_mode = 2
 theme_type_variation = &"SectionSeparator"
 
-[node name="Continue" type="Button" parent="ArchiveOpen/Report/Margin/Content"]
+[node name="Continue" type="Button" parent="Control/ArchiveOpen/Report/Margin/Content"]
 layout_mode = 2
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 theme_type_variation = &"ButtonAply"
 text = "Continue"
 
-[node name="ConfirmationMainMenu" type="PanelContainer" parent="ArchiveOpen"]
+[node name="ConfirmationMainMenu" type="PanelContainer" parent="Control/ArchiveOpen"]
 visible = false
 custom_minimum_size = Vector2(350, 600)
 layout_mode = 1
@@ -186,14 +260,14 @@ anchor_bottom = 0.9152778
 theme = ExtResource("1_oiqpt")
 metadata/_edit_use_anchors_ = true
 
-[node name="Margin" type="MarginContainer" parent="ArchiveOpen/ConfirmationMainMenu"]
+[node name="Margin" type="MarginContainer" parent="Control/ArchiveOpen/ConfirmationMainMenu"]
 layout_mode = 2
 theme_type_variation = &"MarginPaper"
 
-[node name="Content" type="VBoxContainer" parent="ArchiveOpen/ConfirmationMainMenu/Margin"]
+[node name="Content" type="VBoxContainer" parent="Control/ArchiveOpen/ConfirmationMainMenu/Margin"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="ArchiveOpen/ConfirmationMainMenu/Margin/Content"]
+[node name="Title" type="Label" parent="Control/ArchiveOpen/ConfirmationMainMenu/Margin/Content"]
 layout_mode = 2
 theme = ExtResource("1_oiqpt")
 theme_type_variation = &"TitleScreenQuit"
@@ -201,16 +275,16 @@ text = "Confirmation
 form"
 horizontal_alignment = 1
 
-[node name="TitleScreenSeparator" type="HSeparator" parent="ArchiveOpen/ConfirmationMainMenu/Margin/Content"]
+[node name="TitleScreenSeparator" type="HSeparator" parent="Control/ArchiveOpen/ConfirmationMainMenu/Margin/Content"]
 layout_mode = 2
 theme_type_variation = &"TitleScreenSeparator"
 
-[node name="Panel" type="Panel" parent="ArchiveOpen/ConfirmationMainMenu/Margin/Content"]
+[node name="Panel" type="Panel" parent="Control/ArchiveOpen/ConfirmationMainMenu/Margin/Content"]
 custom_minimum_size = Vector2(0, 350)
 layout_mode = 2
 theme_type_variation = &"Paper"
 
-[node name="MarginContainer" type="MarginContainer" parent="ArchiveOpen/ConfirmationMainMenu/Margin/Content/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/ArchiveOpen/ConfirmationMainMenu/Margin/Content/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -219,7 +293,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"MarginSection"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ArchiveOpen/ConfirmationMainMenu/Margin/Content/Panel/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ArchiveOpen/ConfirmationMainMenu/Margin/Content/Panel/MarginContainer"]
 layout_mode = 2
 theme_type_variation = &"ConfirmationForm"
 text = "This term is used to find out if the player wants to return to the main menu.
@@ -229,16 +303,16 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SectionSeparator" type="HSeparator" parent="ArchiveOpen/ConfirmationMainMenu/Margin/Content"]
+[node name="SectionSeparator" type="HSeparator" parent="Control/ArchiveOpen/ConfirmationMainMenu/Margin/Content"]
 layout_mode = 2
 theme_type_variation = &"SectionSeparator"
 
-[node name="Buttons" type="HBoxContainer" parent="ArchiveOpen/ConfirmationMainMenu/Margin/Content"]
+[node name="Buttons" type="HBoxContainer" parent="Control/ArchiveOpen/ConfirmationMainMenu/Margin/Content"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 70
 
-[node name="Deny" type="Button" parent="ArchiveOpen/ConfirmationMainMenu/Margin/Content/Buttons"]
+[node name="Deny" type="Button" parent="Control/ArchiveOpen/ConfirmationMainMenu/Margin/Content/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -246,7 +320,7 @@ mouse_default_cursor_shape = 2
 theme_type_variation = &"ButtonQuitScreen"
 text = "Deny"
 
-[node name="backMainMenuConfirm" type="Button" parent="ArchiveOpen/ConfirmationMainMenu/Margin/Content/Buttons"]
+[node name="backMainMenuConfirm" type="Button" parent="Control/ArchiveOpen/ConfirmationMainMenu/Margin/Content/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -255,7 +329,7 @@ mouse_default_cursor_shape = 2
 theme_type_variation = &"ButtonQuitScreen"
 text = "Confirm"
 
-[node name="ConfirmationQuit" type="PanelContainer" parent="ArchiveOpen"]
+[node name="ConfirmationQuit" type="PanelContainer" parent="Control/ArchiveOpen"]
 visible = false
 custom_minimum_size = Vector2(350, 600)
 layout_mode = 1
@@ -267,14 +341,14 @@ anchor_bottom = 0.9152778
 theme = ExtResource("1_oiqpt")
 metadata/_edit_use_anchors_ = true
 
-[node name="Margin" type="MarginContainer" parent="ArchiveOpen/ConfirmationQuit"]
+[node name="Margin" type="MarginContainer" parent="Control/ArchiveOpen/ConfirmationQuit"]
 layout_mode = 2
 theme_type_variation = &"MarginPaper"
 
-[node name="Content" type="VBoxContainer" parent="ArchiveOpen/ConfirmationQuit/Margin"]
+[node name="Content" type="VBoxContainer" parent="Control/ArchiveOpen/ConfirmationQuit/Margin"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="ArchiveOpen/ConfirmationQuit/Margin/Content"]
+[node name="Title" type="Label" parent="Control/ArchiveOpen/ConfirmationQuit/Margin/Content"]
 layout_mode = 2
 theme = ExtResource("1_oiqpt")
 theme_type_variation = &"TitleScreenQuit"
@@ -282,16 +356,16 @@ text = "Confirmation
 form"
 horizontal_alignment = 1
 
-[node name="TitleScreenSeparator" type="HSeparator" parent="ArchiveOpen/ConfirmationQuit/Margin/Content"]
+[node name="TitleScreenSeparator" type="HSeparator" parent="Control/ArchiveOpen/ConfirmationQuit/Margin/Content"]
 layout_mode = 2
 theme_type_variation = &"TitleScreenSeparator"
 
-[node name="Panel" type="Panel" parent="ArchiveOpen/ConfirmationQuit/Margin/Content"]
+[node name="Panel" type="Panel" parent="Control/ArchiveOpen/ConfirmationQuit/Margin/Content"]
 custom_minimum_size = Vector2(0, 350)
 layout_mode = 2
 theme_type_variation = &"Paper"
 
-[node name="Margin" type="MarginContainer" parent="ArchiveOpen/ConfirmationQuit/Margin/Content/Panel"]
+[node name="Margin" type="MarginContainer" parent="Control/ArchiveOpen/ConfirmationQuit/Margin/Content/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -300,7 +374,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"MarginSection"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ArchiveOpen/ConfirmationQuit/Margin/Content/Panel/Margin"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ArchiveOpen/ConfirmationQuit/Margin/Content/Panel/Margin"]
 layout_mode = 2
 theme_type_variation = &"ConfirmationForm"
 text = "This term is used to find out if the player wants to leave the game.
@@ -310,16 +384,16 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SectionSeparator" type="HSeparator" parent="ArchiveOpen/ConfirmationQuit/Margin/Content"]
+[node name="SectionSeparator" type="HSeparator" parent="Control/ArchiveOpen/ConfirmationQuit/Margin/Content"]
 layout_mode = 2
 theme_type_variation = &"SectionSeparator"
 
-[node name="Buttons" type="HBoxContainer" parent="ArchiveOpen/ConfirmationQuit/Margin/Content"]
+[node name="Buttons" type="HBoxContainer" parent="Control/ArchiveOpen/ConfirmationQuit/Margin/Content"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 70
 
-[node name="Deny" type="Button" parent="ArchiveOpen/ConfirmationQuit/Margin/Content/Buttons"]
+[node name="Deny" type="Button" parent="Control/ArchiveOpen/ConfirmationQuit/Margin/Content/Buttons"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -327,7 +401,7 @@ mouse_default_cursor_shape = 2
 theme_type_variation = &"ButtonQuitScreen"
 text = "Deny"
 
-[node name="quitConfirm" type="Button" parent="ArchiveOpen/ConfirmationQuit/Margin/Content/Buttons"]
+[node name="quitConfirm" type="Button" parent="Control/ArchiveOpen/ConfirmationQuit/Margin/Content/Buttons"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -336,7 +410,7 @@ mouse_default_cursor_shape = 2
 theme_type_variation = &"ButtonQuitScreen"
 text = "Confirm"
 
-[node name="Buttons" type="HBoxContainer" parent="."]
+[node name="Buttons" type="HBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.659375
@@ -344,41 +418,47 @@ anchor_top = 0.08055556
 anchor_right = 0.659375
 anchor_bottom = 0.3666682
 offset_left = 25.0
-offset_right = 231.0011
+offset_right = 231.00122
 offset_bottom = -175.0011
 rotation = 1.5707964
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="MainMenu" type="Button" parent="Buttons"]
+[node name="MainMenu" type="Button" parent="Control/Buttons"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme = ExtResource("1_oiqpt")
 theme_type_variation = &"ButtonFile"
 text = "Main menu"
 
-[node name="Quit" type="Button" parent="Buttons"]
+[node name="Quit" type="Button" parent="Control/Buttons"]
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_type_variation = &"ButtonFile"
 text = "Quit"
 
-[connection signal="pressed" from="ArchiveOpen/Report/Margin/Content/Continue" to="." method="hide"]
-[connection signal="pressed" from="ArchiveOpen/Report/Margin/Content/Continue" to="." method="btnPress"]
-[connection signal="pressed" from="ArchiveOpen/ConfirmationMainMenu/Margin/Content/Buttons/Deny" to="." method="denyBtnPressed"]
-[connection signal="pressed" from="ArchiveOpen/ConfirmationMainMenu/Margin/Content/Buttons/Deny" to="ArchiveOpen/Report" method="show"]
-[connection signal="pressed" from="ArchiveOpen/ConfirmationMainMenu/Margin/Content/Buttons/Deny" to="ArchiveOpen/ConfirmationMainMenu" method="hide"]
-[connection signal="pressed" from="ArchiveOpen/ConfirmationMainMenu/Margin/Content/Buttons/Deny" to="ArchiveOpen/ConfirmationQuit" method="hide"]
-[connection signal="pressed" from="ArchiveOpen/ConfirmationMainMenu/Margin/Content/Buttons/backMainMenuConfirm" to="." method="btnPress"]
-[connection signal="pressed" from="ArchiveOpen/ConfirmationQuit/Margin/Content/Buttons/Deny" to="." method="denyBtnPressed"]
-[connection signal="pressed" from="ArchiveOpen/ConfirmationQuit/Margin/Content/Buttons/Deny" to="ArchiveOpen/Report" method="show"]
-[connection signal="pressed" from="ArchiveOpen/ConfirmationQuit/Margin/Content/Buttons/Deny" to="ArchiveOpen/ConfirmationQuit" method="hide"]
-[connection signal="pressed" from="ArchiveOpen/ConfirmationQuit/Margin/Content/Buttons/quitConfirm" to="." method="btnPress"]
-[connection signal="pressed" from="Buttons/MainMenu" to="." method="btnPress"]
-[connection signal="pressed" from="Buttons/MainMenu" to="ArchiveOpen/Report" method="hide"]
-[connection signal="pressed" from="Buttons/MainMenu" to="ArchiveOpen/ConfirmationMainMenu" method="show"]
-[connection signal="pressed" from="Buttons/MainMenu" to="ArchiveOpen/ConfirmationQuit" method="hide"]
-[connection signal="pressed" from="Buttons/Quit" to="." method="btnPress"]
-[connection signal="pressed" from="Buttons/Quit" to="ArchiveOpen/Report" method="hide"]
-[connection signal="pressed" from="Buttons/Quit" to="ArchiveOpen/ConfirmationMainMenu" method="hide"]
-[connection signal="pressed" from="Buttons/Quit" to="ArchiveOpen/ConfirmationQuit" method="show"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pvuwc")
+}
+autoplay = "Appear"
+
+[connection signal="pressed" from="Control/ArchiveOpen/Report/Margin/Content/Continue" to="." method="btnPress"]
+[connection signal="pressed" from="Control/ArchiveOpen/Report/Margin/Content/Continue" to="." method="hide"]
+[connection signal="pressed" from="Control/ArchiveOpen/ConfirmationMainMenu/Margin/Content/Buttons/Deny" to="." method="denyBtnPressed"]
+[connection signal="pressed" from="Control/ArchiveOpen/ConfirmationMainMenu/Margin/Content/Buttons/Deny" to="Control/ArchiveOpen/Report" method="show"]
+[connection signal="pressed" from="Control/ArchiveOpen/ConfirmationMainMenu/Margin/Content/Buttons/Deny" to="Control/ArchiveOpen/ConfirmationMainMenu" method="hide"]
+[connection signal="pressed" from="Control/ArchiveOpen/ConfirmationMainMenu/Margin/Content/Buttons/Deny" to="Control/ArchiveOpen/ConfirmationQuit" method="hide"]
+[connection signal="pressed" from="Control/ArchiveOpen/ConfirmationMainMenu/Margin/Content/Buttons/backMainMenuConfirm" to="." method="btnPress"]
+[connection signal="pressed" from="Control/ArchiveOpen/ConfirmationQuit/Margin/Content/Buttons/Deny" to="." method="denyBtnPressed"]
+[connection signal="pressed" from="Control/ArchiveOpen/ConfirmationQuit/Margin/Content/Buttons/Deny" to="Control/ArchiveOpen/Report" method="show"]
+[connection signal="pressed" from="Control/ArchiveOpen/ConfirmationQuit/Margin/Content/Buttons/Deny" to="Control/ArchiveOpen/ConfirmationQuit" method="hide"]
+[connection signal="pressed" from="Control/ArchiveOpen/ConfirmationQuit/Margin/Content/Buttons/quitConfirm" to="." method="btnPress"]
+[connection signal="pressed" from="Control/Buttons/MainMenu" to="." method="btnPress"]
+[connection signal="pressed" from="Control/Buttons/MainMenu" to="Control/ArchiveOpen/Report" method="hide"]
+[connection signal="pressed" from="Control/Buttons/MainMenu" to="Control/ArchiveOpen/ConfirmationMainMenu" method="show"]
+[connection signal="pressed" from="Control/Buttons/MainMenu" to="Control/ArchiveOpen/ConfirmationQuit" method="hide"]
+[connection signal="pressed" from="Control/Buttons/Quit" to="." method="btnPress"]
+[connection signal="pressed" from="Control/Buttons/Quit" to="Control/ArchiveOpen/Report" method="hide"]
+[connection signal="pressed" from="Control/Buttons/Quit" to="Control/ArchiveOpen/ConfirmationMainMenu" method="hide"]
+[connection signal="pressed" from="Control/Buttons/Quit" to="Control/ArchiveOpen/ConfirmationQuit" method="show"]

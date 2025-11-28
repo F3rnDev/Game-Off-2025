@@ -3,7 +3,7 @@ extends Control
 @onready var quitBtn = %Confirm
 @onready var playBtn = %Play
 
-@onready var fullscreenBtn: CheckButton = $ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions/FullscreenOption/CheckButton
+@onready var fullscreenBtn: CheckButton = $Control/ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions/FullscreenOption/CheckButton
 
 # Volume #
 @onready var masterPercent = %PercentMaster
@@ -15,6 +15,8 @@ extends Control
 @onready var sliderSFX = %SliderSFX
 
 func _ready() -> void:
+	$AnimationPlayer.play("Appear")
+	
 	# Buttons
 	playBtn.pressed.connect(play)
 	quitBtn.pressed.connect(quit_game)
@@ -32,7 +34,8 @@ func _ready() -> void:
 		fullscreenBtn.set_pressed_no_signal(true)
 
 func play():
-	get_tree().change_scene_to_file("res://Scenes/main.tscn")
+	$AnimationPlayer.play("Disappear")
+	
 
 func quit_game():
 	get_tree().quit()
@@ -64,3 +67,8 @@ func pressBtnSfx():
 
 func _on_deny_pressed() -> void:
 	Audio.playUICancel()
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "Disappear":
+		Transition.transitionToScene("res://Scenes/main.tscn", "day")

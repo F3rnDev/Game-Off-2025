@@ -21,10 +21,12 @@ var messageSent = false
 var inFolder = false
 
 func _ready() -> void:
-	generatePaper(3)#Change to global amnt
+	generatePaper(GameManager.get_required_points())#Change to global amnt
 	checkMark.visible = false
 
 func generatePaper(receiverAmount):
+	GameManager.totalPoints += receiverAmount
+	
 	for receiverID in range(receiverAmount):
 		var recvr:Receiver = Receiver.new()
 		recvr.getRandomDistrict()
@@ -45,6 +47,7 @@ func updatePaperUI():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
+	
 	if animation.is_playing() or insideReader:
 		grab.disabled = true
 	else:
@@ -64,7 +67,7 @@ func _process(_delta: float) -> void:
 		GameManager.setDayStatus(GameManager.DayStatus.RUNNING)
 
 func dropPaperInReader():
-	if !insideReader:
+	if !insideReader and !readerObj.hasPaper:
 		parent.stop = true
 		readerObj.setItem(false)
 		readerObj.setReaderStatus(true)
@@ -89,12 +92,16 @@ func _on_reader_identify_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Reader") and !messageSent:
 		inReader = true
 		readerObj = area.get_parent()
-		readerObj.setItem(true)
+		
+		if !readerObj.hasPaper:
+			readerObj.setItem(true)
 
 func _on_reader_identify_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Reader") and !messageSent:
 		inReader = false
-		readerObj.setItem(false)
+		if !readerObj.hasPaper:
+			readerObj.setItem(false)
+		
 		readerObj = null
 
 

@@ -233,13 +233,14 @@ position = Vector2(15, 61.999207)
 shape = SubResource("RectangleShape2D_61ghv")
 debug_color = Color(0.95074373, 2.7915835e-06, 0.56950784, 0.41960785)
 
-[node name="Knob" type="Sprite2D" parent="TextureRect" node_paths=PackedStringArray("status", "slider")]
+[node name="Knob" type="Sprite2D" parent="TextureRect" node_paths=PackedStringArray("status", "slider", "polygraph")]
 position = Vector2(513.00006, 179.99919)
 scale = Vector2(3, 3)
 texture = ExtResource("4_p85wy")
 script = ExtResource("5_kllb8")
 status = NodePath("../SignalStatus")
 slider = NodePath("../SubViewportContainer/SubViewport/DistrictSlider")
+polygraph = NodePath("../SubViewportContainer/SubViewport/Polygraph")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="TextureRect/Knob"]

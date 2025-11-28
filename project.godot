@@ -18,6 +18,7 @@ config/icon="uid://bgsqsrj631q3o"
 [autoload]
 
 Audio="*res://Menus/AssetsScreens/Audio.gd"
+Transition="*res://Components/Global/Transition/transition.tscn"
 
 [display]
 

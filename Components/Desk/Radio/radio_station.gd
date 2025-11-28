@@ -7,6 +7,8 @@ extends Node2D
 @export var radioUi:RadioUI
 @export var radioViewport:Viewport
 
+var hasPaper = false
+
 var curPaper = null
 
 func setCurPaper(paperObj):
@@ -30,7 +32,9 @@ func getPaperInPos():
 func getInfo(recvr):
 	radioUi.updateRadio(recvr)
 
-func setReaderStatus(hasPaper:bool):
+func setReaderStatus(has:bool):
+	hasPaper = has
+	
 	if hasPaper:
 		reader.play("withPaper")
 	else:

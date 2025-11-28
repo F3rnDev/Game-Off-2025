@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://i3f6c6v27f1j"]
+[gd_scene load_steps=13 format=3 uid="uid://i3f6c6v27f1j"]
 
 [ext_resource type="Theme" uid="uid://cn5heyqgh7ypt" path="res://Menus/AssetsScreens/Theme.tres" id="1_l5m26"]
 [ext_resource type="Script" uid="uid://c42sufb6jwxyh" path="res://Menus/Screens/MenuScreen/menu.gd" id="2_fd2gi"]
@@ -6,6 +6,149 @@
 [ext_resource type="Texture2D" uid="uid://tmpj4r04f74d" path="res://Menus/AssetsScreens/Image/Archive.png" id="4_g6ek5"]
 [ext_resource type="Texture2D" uid="uid://bhcmjbeewjn0x" path="res://Menus/AssetsScreens/Image/Name.png" id="5_0lovs"]
 [ext_resource type="Texture2D" uid="uid://cnjwl71pkeecb" path="res://Menus/AssetsScreens/Image/ArchiveOpen.png" id="6_jmayi"]
+[ext_resource type="Shader" uid="uid://b8hwf1cb11r4n" path="res://Assets/Shader/transition.gdshader" id="8_l4eh2"]
+
+[sub_resource type="Animation" id="Animation_6amxb"]
+resource_name = "Appear"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(0.21763788, 1),
+"update": 0,
+"values": [Vector2(0, 750), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(0.2332583, 1),
+"update": 0,
+"values": [0.5585053606381855, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:material:shader_parameter/circle_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5358866, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_pvuwc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:material:shader_parameter/circle_size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_l4eh2"]
+resource_name = "Disappear"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:material:shader_parameter/circle_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.32987726, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pvuwc"]
+_data = {
+&"Appear": SubResource("Animation_6amxb"),
+&"Disappear": SubResource("Animation_l4eh2"),
+&"RESET": SubResource("Animation_pvuwc")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s1p86"]
+shader = ExtResource("8_l4eh2")
+shader_parameter/circle_size = 1.0
+shader_parameter/pixelation = 80.0
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -26,16 +169,32 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_epdk4")
 
-[node name="Archive" type="TextureRect" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_pvuwc")
+}
+
+[node name="Control" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = 0.0030517578
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(640, 360)
+
+[node name="Archive" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 0.0015869141
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_g6ek5")
 
-[node name="Name" type="TextureRect" parent="Archive"]
+[node name="Name" type="TextureRect" parent="Control/Archive"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -50,7 +209,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_0lovs")
 
-[node name="ArchiveOpenSettings" type="TextureRect" parent="."]
+[node name="ArchiveOpenSettings" type="TextureRect" parent="Control"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -61,7 +220,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("6_jmayi")
 
-[node name="Panel" type="PanelContainer" parent="ArchiveOpenSettings"]
+[node name="Panel" type="PanelContainer" parent="Control/ArchiveOpenSettings"]
 custom_minimum_size = Vector2(350, 600)
 layout_mode = 1
 anchors_preset = -1
@@ -72,29 +231,29 @@ anchor_bottom = 0.9152778
 theme = ExtResource("1_l5m26")
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="ArchiveOpenSettings/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/ArchiveOpenSettings/Panel"]
 layout_mode = 2
 theme_type_variation = &"MarginPaper"
 
-[node name="Content" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer"]
+[node name="Content" type="VBoxContainer" parent="Control/ArchiveOpenSettings/Panel/MarginContainer"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content"]
+[node name="Title" type="Label" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content"]
 layout_mode = 2
 theme = ExtResource("1_l5m26")
 theme_type_variation = &"TitleScreen"
 text = "Settings"
 
-[node name="TitleScreenSeparator" type="HSeparator" parent="ArchiveOpenSettings/Panel/MarginContainer/Content"]
+[node name="TitleScreenSeparator" type="HSeparator" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content"]
 layout_mode = 2
 theme_type_variation = &"TitleScreenSeparator"
 
-[node name="ScreenSection" type="Panel" parent="ArchiveOpenSettings/Panel/MarginContainer/Content"]
+[node name="ScreenSection" type="Panel" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content"]
 custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
 theme_type_variation = &"Paper"
 
-[node name="Margin" type="MarginContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection"]
+[node name="Margin" type="MarginContainer" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -103,47 +262,47 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"MarginSection"
 
-[node name="ContentScreen" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin"]
+[node name="ContentScreen" type="VBoxContainer" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="TitleSection" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen"]
+[node name="TitleSection" type="Label" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen"]
 layout_mode = 2
 size_flags_vertical = 6
 theme_type_variation = &"TitleSection"
 text = "Screen"
 horizontal_alignment = 1
 
-[node name="TitleSectionSeparator" type="HSeparator" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen"]
+[node name="TitleSectionSeparator" type="HSeparator" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen"]
 layout_mode = 2
 theme_type_variation = &"TitleSectionSeparator"
 
-[node name="ScreenOptions" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen"]
+[node name="ScreenOptions" type="VBoxContainer" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen"]
 layout_mode = 2
 
-[node name="FullscreenOption" type="HBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions"]
+[node name="FullscreenOption" type="HBoxContainer" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions"]
 layout_mode = 2
 
-[node name="Fullscreen" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions/FullscreenOption"]
+[node name="Fullscreen" type="Label" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions/FullscreenOption"]
 layout_mode = 2
 text = "Fullscreen"
 
-[node name="CheckButton" type="CheckButton" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions/FullscreenOption"]
+[node name="CheckButton" type="CheckButton" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions/FullscreenOption"]
 layout_mode = 2
 size_flags_horizontal = 2
 mouse_default_cursor_shape = 2
 theme_type_variation = &"Toggle"
 
-[node name="SectionSeparator" type="HSeparator" parent="ArchiveOpenSettings/Panel/MarginContainer/Content"]
+[node name="SectionSeparator" type="HSeparator" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content"]
 layout_mode = 2
 theme_type_variation = &"SectionSeparator"
 
-[node name="AudioSection" type="Panel" parent="ArchiveOpenSettings/Panel/MarginContainer/Content"]
+[node name="AudioSection" type="Panel" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content"]
 custom_minimum_size = Vector2(200, 210)
 layout_mode = 2
 theme_type_variation = &"Paper"
 
-[node name="Margin" type="MarginContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection"]
+[node name="Margin" type="MarginContainer" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -152,35 +311,35 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"MarginSection"
 
-[node name="ContentAudio" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin"]
+[node name="ContentAudio" type="VBoxContainer" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="TitleSection" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio"]
+[node name="TitleSection" type="Label" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio"]
 layout_mode = 2
 size_flags_vertical = 6
 theme_type_variation = &"TitleSection"
 text = "Audio"
 horizontal_alignment = 1
 
-[node name="TitleSectionSeparator" type="HSeparator" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio"]
+[node name="TitleSectionSeparator" type="HSeparator" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio"]
 layout_mode = 2
 theme_type_variation = &"TitleSectionSeparator"
 
-[node name="AudioOptions" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio"]
+[node name="AudioOptions" type="VBoxContainer" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio"]
 layout_mode = 2
 
-[node name="Master" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions"]
+[node name="Master" type="VBoxContainer" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions"]
 layout_mode = 2
 
-[node name="TitleOption" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master"]
+[node name="TitleOption" type="Label" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master"]
 layout_mode = 2
 text = "Master"
 
-[node name="SliderMaster" type="HBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master"]
+[node name="SliderMaster" type="HBoxContainer" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master"]
 layout_mode = 2
 
-[node name="SliderMaster" type="HSlider" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master/SliderMaster"]
+[node name="SliderMaster" type="HSlider" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master/SliderMaster"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
@@ -189,21 +348,21 @@ max_value = 1.0
 step = 0.1
 value = 1.0
 
-[node name="PercentMaster" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master/SliderMaster"]
+[node name="PercentMaster" type="Label" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master/SliderMaster"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Music" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions"]
+[node name="Music" type="VBoxContainer" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions"]
 layout_mode = 2
 
-[node name="TitleOption" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music"]
+[node name="TitleOption" type="Label" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music"]
 layout_mode = 2
 text = "Music"
 
-[node name="SliderMusic" type="HBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music"]
+[node name="SliderMusic" type="HBoxContainer" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music"]
 layout_mode = 2
 
-[node name="SliderMusic" type="HSlider" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music/SliderMusic"]
+[node name="SliderMusic" type="HSlider" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music/SliderMusic"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
@@ -212,21 +371,21 @@ max_value = 1.0
 step = 0.1
 value = 1.0
 
-[node name="PercentMusic" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music/SliderMusic"]
+[node name="PercentMusic" type="Label" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music/SliderMusic"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="SFX" type="VBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions"]
+[node name="SFX" type="VBoxContainer" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions"]
 layout_mode = 2
 
-[node name="TitleOption" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX"]
+[node name="TitleOption" type="Label" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX"]
 layout_mode = 2
 text = "SFX"
 
-[node name="SliderMaster" type="HBoxContainer" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX"]
+[node name="SliderMaster" type="HBoxContainer" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX"]
 layout_mode = 2
 
-[node name="SliderSFX" type="HSlider" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX/SliderMaster"]
+[node name="SliderSFX" type="HSlider" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX/SliderMaster"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
@@ -235,22 +394,22 @@ max_value = 1.0
 step = 0.1
 value = 1.0
 
-[node name="PercentSFX" type="Label" parent="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX/SliderMaster"]
+[node name="PercentSFX" type="Label" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX/SliderMaster"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="SectionSeparator2" type="HSeparator" parent="ArchiveOpenSettings/Panel/MarginContainer/Content"]
+[node name="SectionSeparator2" type="HSeparator" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content"]
 layout_mode = 2
 theme_type_variation = &"SectionSeparator"
 
-[node name="Apply" type="Button" parent="ArchiveOpenSettings/Panel/MarginContainer/Content"]
+[node name="Apply" type="Button" parent="Control/ArchiveOpenSettings/Panel/MarginContainer/Content"]
 layout_mode = 2
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 theme_type_variation = &"ButtonAply"
 text = "Apply"
 
-[node name="ArchiveOpenQuit" type="TextureRect" parent="."]
+[node name="ArchiveOpenQuit" type="TextureRect" parent="Control"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -261,7 +420,7 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("6_jmayi")
 
-[node name="Panel2" type="PanelContainer" parent="ArchiveOpenQuit"]
+[node name="Panel2" type="PanelContainer" parent="Control/ArchiveOpenQuit"]
 custom_minimum_size = Vector2(350, 600)
 layout_mode = 1
 anchors_preset = -1
@@ -272,14 +431,14 @@ anchor_bottom = 0.9152778
 theme = ExtResource("1_l5m26")
 metadata/_edit_use_anchors_ = true
 
-[node name="MarginContainer" type="MarginContainer" parent="ArchiveOpenQuit/Panel2"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/ArchiveOpenQuit/Panel2"]
 layout_mode = 2
 theme_type_variation = &"MarginPaper"
 
-[node name="Content" type="VBoxContainer" parent="ArchiveOpenQuit/Panel2/MarginContainer"]
+[node name="Content" type="VBoxContainer" parent="Control/ArchiveOpenQuit/Panel2/MarginContainer"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="ArchiveOpenQuit/Panel2/MarginContainer/Content"]
+[node name="Title" type="Label" parent="Control/ArchiveOpenQuit/Panel2/MarginContainer/Content"]
 layout_mode = 2
 theme = ExtResource("1_l5m26")
 theme_type_variation = &"TitleScreenQuit"
@@ -287,16 +446,16 @@ text = "Confirmation
 form"
 horizontal_alignment = 1
 
-[node name="TitleScreenSeparator" type="HSeparator" parent="ArchiveOpenQuit/Panel2/MarginContainer/Content"]
+[node name="TitleScreenSeparator" type="HSeparator" parent="Control/ArchiveOpenQuit/Panel2/MarginContainer/Content"]
 layout_mode = 2
 theme_type_variation = &"TitleScreenSeparator"
 
-[node name="Panel" type="Panel" parent="ArchiveOpenQuit/Panel2/MarginContainer/Content"]
+[node name="Panel" type="Panel" parent="Control/ArchiveOpenQuit/Panel2/MarginContainer/Content"]
 custom_minimum_size = Vector2(0, 350)
 layout_mode = 2
 theme_type_variation = &"Paper"
 
-[node name="MarginContainer" type="MarginContainer" parent="ArchiveOpenQuit/Panel2/MarginContainer/Content/Panel"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/ArchiveOpenQuit/Panel2/MarginContainer/Content/Panel"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -305,7 +464,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"MarginSection"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ArchiveOpenQuit/Panel2/MarginContainer/Content/Panel/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/ArchiveOpenQuit/Panel2/MarginContainer/Content/Panel/MarginContainer"]
 layout_mode = 2
 theme_type_variation = &"ConfirmationForm"
 text = "This term is used to find out if the player wants to leave the game.
@@ -315,16 +474,16 @@ scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="ArchiveOpenQuit/Panel2/MarginContainer/Content"]
+[node name="HSeparator" type="HSeparator" parent="Control/ArchiveOpenQuit/Panel2/MarginContainer/Content"]
 layout_mode = 2
 theme_type_variation = &"SectionSeparator"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ArchiveOpenQuit/Panel2/MarginContainer/Content"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/ArchiveOpenQuit/Panel2/MarginContainer/Content"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 70
 
-[node name="Deny" type="Button" parent="ArchiveOpenQuit/Panel2/MarginContainer/Content/HBoxContainer"]
+[node name="Deny" type="Button" parent="Control/ArchiveOpenQuit/Panel2/MarginContainer/Content/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -332,7 +491,7 @@ mouse_default_cursor_shape = 2
 theme_type_variation = &"ButtonQuitScreen"
 text = "Deny"
 
-[node name="Confirm" type="Button" parent="ArchiveOpenQuit/Panel2/MarginContainer/Content/HBoxContainer"]
+[node name="Confirm" type="Button" parent="Control/ArchiveOpenQuit/Panel2/MarginContainer/Content/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -341,7 +500,7 @@ mouse_default_cursor_shape = 2
 theme_type_variation = &"ButtonQuitScreen"
 text = "Confirm"
 
-[node name="VBoxContainer" type="HBoxContainer" parent="."]
+[node name="VBoxContainer" type="HBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.65546876
@@ -349,49 +508,61 @@ anchor_top = 0.08055556
 anchor_right = 0.65546876
 anchor_bottom = 0.3666682
 offset_left = 25.0
-offset_right = 231.0011
-offset_bottom = -181.0011
+offset_right = 231.0044
+offset_bottom = -181.00104
 rotation = 1.5707964
 theme_override_constants/separation = 10
 alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Play" type="Button" parent="VBoxContainer"]
+[node name="Play" type="Button" parent="Control/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_type_variation = &"ButtonFile"
 text = "Play"
 
-[node name="Settings" type="Button" parent="VBoxContainer"]
+[node name="Settings" type="Button" parent="Control/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_type_variation = &"ButtonFile"
 text = "Settings"
 
-[node name="Quit" type="Button" parent="VBoxContainer"]
+[node name="Quit" type="Button" parent="Control/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_default_cursor_shape = 2
 theme_type_variation = &"ButtonFile"
 text = "Quit"
 
-[connection signal="toggled" from="ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions/FullscreenOption/CheckButton" to="." method="_on_fullscreen_toggled"]
-[connection signal="value_changed" from="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master/SliderMaster/SliderMaster" to="." method="_on_slider_master_value_changed"]
-[connection signal="value_changed" from="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music/SliderMusic/SliderMusic" to="." method="_on_slider_music_value_changed"]
-[connection signal="value_changed" from="ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX/SliderMaster/SliderSFX" to="." method="_on_slider_sfx_value_changed"]
-[connection signal="pressed" from="ArchiveOpenSettings/Panel/MarginContainer/Content/Apply" to="." method="pressBtnSfx"]
-[connection signal="pressed" from="ArchiveOpenSettings/Panel/MarginContainer/Content/Apply" to="ArchiveOpenSettings" method="hide"]
-[connection signal="pressed" from="ArchiveOpenQuit/Panel2/MarginContainer/Content/HBoxContainer/Deny" to="." method="_on_deny_pressed"]
-[connection signal="pressed" from="ArchiveOpenQuit/Panel2/MarginContainer/Content/HBoxContainer/Deny" to="ArchiveOpenQuit" method="hide"]
-[connection signal="pressed" from="ArchiveOpenQuit/Panel2/MarginContainer/Content/HBoxContainer/Confirm" to="." method="pressBtnSfx"]
-[connection signal="pressed" from="VBoxContainer/Play" to="." method="pressBtnSfx"]
-[connection signal="pressed" from="VBoxContainer/Settings" to="." method="pressBtnSfx"]
-[connection signal="pressed" from="VBoxContainer/Settings" to="ArchiveOpenSettings" method="show"]
-[connection signal="pressed" from="VBoxContainer/Settings" to="ArchiveOpenQuit" method="hide"]
-[connection signal="pressed" from="VBoxContainer/Settings" to="ArchiveOpenSettings" method="set_mouse_filter" binds= [0]]
-[connection signal="pressed" from="VBoxContainer/Quit" to="." method="pressBtnSfx"]
-[connection signal="pressed" from="VBoxContainer/Quit" to="ArchiveOpenSettings" method="hide"]
-[connection signal="pressed" from="VBoxContainer/Quit" to="ArchiveOpenQuit" method="show"]
-[connection signal="pressed" from="VBoxContainer/Quit" to="ArchiveOpenQuit" method="set_mouse_filter" binds= [0]]
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_s1p86")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="toggled" from="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/ScreenSection/Margin/ContentScreen/ScreenOptions/FullscreenOption/CheckButton" to="." method="_on_fullscreen_toggled"]
+[connection signal="value_changed" from="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Master/SliderMaster/SliderMaster" to="." method="_on_slider_master_value_changed"]
+[connection signal="value_changed" from="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/Music/SliderMusic/SliderMusic" to="." method="_on_slider_music_value_changed"]
+[connection signal="value_changed" from="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX/SliderMaster/SliderSFX" to="." method="_on_slider_sfx_value_changed"]
+[connection signal="pressed" from="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/Apply" to="." method="pressBtnSfx"]
+[connection signal="pressed" from="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/Apply" to="Control/ArchiveOpenSettings" method="hide"]
+[connection signal="pressed" from="Control/ArchiveOpenQuit/Panel2/MarginContainer/Content/HBoxContainer/Deny" to="." method="_on_deny_pressed"]
+[connection signal="pressed" from="Control/ArchiveOpenQuit/Panel2/MarginContainer/Content/HBoxContainer/Deny" to="Control/ArchiveOpenQuit" method="hide"]
+[connection signal="pressed" from="Control/ArchiveOpenQuit/Panel2/MarginContainer/Content/HBoxContainer/Confirm" to="." method="pressBtnSfx"]
+[connection signal="pressed" from="Control/VBoxContainer/Play" to="." method="pressBtnSfx"]
+[connection signal="pressed" from="Control/VBoxContainer/Settings" to="." method="pressBtnSfx"]
+[connection signal="pressed" from="Control/VBoxContainer/Settings" to="Control/ArchiveOpenSettings" method="show"]
+[connection signal="pressed" from="Control/VBoxContainer/Settings" to="Control/ArchiveOpenQuit" method="hide"]
+[connection signal="pressed" from="Control/VBoxContainer/Settings" to="Control/ArchiveOpenSettings" method="set_mouse_filter" binds= [0]]
+[connection signal="pressed" from="Control/VBoxContainer/Quit" to="." method="pressBtnSfx"]
+[connection signal="pressed" from="Control/VBoxContainer/Quit" to="Control/ArchiveOpenSettings" method="hide"]
+[connection signal="pressed" from="Control/VBoxContainer/Quit" to="Control/ArchiveOpenQuit" method="show"]
+[connection signal="pressed" from="Control/VBoxContainer/Quit" to="Control/ArchiveOpenQuit" method="set_mouse_filter" binds= [0]]

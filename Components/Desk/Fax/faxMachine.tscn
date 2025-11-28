@@ -26,3 +26,7 @@ texture = ExtResource("3_a6mie")
 
 [node name="Marker2D" type="Marker2D" parent="."]
 position = Vector2(2, -8)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

@@ -37,6 +37,7 @@ func hideUI():
 func updateRadio(curRecvr:Array[Receiver]):
 	activeRecvrs = curRecvr
 	pointAmount = curRecvr.size()
+	pointsSent = 0
 	feedback.resetFeedback()
 	
 	var addedPoints = 0
