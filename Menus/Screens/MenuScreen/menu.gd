@@ -32,6 +32,10 @@ func _ready() -> void:
 	
 	if Audio.isFullscreen == true:
 		fullscreenBtn.set_pressed_no_signal(true)
+	
+	#CheckWeb
+	if OS.has_feature("web"):
+		%Quit.visible = false
 
 func play():
 	Transition.transitionToScene("res://Scenes/main.tscn", "circleToDay")

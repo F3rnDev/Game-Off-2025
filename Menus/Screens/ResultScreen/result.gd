@@ -23,6 +23,10 @@ func setUI():
 	demerits.text = "Quantity of demerits: " + str(GameManager.totalPoints - GameManager.dayMerits)
 	
 	setCityStatus()
+	
+	#CheckWeb
+	if OS.has_feature("web"):
+		$Control/Buttons/Quit.visible = false
 
 func setCityStatus():
 	goodMensage.visible = false
