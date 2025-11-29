@@ -43,8 +43,9 @@ one_shot = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="RadioUI" parent="CanvasLayer" node_paths=PackedStringArray("radioStation") instance=ExtResource("8_344ge")]
+[node name="RadioUI" parent="CanvasLayer" node_paths=PackedStringArray("radioStation", "fax") instance=ExtResource("8_344ge")]
 radioStation = NodePath("../../RadioStation")
+fax = NodePath("../../FaxMachine")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("9_hptm8")]
 visible = false

@@ -23,6 +23,10 @@ func getTransition(trans):
 		"result":
 			$ResultScreenTransition.visible = true
 			return $ResultScreenTransition/AnimationPlayer
+		"circleToDay":
+			$CircleToDayTransition.visible = true
+			$CircleToDayTransition/Label.text = "Day " + str(GameManager.day)
+			return $CircleToDayTransition/AnimationPlayer
 	
 	return null
 

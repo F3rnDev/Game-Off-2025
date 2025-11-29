@@ -40,8 +40,7 @@ func setCityStatus():
 		badMensage.visible = true
 
 func backMenu():
-	#get_tree().change_scene_to_file("res://Screens/MenuScreen/menu_screen.tscn")
-	print("Mudar cena para menu principal - Script de result")
+	Transition.transitionToScene("res://Menus/Screens/MenuScreen/menu_screen.tscn", "result")
 	
 func quitGame():
 	get_tree().quit()
@@ -52,3 +51,11 @@ func btnPress() -> void:
 
 func denyBtnPressed() -> void:
 	Audio.playUICancel()
+
+func _on_continue_button_down() -> void:
+	if GameManager.day < 5:
+		GameManager.day += 1
+		Transition.transitionToScene("res://Scenes/main.tscn", "circleToDay")
+	else:
+		print("ITS OVEEEEER LMAAAAAAAAAO")
+		Transition.transitionToScene("res://Menus/Screens/MenuScreen/menu_screen.tscn", "result")

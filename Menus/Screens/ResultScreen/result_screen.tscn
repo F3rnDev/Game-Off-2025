@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://gebj10hcnogc"]
+[gd_scene load_steps=9 format=3 uid="uid://gebj10hcnogc"]
 
 [ext_resource type="Theme" uid="uid://cn5heyqgh7ypt" path="res://Menus/AssetsScreens/Theme.tres" id="1_oiqpt"]
 [ext_resource type="Script" uid="uid://bnablnjca70q3" path="res://Menus/Screens/ResultScreen/result.gd" id="2_ib1v6"]
 [ext_resource type="Texture2D" uid="uid://bnhmjfcjlhe1j" path="res://Menus/AssetsScreens/Image/Table.png" id="2_xt65b"]
 [ext_resource type="Texture2D" uid="uid://cnjwl71pkeecb" path="res://Menus/AssetsScreens/Image/ArchiveOpen.png" id="3_ib1v6"]
+[ext_resource type="FontFile" uid="uid://hvvy671c1x5e" path="res://Assets/Fonts/Silkscreen-Bold.ttf" id="5_ldwnu"]
 
 [sub_resource type="Animation" id="Animation_6amxb"]
 resource_name = "Appear"
@@ -246,6 +247,7 @@ layout_mode = 2
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
 theme_type_variation = &"ButtonAply"
+theme_override_fonts/font = ExtResource("5_ldwnu")
 text = "Continue"
 
 [node name="ConfirmationMainMenu" type="PanelContainer" parent="Control/ArchiveOpen"]
@@ -443,8 +445,8 @@ libraries = {
 }
 autoplay = "Appear"
 
+[connection signal="button_down" from="Control/ArchiveOpen/Report/Margin/Content/Continue" to="." method="_on_continue_button_down"]
 [connection signal="pressed" from="Control/ArchiveOpen/Report/Margin/Content/Continue" to="." method="btnPress"]
-[connection signal="pressed" from="Control/ArchiveOpen/Report/Margin/Content/Continue" to="." method="hide"]
 [connection signal="pressed" from="Control/ArchiveOpen/ConfirmationMainMenu/Margin/Content/Buttons/Deny" to="." method="denyBtnPressed"]
 [connection signal="pressed" from="Control/ArchiveOpen/ConfirmationMainMenu/Margin/Content/Buttons/Deny" to="Control/ArchiveOpen/Report" method="show"]
 [connection signal="pressed" from="Control/ArchiveOpen/ConfirmationMainMenu/Margin/Content/Buttons/Deny" to="Control/ArchiveOpen/ConfirmationMainMenu" method="hide"]

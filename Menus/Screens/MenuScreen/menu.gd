@@ -34,7 +34,7 @@ func _ready() -> void:
 		fullscreenBtn.set_pressed_no_signal(true)
 
 func play():
-	$AnimationPlayer.play("Disappear")
+	Transition.transitionToScene("res://Scenes/main.tscn", "circleToDay")
 	
 
 func quit_game():
@@ -67,8 +67,3 @@ func pressBtnSfx():
 
 func _on_deny_pressed() -> void:
 	Audio.playUICancel()
-
-
-func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == "Disappear":
-		Transition.transitionToScene("res://Scenes/main.tscn", "day")

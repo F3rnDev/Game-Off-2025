@@ -3,6 +3,7 @@ extends Panel
 class_name RadioUI
 
 @export var radioStation:Node2D
+@export var fax:Node2D
 
 @onready var receiverPoint = preload("res://Components/Desk/Radio/receiverPoint.tscn")
 @onready var control = $TextureRect/SubViewportContainer/SubViewport/Polygraph/PointAdd
@@ -122,6 +123,7 @@ func allSignalsSent():
 		child.killReceiver()
 	
 	radioStation.removePaper()
+	fax.resetTimer()
 
 func wrongSignal():
 	GameManager.dayDemerits += 1

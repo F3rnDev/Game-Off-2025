@@ -12,9 +12,12 @@ func spawnPaper() -> void:
 
 func setTimer():
 	var time = GameManager.get_spawn_delay()
-	print(time)
-	
 	timer.start(time)
+
+func resetTimer():
+	var time = 5.0
+	if timer.time_left > time:
+		timer.start(time)
 
 func _on_spawn_timer_timeout() -> void:
 	spawnPaper()

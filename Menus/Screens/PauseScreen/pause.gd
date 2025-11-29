@@ -68,7 +68,7 @@ func _on_slider_sfx_value_changed(value: float) -> void:
 func _on_confirm_pressed() -> void:
 	Audio.playUIAccept()
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://Menus/Screens/MenuScreen/menu_screen.tscn")
+	Transition.transitionToScene("res://Menus/Screens/MenuScreen/menu_screen.tscn", "result")
 
 func _on_deny_pressed() -> void:
 	Audio.playUICancel()
