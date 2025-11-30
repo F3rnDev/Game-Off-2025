@@ -39,6 +39,9 @@ func togglePause(pause=true):
 	
 	if pause:
 		$AnimationPlayer.play("Appear")
+		Audio.playMusic()
+	else:
+		Audio.stopMusic()
 
 func _on_fullscreen_toggled(toggled_on: bool) -> void:
 	if toggled_on:
@@ -69,9 +72,6 @@ func _on_confirm_pressed() -> void:
 	Audio.playUIAccept()
 	get_tree().paused = false
 	Transition.transitionToScene("res://Menus/Screens/MenuScreen/menu_screen.tscn", "result")
-
-func _on_deny_pressed() -> void:
-	Audio.playUICancel()
 
 func pressBtnSfx():
 	Audio.playUIAccept()

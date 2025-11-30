@@ -15,6 +15,7 @@ extends Control
 @onready var sliderSFX = %SliderSFX
 
 func _ready() -> void:
+	Audio.playMusic()
 	$AnimationPlayer.play("Appear")
 	
 	# Buttons
@@ -38,6 +39,7 @@ func _ready() -> void:
 		%Quit.visible = false
 
 func play():
+	Audio.stopMusic()
 	Transition.transitionToScene("res://Scenes/main.tscn", "circleToDay")
 	
 
@@ -68,6 +70,3 @@ func _on_slider_sfx_value_changed(value: float) -> void:
 	#== Buttons ==#
 func pressBtnSfx():
 	Audio.playUIAccept()
-
-func _on_deny_pressed() -> void:
-	Audio.playUICancel()

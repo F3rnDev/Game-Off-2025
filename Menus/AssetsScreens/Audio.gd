@@ -22,6 +22,11 @@ var SFX_AUDIO_ID
 
 var Decibels
 
+#MUSIC
+@onready var musicPlayer := AudioStreamPlayer.new()
+@onready var musicStream = load("res://Assets/Music/mainTheme.wav")
+var curMusicPos = 0
+
 func _ready() -> void:
 	MASTER_AUDIO_ID = AudioServer.get_bus_index(MASTER_AUDIO_NAME)
 	MUSIC_AUDIO_ID = AudioServer.get_bus_index(MUSIC_AUDIO_NAME)
@@ -29,9 +34,34 @@ func _ready() -> void:
 	
 	add_child(uiAccept)
 	add_child(uiCancel)
+	add_child(musicPlayer)
 	
 	uiAccept.bus = SFX_AUDIO_NAME
 	uiCancel.bus = SFX_AUDIO_NAME
+	musicPlayer.bus = MUSIC_AUDIO_NAME
+	
+	musicPlayer.stream = musicStream
+
+func playMusic():
+	if musicPlayer.playing:
+		return
+	
+	var audioTween = get_tree().create_tween()
+	audioTween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	
+	musicPlayer.volume_db = -80.0
+	musicPlayer.play(curMusicPos)
+	audioTween.tween_property(musicPlayer, "volume_db", 0.0, 2.0)
+
+func stopMusic():
+	curMusicPos = musicPlayer.get_playback_position()
+	
+	var audioTween = get_tree().create_tween()
+	audioTween.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+	
+	musicPlayer.volume_db = 0.0
+	audioTween.tween_property(musicPlayer, "volume_db", -80.0, 2.0)
+	audioTween.finished.connect(musicPlayer.stop)
 
 func AudioMaster(value:float):
 	volumeMaster = value
@@ -47,7 +77,6 @@ func AudioSfx(value:float):
 	volumeSFX = value
 	Decibels = linear_to_db(value)
 	AudioServer.set_bus_volume_db(SFX_AUDIO_ID, Decibels)
-	
 
 func playUIAccept():
 	uiAccept.stream = soundAccept

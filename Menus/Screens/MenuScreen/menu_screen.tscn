@@ -553,7 +553,7 @@ color = Color(0, 0, 0, 1)
 [connection signal="value_changed" from="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/AudioSection/Margin/ContentAudio/AudioOptions/SFX/SliderMaster/SliderSFX" to="." method="_on_slider_sfx_value_changed"]
 [connection signal="pressed" from="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/Apply" to="." method="pressBtnSfx"]
 [connection signal="pressed" from="Control/ArchiveOpenSettings/Panel/MarginContainer/Content/Apply" to="Control/ArchiveOpenSettings" method="hide"]
-[connection signal="pressed" from="Control/ArchiveOpenQuit/Panel2/MarginContainer/Content/HBoxContainer/Deny" to="." method="_on_deny_pressed"]
+[connection signal="pressed" from="Control/ArchiveOpenQuit/Panel2/MarginContainer/Content/HBoxContainer/Deny" to="." method="pressBtnSfx"]
 [connection signal="pressed" from="Control/ArchiveOpenQuit/Panel2/MarginContainer/Content/HBoxContainer/Deny" to="Control/ArchiveOpenQuit" method="hide"]
 [connection signal="pressed" from="Control/ArchiveOpenQuit/Panel2/MarginContainer/Content/HBoxContainer/Confirm" to="." method="pressBtnSfx"]
 [connection signal="pressed" from="Control/VBoxContainer/Play" to="." method="pressBtnSfx"]
