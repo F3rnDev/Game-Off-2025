@@ -1,11 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://d2mpx6nuqvicx"]
+[gd_scene load_steps=15 format=3 uid="uid://d2mpx6nuqvicx"]
 
 [ext_resource type="Texture2D" uid="uid://tmpj4r04f74d" path="res://Menus/AssetsScreens/Image/Archive.png" id="2_8lwni"]
 [ext_resource type="Script" uid="uid://dicvoi2me5xea" path="res://Menus/Screens/PauseScreen/pause.gd" id="2_a5bs5"]
 [ext_resource type="Texture2D" uid="uid://bhcmjbeewjn0x" path="res://Menus/AssetsScreens/Image/Name.png" id="3_a5bs5"]
 [ext_resource type="Texture2D" uid="uid://cnjwl71pkeecb" path="res://Menus/AssetsScreens/Image/ArchiveOpen.png" id="4_ynw3s"]
 [ext_resource type="Theme" uid="uid://cn5heyqgh7ypt" path="res://Menus/AssetsScreens/Theme.tres" id="5_4nmer"]
-[ext_resource type="Texture2D" uid="uid://bhyldy2vg35yy" path="res://Menus/AssetsScreens/Image/Cenário Signal Out.png" id="7_2fdjq"]
+[ext_resource type="Texture2D" uid="uid://ci0lsmwm2h2jp" path="res://Menus/AssetsScreens/Image/Tutorial/Step1.png" id="6_2fdjq"]
+[ext_resource type="Texture2D" uid="uid://b287tfmbjhvbs" path="res://Menus/AssetsScreens/Image/Tutorial/Step2.png" id="7_1ww51"]
+[ext_resource type="Texture2D" uid="uid://cxnmleudpewsk" path="res://Menus/AssetsScreens/Image/Tutorial/Step3.png" id="8_dtvch"]
+[ext_resource type="Texture2D" uid="uid://bp63b0e5g7bqx" path="res://Menus/AssetsScreens/Image/Tutorial/Step4.png" id="9_l4w1k"]
+[ext_resource type="Texture2D" uid="uid://bvwo4me51bbyl" path="res://Menus/AssetsScreens/Image/Tutorial/Step5.png" id="10_lxo10"]
+[ext_resource type="Texture2D" uid="uid://b4fv7tasplu65" path="res://Menus/AssetsScreens/Image/Tutorial/Step6.png" id="11_5l270"]
 
 [sub_resource type="Animation" id="Animation_6amxb"]
 resource_name = "Appear"
@@ -488,7 +493,8 @@ theme_type_variation = &"MarginSection"
 
 [node name="TextureRect" type="TextureRect" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet1/Panel/MarginContainer"]
 layout_mode = 2
-texture = ExtResource("7_2fdjq")
+texture = ExtResource("6_2fdjq")
+expand_mode = 1
 
 [node name="HSeparator" type="HSeparator" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet1"]
 layout_mode = 2
@@ -549,7 +555,8 @@ theme_type_variation = &"MarginSection"
 
 [node name="TextureRect" type="TextureRect" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet2/Panel/MarginContainer"]
 layout_mode = 2
-texture = ExtResource("7_2fdjq")
+texture = ExtResource("7_1ww51")
+expand_mode = 1
 
 [node name="HSeparator" type="HSeparator" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet2"]
 layout_mode = 2
@@ -558,7 +565,7 @@ theme_type_variation = &"SectionSeparator"
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet2"]
 layout_mode = 2
 size_flags_vertical = 10
-theme_override_constants/separation = 70
+theme_override_constants/separation = 40
 
 [node name="Previous" type="Button" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet2/HBoxContainer"]
 layout_mode = 2
@@ -619,7 +626,8 @@ theme_type_variation = &"MarginSection"
 
 [node name="TextureRect" type="TextureRect" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet3/Panel/MarginContainer"]
 layout_mode = 2
-texture = ExtResource("7_2fdjq")
+texture = ExtResource("8_dtvch")
+expand_mode = 1
 
 [node name="HSeparator" type="HSeparator" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet3"]
 layout_mode = 2
@@ -628,7 +636,7 @@ theme_type_variation = &"SectionSeparator"
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet3"]
 layout_mode = 2
 size_flags_vertical = 10
-theme_override_constants/separation = 70
+theme_override_constants/separation = 40
 
 [node name="Previous" type="Button" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet3/HBoxContainer"]
 layout_mode = 2
@@ -689,7 +697,8 @@ theme_type_variation = &"MarginSection"
 
 [node name="TextureRect" type="TextureRect" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet4/Panel/MarginContainer"]
 layout_mode = 2
-texture = ExtResource("7_2fdjq")
+texture = ExtResource("9_l4w1k")
+expand_mode = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet4"]
 layout_mode = 2
@@ -708,7 +717,7 @@ theme_type_variation = &"SectionSeparator"
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet4"]
 layout_mode = 2
 size_flags_vertical = 4
-theme_override_constants/separation = 70
+theme_override_constants/separation = 40
 
 [node name="Previous" type="Button" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet4/HBoxContainer"]
 layout_mode = 2
@@ -743,10 +752,10 @@ theme_type_variation = &"TitleScreenSeparator"
 
 [node name="Title2" type="Label" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet5"]
 layout_mode = 2
+theme = ExtResource("5_4nmer")
 theme_type_variation = &"TitleSection"
-text = "5.Repeat until 
-the city is 
-free of crime"
+text = "5.Organize your 
+desk"
 horizontal_alignment = 1
 
 [node name="HSeparator2" type="HSeparator" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet5"]
@@ -769,7 +778,8 @@ theme_type_variation = &"MarginSection"
 
 [node name="TextureRect" type="TextureRect" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet5/Panel/MarginContainer"]
 layout_mode = 2
-texture = ExtResource("7_2fdjq")
+texture = ExtResource("10_lxo10")
+expand_mode = 1
 
 [node name="HSeparator" type="HSeparator" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet5"]
 layout_mode = 2
@@ -778,9 +788,80 @@ theme_type_variation = &"SectionSeparator"
 [node name="HBoxContainer" type="HBoxContainer" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet5"]
 layout_mode = 2
 size_flags_vertical = 10
-theme_override_constants/separation = 70
+theme_override_constants/separation = 40
 
 [node name="Previous" type="Button" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet5/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_type_variation = &"ButtonQuitScreen"
+text = "Previous"
+
+[node name="Next" type="Button" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet5/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+mouse_default_cursor_shape = 2
+theme_type_variation = &"ButtonQuitScreen"
+text = "Next"
+
+[node name="Sheet6" type="VBoxContainer" parent="Control/ArchiveOpen/Tutorial/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet6"]
+layout_mode = 2
+theme = ExtResource("5_4nmer")
+theme_type_variation = &"TitleScreenQuit"
+text = "How to play"
+horizontal_alignment = 1
+
+[node name="TitleScreenSeparator" type="HSeparator" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet6"]
+layout_mode = 2
+theme_type_variation = &"TitleScreenSeparator"
+
+[node name="Title2" type="Label" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet6"]
+layout_mode = 2
+theme_type_variation = &"TitleSection"
+text = "6.Repeat until 
+the city is 
+free of crime"
+horizontal_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet6"]
+layout_mode = 2
+theme_type_variation = &"SectionSeparator"
+
+[node name="Panel" type="Panel" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet6"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+theme_type_variation = &"Paper"
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet6/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"MarginSection"
+
+[node name="TextureRect" type="TextureRect" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet6/Panel/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("11_5l270")
+expand_mode = 1
+
+[node name="HSeparator" type="HSeparator" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet6"]
+layout_mode = 2
+theme_type_variation = &"SectionSeparator"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet6"]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 70
+
+[node name="Previous" type="Button" parent="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet6/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
@@ -888,9 +969,15 @@ libraries = {
 [connection signal="pressed" from="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet4/HBoxContainer/Next" to="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet4" method="hide"]
 [connection signal="pressed" from="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet4/HBoxContainer/Next" to="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet5" method="show"]
 [connection signal="pressed" from="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet5/HBoxContainer/Previous" to="." method="pressBtnSfx"]
-[connection signal="pressed" from="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet5/HBoxContainer/Previous" to="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet1" method="show"]
+[connection signal="pressed" from="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet5/HBoxContainer/Previous" to="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet4" method="show"]
 [connection signal="pressed" from="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet5/HBoxContainer/Previous" to="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet5" method="hide"]
-[connection signal="pressed" from="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet5/HBoxContainer/Previous" to="Control/ArchiveOpen/Paper" method="hide"]
+[connection signal="pressed" from="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet5/HBoxContainer/Next" to="." method="pressBtnSfx"]
+[connection signal="pressed" from="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet5/HBoxContainer/Next" to="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet6" method="show"]
+[connection signal="pressed" from="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet5/HBoxContainer/Next" to="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet5" method="hide"]
+[connection signal="pressed" from="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet6/HBoxContainer/Previous" to="." method="pressBtnSfx"]
+[connection signal="pressed" from="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet6/HBoxContainer/Previous" to="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet1" method="show"]
+[connection signal="pressed" from="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet6/HBoxContainer/Previous" to="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet6" method="hide"]
+[connection signal="pressed" from="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet6/HBoxContainer/Previous" to="Control/ArchiveOpen/Paper" method="hide"]
 [connection signal="pressed" from="Control/VBoxContainer/Resume" to="." method="pressBtnSfx"]
 [connection signal="pressed" from="Control/VBoxContainer/Resume" to="." method="togglePause" binds= [false]]
 [connection signal="pressed" from="Control/VBoxContainer/Settings" to="." method="pressBtnSfx"]
@@ -914,4 +1001,5 @@ libraries = {
 [connection signal="pressed" from="Control/VBoxContainer/Tutorial" to="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet2" method="hide"]
 [connection signal="pressed" from="Control/VBoxContainer/Tutorial" to="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet3" method="hide"]
 [connection signal="pressed" from="Control/VBoxContainer/Tutorial" to="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet4" method="hide"]
+[connection signal="pressed" from="Control/VBoxContainer/Tutorial" to="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet6" method="hide"]
 [connection signal="pressed" from="Control/VBoxContainer/Tutorial" to="Control/ArchiveOpen/Tutorial/MarginContainer/Sheet5" method="hide"]
