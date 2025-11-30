@@ -106,7 +106,7 @@ func setPaperAudioPitch(pitch = -1):
 	$AnimationPlayer/FaxOut.pitch_scale = pitch
 
 func _on_reader_identify_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Reader") and !messageSent:
+	if area.is_in_group("Reader") and !messageSent and grab.drag:
 		inReader = true
 		readerObj = area.get_parent()
 		
