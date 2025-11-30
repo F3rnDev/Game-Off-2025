@@ -20,6 +20,8 @@ var messageSent = false
 
 var inFolder = false
 
+var playedSoundSfx = false
+
 func _ready() -> void:
 	generatePaper(GameManager.get_required_points())#Change to global amnt
 	checkMark.visible = false
@@ -47,7 +49,6 @@ func updatePaperUI():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	
 	if animation.is_playing() or insideReader:
 		grab.disabled = true
 	else:
@@ -55,17 +56,26 @@ func _process(_delta: float) -> void:
 	
 	if grab.drag and !parent.onDesk and !inReader and !messageSent:
 		get_parent().scale = zoomScale
+		
+		if !playedSoundSfx:
+			Audio.playUIAccept(-10.0)
+			playedSoundSfx = true
 	else:
 		get_parent().scale = unzoomScale
 	
 	if !grab.drag and inReader and !messageSent:
 		dropPaperInReader()
 	elif !grab.drag and inFolder and messageSent:
+		Audio.playUIAccept(-10.0)
 		parent.queue_free()
 	
 	if grab.drag and GameManager.curDayStatus == GameManager.DayStatus.STOPPED:
 		GameManager.setDayStatus(GameManager.DayStatus.RUNNING)
-
+	
+	#RESET SOUNDSFX
+	if !grab.drag:
+		playedSoundSfx = false
+	
 func dropPaperInReader():
 	if !insideReader and !readerObj.hasPaper:
 		parent.stop = true
@@ -87,6 +97,13 @@ func removeFromReader(readerPos):
 	checkMark.visible = true
 	
 	insideReader = false
+
+func setPaperAudioPitch(pitch = -1):
+	if pitch == -1:
+		pitch = randf_range(0.5, 1.0)
+	
+	print(pitch)
+	$AnimationPlayer/FaxOut.pitch_scale = pitch
 
 func _on_reader_identify_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Reader") and !messageSent:

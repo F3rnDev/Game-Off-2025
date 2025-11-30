@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c8hghr02d0sr8"]
+[gd_scene load_steps=28 format=3 uid="uid://c8hghr02d0sr8"]
 
 [ext_resource type="Script" uid="uid://dxu5ms7fqniad" path="res://Components/UI/Radio/radio_ui.gd" id="1_j10og"]
 [ext_resource type="Texture2D" uid="uid://cpxrypdwvaoq6" path="res://Assets/Images/RadioZoom.png" id="1_tbdp1"]
@@ -12,6 +12,10 @@
 [ext_resource type="Script" uid="uid://bvl3e54jaempk" path="res://Components/UI/Radio/signal_status.gd" id="10_h3ian"]
 [ext_resource type="Script" uid="uid://ckg4t86o5120c" path="res://Components/UI/Radio/player_feedback.gd" id="11_75pb5"]
 [ext_resource type="Texture2D" uid="uid://chmbese6olpf0" path="res://Assets/Images/RadioZoomFeedback.png" id="11_hkd3y"]
+[ext_resource type="AudioStream" uid="uid://8qjdf3iw32ga" path="res://Assets/Audio/Radio/RadioSend.wav" id="13_1tyx3"]
+[ext_resource type="AudioStream" uid="uid://b8kgs2n7lh3vp" path="res://Assets/Audio/Radio/TurnOn.wav" id="13_qotfc"]
+[ext_resource type="AudioStream" uid="uid://c2jv4d1yqurax" path="res://Assets/Audio/Radio/TurnOff.wav" id="14_c8fdc"]
+[ext_resource type="AudioStream" uid="uid://b4p5avgno10g2" path="res://Assets/Audio/Radio/RadioStatic.wav" id="14_vx0a8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ynf5e"]
 bg_color = Color(0.2627451, 0.40784314, 0.32156864, 1)
@@ -90,6 +94,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 0), Vector2(1, 1)]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio/AudioIn_Out")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("13_qotfc")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_kllb8"]
 resource_name = "Disappear"
@@ -106,6 +125,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1, 0)]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio/AudioIn_Out")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("14_c8fdc")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_p85wy"]
 length = 0.001
@@ -233,7 +267,7 @@ position = Vector2(15, 61.999207)
 shape = SubResource("RectangleShape2D_61ghv")
 debug_color = Color(0.95074373, 2.7915835e-06, 0.56950784, 0.41960785)
 
-[node name="Knob" type="Sprite2D" parent="TextureRect" node_paths=PackedStringArray("status", "slider", "polygraph")]
+[node name="Knob" type="Sprite2D" parent="TextureRect" node_paths=PackedStringArray("status", "slider", "polygraph", "radioAudio")]
 position = Vector2(513.00006, 179.99919)
 scale = Vector2(3, 3)
 texture = ExtResource("4_p85wy")
@@ -241,6 +275,7 @@ script = ExtResource("5_kllb8")
 status = NodePath("../SignalStatus")
 slider = NodePath("../SubViewportContainer/SubViewport/DistrictSlider")
 polygraph = NodePath("../SubViewportContainer/SubViewport/Polygraph")
+radioAudio = NodePath("../../Audio/RadioStatic")
 metadata/_edit_use_anchors_ = true
 
 [node name="Button" type="Button" parent="TextureRect/Knob"]
@@ -369,6 +404,18 @@ sprite_frames = SubResource("SpriteFrames_jbxun")
 libraries = {
 &"": SubResource("AnimationLibrary_kllb8")
 }
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="AudioIn_Out" type="AudioStreamPlayer" parent="Audio"]
+
+[node name="SendSignal" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("13_1tyx3")
+volume_db = -5.0
+
+[node name="RadioStatic" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("14_vx0a8")
+volume_db = -20.0
 
 [connection signal="button_down" from="TextureRect/SubViewportContainer/SubViewport/DistrictSlider/Button" to="TextureRect/SubViewportContainer/SubViewport/DistrictSlider" method="_on_button_button_down"]
 [connection signal="button_up" from="TextureRect/SubViewportContainer/SubViewport/DistrictSlider/Button" to="TextureRect/SubViewportContainer/SubViewport/DistrictSlider" method="_on_button_button_up"]

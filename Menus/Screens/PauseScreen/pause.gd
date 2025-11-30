@@ -63,7 +63,7 @@ func _on_slider_music_value_changed(value: float) -> void:
 	
 
 func _on_slider_sfx_value_changed(value: float) -> void:
-	Audio.playUIMove()
+	#Audio.playUIMove()
 	Audio.AudioSfx(value)
 	sfxPercent.text = str(roundi(Audio.volumeSFX*100)) + "%"
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7uwetgvv5avf"]
+[gd_scene load_steps=8 format=3 uid="uid://c7uwetgvv5avf"]
 
 [ext_resource type="Script" uid="uid://c8jtw7116kwaa" path="res://Components/Desk/GrabItem/Global/item.gd" id="1_0r1iu"]
 [ext_resource type="Texture2D" uid="uid://bepih42ikem3y" path="res://Assets/Images/clock.png" id="2_62awn"]
 [ext_resource type="Script" uid="uid://uqf7035hmm55" path="res://Components/Desk/GrabItem/Clock/clock_visor.gd" id="4_8s1b3"]
 [ext_resource type="PackedScene" uid="uid://b062bbp746e1f" path="res://Components/Desk/GrabItem/Global/Grab.tscn" id="5_gj54c"]
+[ext_resource type="AudioStream" uid="uid://ckor7j3sb2e00" path="res://Assets/Audio/itemLand.wav" id="5_hj3bl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8w355"]
 size = Vector2(125, 136.25)
@@ -67,6 +68,9 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TableIdentify"]
 position = Vector2(1.5, -26.5)
 shape = SubResource("RectangleShape2D_5dpbu")
+
+[node name="ItemLand" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_hj3bl")
 
 [connection signal="area_entered" from="TableIdentify" to="." method="_on_table_identify_area_entered"]
 [connection signal="area_exited" from="TableIdentify" to="." method="_on_table_identify_area_exited"]

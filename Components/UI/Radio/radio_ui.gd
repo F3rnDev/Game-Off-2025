@@ -30,10 +30,12 @@ func getViewport():
 func showUI():
 	appeared = true
 	anim.play("Appear")
+	$Audio/RadioStatic.play()
 
 func hideUI():
 	appeared = false
 	anim.play("Disappear")
+	$Audio/RadioStatic.stop()
 
 func updateRadio(curRecvr:Array[Receiver]):
 	activeRecvrs = curRecvr
@@ -64,6 +66,7 @@ func addRadioPoint(recvr):
 	var tries = 0
 	var fallback = 30
 	
+	var canAdd = true
 	while true:
 		xPos = randf_range(0.0, control.size.x - pointSize.x)
 		
@@ -72,8 +75,12 @@ func addRadioPoint(recvr):
 		
 		tries+=1
 		if tries >= fallback:
-			print("Aviso: posição X ideal não encontrada, adicionando mesmo assim.")
+			print("Aviso: posição X ideal não encontrada")
+			canAdd = false
 			break
+	
+	if !canAdd:
+		return
 	
 	pointInstance.position = Vector2(xPos, yPos)
 	pointInstance.setReceiver(recvr)
@@ -95,6 +102,10 @@ func _is_x_valid(xPos: float) -> bool:
 
 func _on_send_button_down() -> void:
 	await get_tree().process_frame
+	
+	$Audio/SendSignal.pitch_scale = randf_range(0.8, 1.2)
+	$Audio/SendSignal.play()
+	
 	if districtSlider.selectedPoint.size() <= 0:
 		return
 	

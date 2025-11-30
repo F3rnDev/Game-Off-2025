@@ -11,12 +11,19 @@ extends Control
 @onready var badMensage: RichTextLabel = $Control/ArchiveOpen/Report/Margin/Content/CitySituation/Margin/Content/Bad
 @onready var neutralMensage: RichTextLabel = $Control/ArchiveOpen/Report/Margin/Content/CitySituation/Margin/Content/Neutral
 
+var curDay = 1
+
 func _ready() -> void:
 	Audio.playMusic()
 	mainMenuBtn.pressed.connect(backMenu)
 	quitBtn.pressed.connect(quitGame)
 	
 	setUI()
+	
+	
+	curDay = GameManager.day
+	if GameManager.day < 5:
+		GameManager.day += 1
 
 func setUI():
 	day.text = "DAY " + str(GameManager.day)
@@ -54,12 +61,8 @@ func quitGame():
 func btnPress() -> void:
 	Audio.playUIAccept()
 
-func denyBtnPressed() -> void:
-	Audio.playUICancel()
-
 func _on_continue_button_down() -> void:
-	if GameManager.day < 5:
-		GameManager.day += 1
+	if curDay < 5:
 		Audio.stopMusic()
 		Transition.transitionToScene("res://Scenes/main.tscn", "circleToDay")
 	else:

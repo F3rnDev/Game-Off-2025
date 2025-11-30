@@ -5,7 +5,7 @@ var isFullscreen = false
 @onready var uiAccept := AudioStreamPlayer.new()
 @onready var uiCancel := AudioStreamPlayer.new()
 
-@onready var soundAccept = load("res://Menus/AssetsScreens/Audio/leaf_trought.wav")
+@onready var soundAccept = load("res://Assets/Audio/Paper.wav")
 @onready var soundCancel = load("res://Menus/AssetsScreens/Audio/UICancel.mp3")
 
 var volumeMaster = 1.0
@@ -78,8 +78,11 @@ func AudioSfx(value:float):
 	Decibels = linear_to_db(value)
 	AudioServer.set_bus_volume_db(SFX_AUDIO_ID, Decibels)
 
-func playUIAccept():
+func playUIAccept(audioDb = 0.0):
 	uiAccept.stream = soundAccept
+	var randomPitch = randf_range(0.8, 1.2)
+	uiAccept.pitch_scale = randomPitch
+	uiAccept.volume_db = audioDb
 	uiAccept.play()
 
 func playUICancel():

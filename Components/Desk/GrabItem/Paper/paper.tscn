@@ -1,11 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://cmnwkjoa4kipx"]
+[gd_scene load_steps=20 format=3 uid="uid://cmnwkjoa4kipx"]
 
 [ext_resource type="Script" uid="uid://c8jtw7116kwaa" path="res://Components/Desk/GrabItem/Global/item.gd" id="1_e7x4m"]
 [ext_resource type="Texture2D" uid="uid://4b0o0qdvd1ra" path="res://Assets/Images/paper.png" id="2_2p3gn"]
 [ext_resource type="FontFile" uid="uid://hvvy671c1x5e" path="res://Assets/Fonts/Silkscreen-Bold.ttf" id="3_dbds1"]
 [ext_resource type="Script" uid="uid://bqj0cqgtj55d3" path="res://Components/Desk/GrabItem/Paper/paper.gd" id="3_he6ul"]
 [ext_resource type="PackedScene" uid="uid://b062bbp746e1f" path="res://Components/Desk/GrabItem/Global/Grab.tscn" id="5_gug40"]
+[ext_resource type="AudioStream" uid="uid://dfcda2y4epwfj" path="res://Assets/Audio/ReaderPaper.wav" id="6_bct8h"]
 [ext_resource type="Texture2D" uid="uid://blkbncnvant4v" path="res://Assets/Images/PaperCheck.png" id="6_he6ul"]
+[ext_resource type="AudioStream" uid="uid://bmwljf3c3uyge" path="res://Assets/Audio/Fax01.wav" id="6_mrq8s"]
+[ext_resource type="AudioStream" uid="uid://cckhpn2vm1rem" path="res://Assets/Audio/Fax02.wav" id="7_n8k2n"]
+[ext_resource type="AudioStream" uid="uid://ckor7j3sb2e00" path="res://Assets/Audio/itemLand.wav" id="7_yju4b"]
 
 [sub_resource type="Animation" id="Animation_he6ul"]
 length = 0.001
@@ -36,6 +40,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(17, 23), Vector2(17, 69)]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/FaxOut")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_bct8h")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_5od7h"]
 resource_name = "paper reader up"
@@ -51,6 +70,21 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(17, -23), Vector2(17, 23)]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/FaxOut")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_bct8h")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="Animation" id="Animation_gox4t"]
 resource_name = "paper up"
@@ -67,6 +101,25 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(17, 69), Vector2(17, 39), Vector2(17, 39), Vector2(17, 29), Vector2(17, 29), Vector2(17, 23)]
 }
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/FaxOut")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.24,
+"start_offset": 0.0,
+"stream": ExtResource("6_mrq8s")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_n8k2n")
+}],
+"times": PackedFloat32Array(0, 0.76666665)
+}
+tracks/1/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_he6ul"]
 _data = {
@@ -212,6 +265,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_he6ul")
 }
 
+[node name="FaxOut" type="AudioStreamPlayer" parent="PaperMask/Sprite2D/AnimationPlayer"]
+pitch_scale = 0.7
+bus = &"SFX"
+
 [node name="Sprite2D" type="Sprite2D" parent="PaperMask/Sprite2D"]
 visible = false
 texture = ExtResource("6_he6ul")
@@ -242,6 +299,10 @@ debug_color = Color(0.8159869, 0.0019602692, 0.97589475, 0.41960785)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="folderIdentify"]
 shape = SubResource("RectangleShape2D_he6ul")
 debug_color = Color(0.7063136, 0.4888361, 0, 0.41960785)
+
+[node name="ItemLand" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_yju4b")
+bus = &"SFX"
 
 [connection signal="area_entered" from="TableIdentify" to="." method="_on_table_identify_area_entered"]
 [connection signal="area_exited" from="TableIdentify" to="." method="_on_table_identify_area_exited"]

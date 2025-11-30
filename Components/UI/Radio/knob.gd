@@ -13,6 +13,12 @@ var smoothing := 6.0
 var drag = false
 var target_angle = null
 
+#static Audio
+@export var radioAudio:AudioStreamPlayer
+@export var minPitch = 0.8
+@export var maxPitch = 1.1
+var targetPitch = 1.0
+
 func _process(delta: float) -> void:
 	if drag:
 		var ang = get_global_mouse_position().angle_to_point(global_position) - PI/2
@@ -26,9 +32,12 @@ func _process(delta: float) -> void:
 		var knob01 = norm / TAU
 		
 		target_amp = lerp(min_amp, max_amp, knob01)
+		targetPitch = lerp(minPitch, maxPitch, knob01)
 	
 	current_amp = lerp(current_amp, target_amp, delta * smoothing)
 	polygraph.material.set_shader_parameter("amplitude", current_amp)
+	
+	radioAudio.pitch_scale = lerp(radioAudio.pitch_scale, targetPitch, delta * smoothing)
 	
 	if slider.selectedPoint.size() > 0:
 		status.activateNo()

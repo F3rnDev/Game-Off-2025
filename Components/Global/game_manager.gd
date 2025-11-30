@@ -34,6 +34,10 @@ static func resetDayMerits():
 static func setDayStatus(value:DayStatus):
 	curDayStatus = value
 
+static func resetTime():
+	hours = 12
+	minutes = 0
+
 static func setTime(elapsed_seconds: float, total_seconds: float) -> void:
 	elapsed = elapsed_seconds
 	total = max(total_seconds, 0.001)

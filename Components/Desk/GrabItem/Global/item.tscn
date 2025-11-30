@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://5cqqce0o6cus"]
+[gd_scene load_steps=9 format=3 uid="uid://5cqqce0o6cus"]
 
 [ext_resource type="Script" uid="uid://c8jtw7116kwaa" path="res://Components/Desk/GrabItem/Global/item.gd" id="1_53jok"]
 [ext_resource type="Texture2D" uid="uid://4b0o0qdvd1ra" path="res://Assets/Images/paper.png" id="2_eau12"]
 [ext_resource type="Texture2D" uid="uid://cvaxghcsay80s" path="res://icon.svg" id="2_le261"]
 [ext_resource type="PackedScene" uid="uid://b062bbp746e1f" path="res://Components/Desk/GrabItem/Global/Grab.tscn" id="3_eau12"]
 [ext_resource type="FontFile" uid="uid://hvvy671c1x5e" path="res://Assets/Fonts/Silkscreen-Bold.ttf" id="4_rrqmv"]
+[ext_resource type="AudioStream" uid="uid://ckor7j3sb2e00" path="res://Assets/Audio/itemLand.wav" id="6_5dpbu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8w355"]
 size = Vector2(266, 356)
@@ -173,3 +174,6 @@ debug_color = Color(0.6668886, 0.5083992, 0.15268034, 0.41960785)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TableIdentify"]
 position = Vector2(0, -42.5)
 shape = SubResource("RectangleShape2D_5dpbu")
+
+[node name="ItemLand" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_5dpbu")

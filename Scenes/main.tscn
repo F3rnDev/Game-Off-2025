@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dcte1jsti2gdf"]
+[gd_scene load_steps=12 format=3 uid="uid://dcte1jsti2gdf"]
 
 [ext_resource type="Script" uid="uid://c2m0mxfnkqqxf" path="res://Scenes/main.gd" id="1_6bp64"]
 [ext_resource type="Texture2D" uid="uid://kuxrn1rldhle" path="res://Assets/Images/Background.png" id="1_8gbba"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://c8hghr02d0sr8" path="res://Components/UI/Radio/RadioUI.tscn" id="8_344ge"]
 [ext_resource type="PackedScene" uid="uid://d2mpx6nuqvicx" path="res://Menus/Screens/PauseScreen/pause_screen.tscn" id="9_hptm8"]
 [ext_resource type="PackedScene" uid="uid://dmda7urn28hxi" path="res://Components/Desk/Folder/folder.tscn" id="9_ynf5e"]
+[ext_resource type="AudioStream" uid="uid://bljo75m7ly4dp" path="res://Assets/Audio/OfficeAmbience.wav" id="11_d1ilt"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_6bp64")
@@ -54,5 +55,13 @@ visible = false
 position = Vector2(187.00002, 565.00006)
 flip_h = true
 pause = NodePath("../CanvasLayer/PauseMenu")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Ambiance" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("11_d1ilt")
+volume_db = -10.0
+autoplay = true
+bus = &"SFX"
 
 [connection signal="timeout" from="DayTimer" to="." method="_on_day_timer_timeout"]

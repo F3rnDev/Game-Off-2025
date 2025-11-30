@@ -13,7 +13,8 @@ func transitionToScene(path, transition):
 
 func getTransition(trans):
 	for child in get_children():
-		child.visible = false
+		if !child is AudioStreamPlayer:
+			child.visible = false
 	
 	match trans:
 		"day":

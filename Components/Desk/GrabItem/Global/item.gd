@@ -7,6 +7,8 @@ class_name Item
 var onDesk = false
 var stop = true
 
+var soundPlayed = false
+
 func _process(_delta: float) -> void:
 	if grabable.drag and stop:
 		stop = false
@@ -25,8 +27,14 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		applyGravity(delta)
+		soundPlayed = false
 	else:
 		velocity = Vector2.ZERO
+		
+		if !soundPlayed and !grabable.drag:
+			$ItemLand.pitch_scale = randf_range(0.8, 1.2)
+			$ItemLand.play()
+			soundPlayed = true
 
 	move_and_slide()
 

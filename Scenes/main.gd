@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var dayTimer:Timer = $DayTimer
-@export var dayTime = 0.001 #7 minutes
+@export var dayTime = 3.0 #7 minutes
 
 @onready var radioUI:RadioUI = $CanvasLayer/RadioUI
 
@@ -11,6 +11,7 @@ var dayStarted = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	GameManager.resetTime()
 	$FaxMachine.spawnPaper()
 	
 	totalSeconds = dayTime*60.0
