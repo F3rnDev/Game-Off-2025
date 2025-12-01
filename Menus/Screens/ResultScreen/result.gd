@@ -46,10 +46,13 @@ func setCityStatus():
 	
 	if totalMerits > totalDemerits:
 		goodMensage.visible = true
+		GameManager.curCityStatus.append(GameManager.CityStatus.GOOD)
 	elif totalMerits == totalDemerits:
 		neutralMensage.visible = true
+		GameManager.curCityStatus.append(GameManager.CityStatus.NORMAL)
 	else:
 		badMensage.visible = true
+		GameManager.curCityStatus.append(GameManager.CityStatus.BAD)
 
 func backMenu():
 	Transition.transitionToScene("res://Menus/Screens/MenuScreen/menu_screen.tscn", "result")
@@ -66,5 +69,4 @@ func _on_continue_button_down() -> void:
 		Audio.stopMusic()
 		Transition.transitionToScene("res://Scenes/main.tscn", "circleToDay")
 	else:
-		print("ITS OVEEEEER LMAAAAAAAAAO")
-		Transition.transitionToScene("res://Menus/Screens/MenuScreen/menu_screen.tscn", "result")
+		Transition.transitionToScene("res://Menus/Screens/EndScreen/endScreen.tscn", "result")

@@ -26,6 +26,19 @@ static var START_HOUR = 12
 static var elapsed := 0.0
 static var total := 1.0
 
+enum CityStatus
+{
+	NORMAL,
+	GOOD,
+	BAD
+}
+
+static var curCityStatus:Array[CityStatus] = []
+
+static func resetData():
+	day = 1
+	curCityStatus = []
+
 static func resetDayMerits():
 	dayMerits = 0
 	dayDemerits = 0

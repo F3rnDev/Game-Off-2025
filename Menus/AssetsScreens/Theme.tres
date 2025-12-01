@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=24 format=3 uid="uid://cn5heyqgh7ypt"]
+[gd_resource type="Theme" load_steps=28 format=3 uid="uid://cn5heyqgh7ypt"]
 
 [ext_resource type="FontFile" uid="uid://bbm31s7m1pijg" path="res://Assets/Fonts/Silkscreen-Regular.ttf" id="1_e7sde"]
 [ext_resource type="Texture2D" uid="uid://ct6cvfg656mxk" path="res://Menus/AssetsScreens/Image/check.png" id="1_k1aya"]
@@ -46,6 +46,44 @@ expand_margin_left = 3.0
 expand_margin_right = 3.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6xh3"]
+bg_color = Color(0.8627451, 0.7294118, 0.627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+expand_margin_left = 3.0
+expand_margin_right = 3.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3qiag"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e7sde"]
+bg_color = Color(0.7529412, 0.5568628, 0.4392157, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+expand_margin_left = 3.0
+expand_margin_right = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jj0jv"]
+bg_color = Color(0.8627451, 0.7294118, 0.627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+expand_margin_left = 3.0
+expand_margin_right = 3.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_upkai"]
 bg_color = Color(0.8627451, 0.7294118, 0.627451, 1)
 border_width_left = 2
 border_width_top = 2
@@ -167,6 +205,14 @@ ButtonFile/styles/focus = SubResource("StyleBoxEmpty_8dt5f")
 ButtonFile/styles/hover = SubResource("StyleBoxFlat_8dt5f")
 ButtonFile/styles/normal = SubResource("StyleBoxFlat_c6xh3")
 ButtonFile/styles/pressed = SubResource("StyleBoxFlat_c6xh3")
+ButtonFileFlick/base_type = &"Button"
+ButtonFileFlick/colors/font_color = Color(1, 1, 1, 1)
+ButtonFileFlick/colors/font_hover_color = Color(0.972549, 0.9019608, 0.8156863, 1)
+ButtonFileFlick/fonts/font = ExtResource("1_e7sde")
+ButtonFileFlick/styles/focus = SubResource("StyleBoxEmpty_3qiag")
+ButtonFileFlick/styles/hover = SubResource("StyleBoxFlat_e7sde")
+ButtonFileFlick/styles/normal = SubResource("StyleBoxFlat_jj0jv")
+ButtonFileFlick/styles/pressed = SubResource("StyleBoxFlat_upkai")
 ButtonQuitScreen/base_type = &"Button"
 ButtonQuitScreen/colors/font_color = Color(0.7529412, 0.5568628, 0.4392157, 1)
 ButtonQuitScreen/colors/font_hover_color = Color(0.40784314, 0.22745098, 0.20392157, 1)

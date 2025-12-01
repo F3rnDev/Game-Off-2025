@@ -37,6 +37,9 @@ func _ready() -> void:
 	#CheckWeb
 	if OS.has_feature("web"):
 		%Quit.visible = false
+	
+	if GameManager.day == 1:
+		$Control/VBoxContainer/Tutorial.activateFlicker()
 
 func play():
 	Audio.stopMusic()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://i3f6c6v27f1j"]
+[gd_scene load_steps=21 format=3 uid="uid://i3f6c6v27f1j"]
 
 [ext_resource type="Theme" uid="uid://cn5heyqgh7ypt" path="res://Menus/AssetsScreens/Theme.tres" id="1_l5m26"]
 [ext_resource type="Script" uid="uid://c42sufb6jwxyh" path="res://Menus/Screens/MenuScreen/menu.gd" id="2_fd2gi"]
@@ -8,11 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://cnjwl71pkeecb" path="res://Menus/AssetsScreens/Image/ArchiveOpen.png" id="6_jmayi"]
 [ext_resource type="Texture2D" uid="uid://ci0lsmwm2h2jp" path="res://Menus/AssetsScreens/Image/Tutorial/Step1.png" id="7_jvjxv"]
 [ext_resource type="Texture2D" uid="uid://b287tfmbjhvbs" path="res://Menus/AssetsScreens/Image/Tutorial/Step2.png" id="8_4jfd1"]
-[ext_resource type="Shader" path="res://Assets/Shader/transition.gdshader" id="8_l4eh2"]
+[ext_resource type="Shader" uid="uid://b8hwf1cb11r4n" path="res://Assets/Shader/transition.gdshader" id="8_l4eh2"]
 [ext_resource type="Texture2D" uid="uid://cxnmleudpewsk" path="res://Menus/AssetsScreens/Image/Tutorial/Step3.png" id="9_vn3nr"]
 [ext_resource type="Texture2D" uid="uid://bp63b0e5g7bqx" path="res://Menus/AssetsScreens/Image/Tutorial/Step4.png" id="10_ak4tr"]
 [ext_resource type="Texture2D" uid="uid://bvwo4me51bbyl" path="res://Menus/AssetsScreens/Image/Tutorial/Step5.png" id="11_jg86a"]
 [ext_resource type="Texture2D" uid="uid://b4fv7tasplu65" path="res://Menus/AssetsScreens/Image/Tutorial/Step6.png" id="12_p561q"]
+[ext_resource type="Script" uid="uid://bhkx4tyd0lvdj" path="res://Menus/Screens/MenuScreen/tutorialFlicker.gd" id="13_4jfd1"]
 
 [sub_resource type="Animation" id="Animation_6amxb"]
 resource_name = "Appear"
@@ -150,6 +151,8 @@ _data = {
 &"Disappear": SubResource("Animation_l4eh2"),
 &"RESET": SubResource("Animation_pvuwc")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vn3nr"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s1p86"]
 shader = ExtResource("8_l4eh2")
@@ -983,10 +986,13 @@ theme_type_variation = &"ButtonFile"
 text = "Settings"
 
 [node name="Tutorial" type="Button" parent="Control/VBoxContainer"]
+material = SubResource("ShaderMaterial_vn3nr")
 layout_mode = 2
 mouse_default_cursor_shape = 2
+theme = ExtResource("1_l5m26")
 theme_type_variation = &"ButtonFile"
 text = "Tutorial"
+script = ExtResource("13_4jfd1")
 
 [node name="Quit" type="Button" parent="Control/VBoxContainer"]
 unique_name_in_owner = true
@@ -1052,14 +1058,14 @@ color = Color(0, 0, 0, 1)
 [connection signal="pressed" from="Control/VBoxContainer/Settings" to="." method="pressBtnSfx"]
 [connection signal="pressed" from="Control/VBoxContainer/Settings" to="Control/ArchiveOpenSettings" method="show"]
 [connection signal="pressed" from="Control/VBoxContainer/Settings" to="Control/ArchiveOpenSettings/Panel" method="show"]
-[connection signal="pressed" from="Control/VBoxContainer/Settings" to="Control/ArchiveOpenQuit" method="hide"]
 [connection signal="pressed" from="Control/VBoxContainer/Settings" to="Control/ArchiveOpenSettings/Tutorial" method="hide"]
 [connection signal="pressed" from="Control/VBoxContainer/Settings" to="Control/ArchiveOpenSettings/Paper" method="hide"]
+[connection signal="pressed" from="Control/VBoxContainer/Settings" to="Control/ArchiveOpenQuit" method="hide"]
 [connection signal="pressed" from="Control/VBoxContainer/Settings" to="Control/ArchiveOpenSettings" method="set_mouse_filter" binds= [0]]
+[connection signal="button_down" from="Control/VBoxContainer/Tutorial" to="Control/VBoxContainer/Tutorial" method="_on_button_down"]
 [connection signal="pressed" from="Control/VBoxContainer/Tutorial" to="." method="pressBtnSfx"]
 [connection signal="pressed" from="Control/VBoxContainer/Tutorial" to="Control/ArchiveOpenSettings" method="show"]
 [connection signal="pressed" from="Control/VBoxContainer/Tutorial" to="Control/ArchiveOpenSettings/Panel" method="hide"]
-[connection signal="pressed" from="Control/VBoxContainer/Tutorial" to="Control/ArchiveOpenQuit" method="hide"]
 [connection signal="pressed" from="Control/VBoxContainer/Tutorial" to="Control/ArchiveOpenSettings/Tutorial" method="show"]
 [connection signal="pressed" from="Control/VBoxContainer/Tutorial" to="Control/ArchiveOpenSettings/Tutorial/MarginContainer/Sheet1" method="show"]
 [connection signal="pressed" from="Control/VBoxContainer/Tutorial" to="Control/ArchiveOpenSettings/Tutorial/MarginContainer/Sheet2" method="hide"]
@@ -1068,6 +1074,7 @@ color = Color(0, 0, 0, 1)
 [connection signal="pressed" from="Control/VBoxContainer/Tutorial" to="Control/ArchiveOpenSettings/Tutorial/MarginContainer/Sheet5" method="hide"]
 [connection signal="pressed" from="Control/VBoxContainer/Tutorial" to="Control/ArchiveOpenSettings/Tutorial/MarginContainer/Sheet6" method="hide"]
 [connection signal="pressed" from="Control/VBoxContainer/Tutorial" to="Control/ArchiveOpenSettings/Paper" method="hide"]
+[connection signal="pressed" from="Control/VBoxContainer/Tutorial" to="Control/ArchiveOpenQuit" method="hide"]
 [connection signal="pressed" from="Control/VBoxContainer/Quit" to="." method="pressBtnSfx"]
 [connection signal="pressed" from="Control/VBoxContainer/Quit" to="Control/ArchiveOpenSettings" method="hide"]
 [connection signal="pressed" from="Control/VBoxContainer/Quit" to="Control/ArchiveOpenQuit" method="show"]

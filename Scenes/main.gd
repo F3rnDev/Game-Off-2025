@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var dayTimer:Timer = $DayTimer
-@export var dayTime = 3.0 #7 minutes
+@export var dayTime = 3.0 #3 minutes
 
 @onready var radioUI:RadioUI = $CanvasLayer/RadioUI
 

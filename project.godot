@@ -13,6 +13,9 @@ config_version=5
 config/name="Signal Out"
 run/main_scene="uid://i3f6c6v27f1j"
 config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/fullsize=false
+boot_splash/image="uid://b5fr65slvmj10"
 config/icon="uid://bgsqsrj631q3o"
 
 [autoload]
